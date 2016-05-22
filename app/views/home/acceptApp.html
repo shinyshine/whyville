@@ -1,0 +1,52 @@
+<div class="home-container">
+	<div class="apply-container">
+		<h2>付款申请审核单</h2>
+		<div id="tables">
+			<table class="table table-bordered table-1" width="1200">
+				<tr>
+					<td>编号: {{appForm.user.emp_id}}</td>
+					<td>日期: {{appForm.user.date}}</td>
+				</tr>
+				<tr>
+					<td>校区: {{appForm.user.emp_sch}}</td>
+					<td>申请人: {{appForm.user.emp_name}}</td>
+				</tr>
+				<tr>
+					<td colspan="2">标题: {{appForm.app.app_title}}</td>
+				</tr>
+			</table>
+			<table class="table table-bordered table-2" width="1200">
+				<tr class="thead">
+					<td>内容</td>
+					<td width="145">单价</td>
+					<td width="145">数量</td>
+					<td width="145">总价</td>
+				</tr>
+				<tr>
+					<td>{{appForm.app.app_content}}</td>
+					<td>{{appForm.app.app_per}}</td>
+					<td>{{appForm.app.app_num}}</td>
+					<td>{{appForm.app.app_per * appForm.app.app_num}}</td>
+				</tr>
+			</table>
+			<div class="date-container">
+				<p class="date-row">
+					<label>审批日期: </label>
+					<span>{{autoData.date}}</span>
+				</p>
+				<!-- <p class="date-row">
+					<label>支付日期: </label>
+					<input type="text" disabled/> 年
+					<input type="text" disabled/> 月
+					<input type="text" disabled/> 日
+				</p> -->
+			</div>
+			<p>总经理: {{autoData.sign_name}}</p>
+			<textarea ng-disabled="!user.authority" ng-model="appForm.app.boss_opinion">审批意见: </textarea>
+			<footer>
+				<div class="footer-logo"></div>
+			</footer>
+		</div>
+	</div>	
+	<div class="submit-btn"><button type="button" ng-click="acceptApp()">{{postData.status | accept_or_not}}</button></div>
+</div>

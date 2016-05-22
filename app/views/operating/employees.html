@@ -1,0 +1,34 @@
+<div class="btns">
+	<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()">
+	</div>
+	<div class="add-btn"><a href="javascript:void(0);" ng-click="addEmp()">添加员工</a></div>
+</div>
+<div class="table-container">
+	<table class="table table-striped" id="table">
+		<thead>
+			<tr>
+				<th width="200">校区</th>
+				<th width="160">编号</th>
+				<th width="160">姓名</th>
+				<th width="200">职位</th>
+				<th width="200">密码</th>
+				<th width="280">操作</th>
+			</tr>		
+		</thead>
+		<tbody>
+			<tr ng-repeat="employee in result">
+				<td>{{employee.school}}</td>
+				<td><a href="#/empInfo/{{employee.emp_id}}">{{employee.emp_id}}</a></td>
+				<td><a href="#/empInfo/{{employee.emp_id}}">{{employee.emp_name}}</a></td>
+				<td>{{employee.emp_job}}</td>
+				<td>{{employee.emp_pwd}}</td>
+				<td class="operate-btns">
+					<a href="javascript:void(0);" ng-click="resetPwd(employee.emp_id)">重置密码</a>
+					<a href="#/modifyEmp/{{employee.emp_id}}">修改</a>
+					<a class="btn-delete" href="javascript:void(0);" ng-click="deleteEmp(employee.emp_id)">离职</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<tm-pagination conf="paginationConf"></tm-pagination>

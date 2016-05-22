@@ -1,0 +1,179 @@
+<div class="stu-container report-container">
+	<div class="form-container" id="reportTable">
+		<div class="info-card">
+			<div class="head-info-container">
+				<header>
+					<div class="logo-container">
+						<a href="#"><img src="images/logo-short.jpg" alt=""></a>
+					</div>
+					<h1>ESL课程学习报告</h1>
+					<p class="caption">We Build Academic Confidence</p>
+				</header>
+				
+				<div class="stu-info">
+					<table>
+						<tr>
+							<td width="560"><p>学生姓名</p><p>Student Name: 罗半仙</p></td>
+							<td width="560"><p>老师姓名</p><p>Teacher Name: Marry</p></td>
+						</tr>
+						<tr>
+							<td width="560"><p>课程</p><p>Course: EEE#</p></td>
+							<td width="560"><p>学期</p><p>Term: 春季班</p></td>
+						</tr>
+					</table>
+				</div>
+				<div class="colorful-jpg"></div>
+			</div>
+			<div class="table-container">
+				<table class="table table-bordered report-table">
+					<thead>
+						<tr>
+							<td width="120"></td>
+							<td width="140">Entrance Score<br/>入学成绩</td>
+							<td width="140">Midterm Score<br/>期中成绩</td>
+							<td width="140">End Term Score<br/>期末成绩</td>
+							<td width="160">Target Skills<br/>内容</td>
+							<td width="140">Entrance Score<br/>入学成绩</td>
+							<td width="140">Midterm Score<br/>期中成绩</td>
+							<td width="140">End Term Score<br/>期末成绩</td>
+						</tr>
+					</thead>
+					<tbody ng-repeat="item in report.basic.items">
+						<tr>
+							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}"><input type="text" ng-model="item.item_name"></td>
+							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}"><input type="text" ng-model="item.score[0]"></td>
+							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}"><input type="text" ng-model="item.score[1]"></td>
+							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}"><input type="text" ng-model="item.score[2]"></td>
+							<td><input type="text" ng-model="item.sec_item.item_name"</td>
+							<td><input type="text" ng-model="item.sec_item.score[0]"</td>
+							<td><input type="text" ng-model="item.sec_item.score[1]"</td>
+							<td><input type="text" ng-model="item.sec_item.score[2]"</td>
+						</tr>
+						<tr ng-repeat="sec_item in item.branches">
+							<td><input type="text" ng-model="sec_item.item_name"></td>
+							<td><input type="text" ng-model="sec_item.score[0]"></td>
+							<td><input type="text" ng-model="sec_item.score[1]"></td>
+							<td><input type="text" ng-model="sec_item.score[2]"></td>
+						</tr>
+					</tbody>		
+				</table>
+			</div>
+			<div class="chart-container">
+				
+			</div>
+			<div class="comment">
+				<label>Comment 评语</label>
+                <textarea ng-model="report.basic.comment"></textarea>
+                <textarea ng-model="report.basic.comment_zh"></textarea>
+			</div>
+		</div>
+		<div class="info-card">
+			<div class="head-info-container">
+				<header>
+					<div class="logo-container">
+						<a href="#"><img src="images/logo-short.jpg" alt=""></a>
+					</div>
+					<h1>学业评估报告</h1>
+					<p class="caption">We Build Academic Confidence</p>
+				</header>
+				
+				<div class="stu-info">
+					<table>
+						<tr>
+							<td width="560"><p>学生姓名</p><p>Student Name: 罗半仙</p></td>
+							<td width="560"><p>老师姓名</p><p>Teacher Name: Marry</p></td>
+						</tr>
+						<tr>
+							<td width="560"><p>课程</p><p>Course: EEE#</p></td>
+							<td width="560"><p>学期</p><p>Term: 春季班</p></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="table-container">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td width="320"></td>
+							<td width="160">10 Class</td>
+							<td width="160">10 Class</td>
+							<td width="160">10 Class</td>
+							<td width="160">10 Class</td>
+							<td width="160">10 Class</td>
+							<td width="160">Total(40)</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Attendence</td>
+							<td>Attendence</td>
+							<td>Attendence</td>
+							<td>Attendence</td>
+							<td>Attendence</td>
+							<td>Attendence</td>
+							<td>Attendence</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="table-container">
+				<table class="table table-bordered report-table">
+					<tr>
+						<td style="line-height: {{60*report.study.item_num+120}}px;" rowspan="{{report.study.item_num + 2}}" width="200">study</td>
+						<td width="320"></td>
+						<td width="200">Entrance Score</td>
+						<td width="200">Midterm Score</td>
+						<td width="200">End Term Score</td>
+					</tr>
+					<tr ng-repeat="item in report.study.items">
+						<td>{{item.item_name}}   {{item.item_name_zh}}</td>
+						<td><input type="text" ng-model="item.score[0]"></td>
+						<td><input type="text" ng-model="item.score[1]"></td>
+						<td><input type="text" ng-model="item.score[2]"></td>
+					</tr>
+					<tr>
+						<td>Total 合计</td>
+						<td>90</td>
+						<td>90</td>
+						<td>99</td>
+					</tr>
+				</table>
+			</div>
+			<div class="comment">
+				<label>Comment 评语</label>
+                <textarea ng-model="report.study.comment"></textarea>
+                <textarea ng-model="report.study.comment_zh"></textarea>
+			</div>
+
+			<div class="table-container">
+				<table class="table table-bordered report-table">
+					<tr>
+						<td style="line-height: {{60*report.character.item_num+120}}px;" rowspan="{{report.character.item_num + 2}}" width="200">character</td>
+						<td width="320"></td>
+						<td width="200">Entrance Score</td>
+						<td width="200">Midterm Score</td>
+						<td width="200">End Term Score</td>
+					</tr>
+					<tr ng-repeat="item in report.character.items">
+						<td>{{item.item_name}}   {{item.item_name_zh}}</td>
+						<td><input type="text" ng-model="item.score[0]"></td>
+						<td><input type="text" ng-model="item.score[1]"></td>
+						<td><input type="text" ng-model="item.score[2]"></td>
+					</tr>
+					<tr>
+						<td>Total 合计</td>
+						<td>90</td>
+						<td>90</td>
+						<td>99</td>
+					</tr>
+				</table>
+			</div>
+			<div class="comment">
+				<label>Comment 评语</label>
+                <textarea ng-model="report.character.comment"></textarea>
+                <textarea ng-model="report.character.comment_zh"></textarea>
+			</div>
+		</div>
+		<div class="submit-btn"><button type="button" ng-click="submitReport()">保存</button></div>
+	</div>
+</div>

@@ -1,0 +1,72 @@
+<div class="finance-container">
+	<div class="apply-container">
+		<h2>付款申请审核单</h2>
+		<div id="tables">
+			<table class="table table-bordered table-1" width="1200">
+				<tr>
+					<td>编号: {{data.app_id}}</td>
+					<td>日期: {{data.app_date}}</td>
+				</tr>
+				<tr>
+					<td>校区: {{data.school}}</td>
+					<td>申请人: {{data.emp_name}}</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="app-title">标题: <span>{{data.app_title}}</span></td>
+				</tr>
+			</table>
+			<table class="table table-bordered table-2" width="1200">
+				<tr class="thead">
+					<td>内容</td>
+					<td width="145">单价</td>
+					<td width="145">数量</td>
+					<td width="145">总价</td>
+				</tr>
+				<tr>
+					<td>{{data.content}}</td>
+					<td>{{data.per_price}}</td>
+					<td>{{data.number}}</td>
+					<td>{{data.total_price}}</td>
+				</tr>
+			</table>
+			<div class="date-container">
+				<!-- <div class="date-row">
+					<label>款项所属期间: </label>
+					<div class="date-select" date-select which-date="appForm.app.dur_day"></div>
+				</div>
+				<div class="date-row">
+					<label>到期支付日: </label>
+					<div class="date-select" date-select which-date="appForm.app.pay_day"></div>
+				</div> -->
+				<p class="date-row">
+					<label>审批日期: </label>
+					<span>{{data.accept_date}}</span>
+				</p>
+				<p class="date-row">
+					<label>支付日期: </label>
+					<span>{{data.pay_date}}</span>
+				</p>
+			</div>
+			<div class="boss-container">
+				<p>总经理: {{data.accept_name}}</p>
+				<textarea ng-model="data.opinion" disabled></textarea>
+			</div>
+			<div class="pay-method-container">
+				<div class="pay-row">
+					<label>费用类型: </label>
+					<div link-select class="select" select-options="options.pay_type" first-one="postData.type.payFisrt" second-one="postData.type.paySec"></div>
+				</div>
+				<div class="pay-row">
+					<label>支付方式: </label>
+					<div link-select class="select" select-options="options.pay_method" first-one="postData.method.payMethod" second-one="postData.method.payTo"
+					></div>
+				</div>
+			</div>
+
+			<footer>
+				<div class="footer-logo"></div>
+			</footer>
+		</div>
+	</div>	
+	<div class="submit-btn"><button type="button" ng-click="payForApp()">付款</button></div>
+</div>

@@ -1,0 +1,23 @@
+<div class="home-container">
+	<div class="form-container">
+		<div class="login-container">
+			<header>重置密码</header>
+		
+			<div class="input-row">
+				<label>新密码</label>
+				<div class="input-text">
+					<input type="password" placeholder="请输入新密码" ng-model="postData.new_pwd">
+				</div>
+				
+			</div>
+			<div class="input-row">
+				<label>重复密码</label>
+				<div class="input-text">
+					<input type="password" placeholder="请确认密码" ng-model="postData.confirm">
+				</div>
+			</div>
+			<div class="submit-btn"><button type="button" ng-click="modifyPwd()">重置密码</button></div>
+		
+		</div>
+	</div>
+</div>
