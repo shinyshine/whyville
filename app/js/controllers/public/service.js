@@ -225,8 +225,8 @@ angular.module('publicService', [])
 		}
 		return {
 			"year": year,
-			//"session": ['春季班', '夏季班', '秋季班', '冬季班']
-			"session": [{
+			"session": ['春季班', '夏季班', '秋季班', '冬季班'],
+			"sessions": [{
 				"id": 0,
 				"name": '全部季度'
 			},{
@@ -241,7 +241,7 @@ angular.module('publicService', [])
 			},{
 				"id": 4,
 				"name": '冬季班'
-			}]
+			}],
 		}
 	})
 

@@ -312,8 +312,8 @@ angular.module('homeApp.analysis')
 			})
 		}
 	})
-	.controller('schInfo', function($scope, fetchSchInfo, fetchSchools, getYearSessions) {
-		$scope.data = fetchSchInfo();
+	.controller('schInfo', function($scope, fetchSchInfo, fetchOptions, getYearSessions) {
+		//$scope.data = fetchSchInfo();
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -322,10 +322,15 @@ angular.module('homeApp.analysis')
 			"year": moment().format('YYYY'),
 			"session": '春季班' //这里不会传‘全部季度’给你
 		}
-		var yearSession = getYearSessions;
-		$scope.options = {
-			"schools": fetchSchools,
-			"year": yearSession.year,
-			"session": yearSession.session
-		}
+		fetchSchInfo($scope.filter, function(result) {
+			console.log(result)
+		})
+		fetchOptions('', function(result) {
+			$scope.options = {
+				"schools": result.schools,
+				"year": getYearSessions.year,
+				"session": getYearSessions.session
+			}
+		})
+		
 	})

@@ -93,6 +93,7 @@ angular.module('homeApp.operating')
       "link": '#comment'
     }]
     fetchEmpById($routeParams, function(result) {
+      console.log(result)
       $scope.employeeInfo = result;
       $scope.$apply();
     })

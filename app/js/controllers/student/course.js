@@ -22,7 +22,7 @@ angular.module('homeApp.student')
 			$scope.options = {
 				"schools": result.schools,
 				"years": getYearSessions.year,
-				"sessions": getYearSessions.session,
+				"sessions": getYearSessions.sessions,
 				"courseType": result.courseType
 			}
 			$scope.$apply();
@@ -121,13 +121,14 @@ angular.module('homeApp.student')
 
 		$scope.submitCourseInfo = function() {
 			if(isTime($scope.course.start_time) && isTime($scope.course.end_time)) {
-				planCourse($scope.course, function(result) {
-					if(result.status) {
-						alert('成功排课');
-						window.location.href = ROOT + 'courseList';
-					}
+				// planCourse($scope.course, function(result) {
+				// 	if(result.status) {
+				// 		alert('成功排课');
+				// 		window.location.href = ROOT + 'courseList';
+				// 	}
 					
-				})
+				// })
+				console.log($scope.course);
 			}else{
 				alert('时间格式错误');
 			}

@@ -21,18 +21,10 @@ angular.module('homeApp')
           }
 
           scope.clickOptions = function() {
-            var name = this.item.name,
-                id = this.item.id;
+            var name = this.item; 
 
             scope.options.show = false;
-            // scope.item = {
-            //   "id": id,
-            //   "name": name
-            // }
-            scope.item.name = name;
-            scope.item.id = id;
-            console.log(scope)
-            //scope.$apply();
+            scope.item = name;
             scope.sendFilter();
           }
 

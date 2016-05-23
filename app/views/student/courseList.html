@@ -1,7 +1,7 @@
 <div class="stu-container">
 	<div class="btns">
 		<div select-item select-options="options.years" which-item="filter.selectYear" send-filter="sendFilter()"></div>
-		<div select-item select-options="options.sessions" which-item="filter.selectSession" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.sessions" which-school="filter.selectSession" send-filter="sendFilter()"></div>
 		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()"></div>
 		<div my-select select-options="options.courseType" which-school="filter.courseType" send-filter="sendFilter()"></div>
 		<div class="search-btn" ng-click="sendFilter()"><a href="javascript:void(0);" ng-click="addEmp()">搜索</a></div>
