@@ -6,10 +6,6 @@ angular.module('homeApp.operating', ['ngRoute', 'homeApp.operatingService'])
 		  	  	    templateUrl: 'views/operating/employees.html',
 		  	  	    controller: 'employees'
 		  	    })
-				.when('/employeeInfo/:emp_id', {
-					templateUrl: 'views/operating/employeeInfo.html',
-					controller: 'EmployeeInfo'
-				})
 				.when('/addEmp/:emp_id', {
 					templateUrl: 'views/operating/addEmp.html',
 					controller: 'addEmp'
