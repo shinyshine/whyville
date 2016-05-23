@@ -746,8 +746,8 @@
 .home-container .add-notice-container .form-container .input-row label {
   width: 70px;
 }
-.home-container .add-notice-container .form-container .input-row span {
-  color: #bbbbbb;
+.home-container .add-notice-container .form-container .input-row .text-danger {
+  color: #e60012;
   font-size: 15px;
   line-height: 60px;
   margin-left: 15px;
@@ -839,6 +839,13 @@
 }
 .home-container .login-container .submit-btn button {
   width: 160px;
+}
+.home-container .login-container .text-danger {
+  display: inline-block;
+  color: #e60012;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 10px;
 }
 .home-container .apply-container,
 .finance-container .apply-container {

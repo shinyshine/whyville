@@ -12,9 +12,8 @@ angular.module('homeApp.home')
 		$scope.formData = addNoticeFormInit;
 		//初始化多选框的值
 		$scope.schools = fetchSchools;
-		$scope.submitData = function() {
-			if(checkInputInObj($scope.formData)) {
-				//在这里启动提交数据的服务
+		$scope.submitData = function(valid) {
+			if(valid) {
 				submitNotice($scope.formData, function(result) {
 					if (result.status) {
 						alert('添加成功');
@@ -24,6 +23,8 @@ angular.module('homeApp.home')
 					window.location.href = ROOT + $cookies.get('user_id');
 					};
 				})
+			}else{
+				alert('fail valid')
 			}
 		}
 	})

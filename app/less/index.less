@@ -802,8 +802,8 @@
 				label{
 					width: 70px;
 				}
-				span{
-					color: #bbbbbb;
+				.text-danger{
+					color: @delete-red;
 					font-size: 15px;
 					line-height: 60px;
 					margin-left: 15px;
@@ -898,10 +898,18 @@
 		}
 		.submit-btn{
 			margin-top: 40px;
+			// margin-bottom: 20px;
 			button{
 				width: 160px;
 				//margin-left: 24px;
 			}
+		}
+		.text-danger{
+			display: inline-block;
+			color: @delete-red;
+			text-align: center;
+			line-height: 40px;
+			margin-right: 10px;
 		}
 	}
 }

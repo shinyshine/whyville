@@ -114,7 +114,7 @@ angular.module('homeApp.operatingService', [])
 					// 	"day": ''
 					// },
 					"emp_salary": '',
-					"first_com": '',
+					"first_comment": '',
 				},
 				"comment": {
 					"emp_off": '0',

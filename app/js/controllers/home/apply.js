@@ -143,6 +143,8 @@ angular.module('homeApp.home')
     		acceptApp($scope.postData, function(result) {
     			if(result.status) {
     				window.location.href = ROOT + 'applications';
+    			}else{
+    				alert('操作失败，请尝试重新提交');
     			}
     		})
     	}

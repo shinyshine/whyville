@@ -36,7 +36,7 @@ angular.module('homeApp.home', ['ngRoute', 'homeApp.homeService'])
 				controller: 'acceptApp'
 			})
 			.when('/modifyApp/:app_id', {
-				templateUrl: 'views/home/applyfor.html',
+				templateUrl: 'views/home/modApp.html',
 				controller: 'modifyApp'
 			})
 			.when('/login', {

@@ -2,12 +2,17 @@
 angular.module('homeApp.home')
 	.controller('login', function($scope, $location, $cookies, login) {
 		$scope.user = {
-			"user_id": '20160001',
-			"user_pwd": '123'
+			"user_id": '',
+			"user_pwd": ''
 		}
 
-		$scope.login = function() {
-			login($scope.user, callBack);	
+		$scope.login = function(valid) {
+			if(valid) {
+				login($scope.user, callBack);
+			}else{
+				alert('请完善登录信息');
+			}
+			
 		}
 
 		var callBack = function(result) {
@@ -18,7 +23,6 @@ angular.module('homeApp.home')
 				$cookies.put('sch_name', result.sch_name);
 				$cookies.put('user_id', result.user_id);
 				$cookies.put('sch_id', result.sch_id);
-				// $location.path('/' + $cookies.get('user_id'));
 				$scope.$apply(function() { 
 					$location.path("/" + $cookies.get('user_id')); 
 				});	
@@ -30,27 +34,29 @@ angular.module('homeApp.home')
 	.controller('modifyPwd', function($scope, $location, $cookies, modifyPwd) {
 		$scope.postData = {
 			"new_pwd":'',
-			"confirm": '' 
+			"re_pwd": '' 
 		}
-		$scope.modifyPwd = function() {
-			var post = $scope.postData;
-			if(!post.new_pwd) {
-				alert('密码不能为空');
-				return false;
-			}
-			if(post.new_pwd !== post.confirm) {
-				alert('两次密码不一致');
-				return false;
-			}
-			modifyPwd($scope.postData, function(result) {
-				if(result.status) {
-					alert('成功修改密码');
-					$scope.$apply(function() {
-						$location('/');
-					})
+		$scope.modifyPwd = function(valid) {
+			if(valid) {
+				var post = $scope.postData;
+				if(!post.new_pwd) {
+					alert('密码不能为空');
+					return false;
 				}
-			})
-		}
-
-		
+				if(post.new_pwd !== post.re_pwd) {
+					console.log($scope.postData)
+					alert('两次密码不一致');
+					return false;
+				}
+				modifyPwd($scope.postData, function(result) {
+					if(result.status) {
+						alert('成功修改密码');
+						$scope.$apply(function() {
+							$location.path('/');
+						})
+					}
+				})
+			}
+			
+		}	
 	})
