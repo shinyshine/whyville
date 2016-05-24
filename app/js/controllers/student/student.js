@@ -70,7 +70,7 @@ angular.module('homeApp.student', ['ngRoute', 'homeApp.studentService'])
 				templateUrl: 'views/student/busStuAttendList.html',
 				controller: 'busStuAttendList'
 			})
-			.when('/busStuAttend/:ser_id', {
+			.when('/busStuAttend/:bus_id/:date', {
 				templateUrl: 'views/student/busStuAttend.html',
 				controller: 'busStuAttend'
 			})

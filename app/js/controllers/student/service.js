@@ -24,7 +24,7 @@ angular.module('homeApp.studentService', [])
 			"fetchStuBus": server + 'get_bus',
 			"addStuToBus": server + 'add_student_to_bus',
 			"fetchBusRecord": server + 'get_bus_attendance',
-			"fetchBusRecordById": server + '',
+			"fetchBusRecordById": server + 'get_bus_service_information',
 			"postReport": server + 'get_report',
 		}
 	})
@@ -332,48 +332,6 @@ angular.module('homeApp.studentService', [])
 		}
 	})
 	.factory('fetchBusRecordById', function(stuAPI) {
-		// var fetchData = function(id) {
-		// 	return {
-		// 		"busInfo": {
-		// 			"bus_number": '泰坦尼克号313',
-		// 			"date": '2016-06-02'
-		// 		},
-		// 		"stuList": [{
-		// 			"stu_id": '1',
-		// 			"stu_name": '罗半仙',
-		// 			"place": '北京天安门广场',
-		// 			"time": '16:00',
-		// 			"type": {
-		// 				"id": '1',
-		// 				"name": '接'
-		// 			},
-		// 			"attend_state": {
-		// 				"id": '',
-		// 				"name": ''
-		// 			},
-		// 			"remark": '',
-		// 			"isEditing": 0
-		// 		},{
-		// 			"stu_id": '1',
-		// 			"stu_name": '罗半仙',
-		// 			"place": '北京天安门广场',
-		// 			"time": '16:00',
-		// 			"type": {
-		// 				"id": '1',
-		// 				"name": '接'
-		// 			},
-		// 			"attend_state": {
-		// 				"id": '',
-		// 				"name": ''
-		// 			},
-		// 			"remark": '',
-		// 			"isEditing": 0
-		// 		}]
-		// 	}
-		// }
-		// return function(id) {
-		// 	return fetchData(id);
-		// }
 		return function(data, callBack) {
 			getData(stuAPI.fetchBusRecordById, callBack, data);
 		}

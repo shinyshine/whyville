@@ -6,8 +6,12 @@ angular.module('homeApp.finance')
 				"id": '1',
 				"name": '全部校区'
 			},
-			"startTime": moment().format('YYYY-MM'),
-			"endTime": moment().format('YYYY-MM'),
+			"startTime": {
+				"name": moment().format('YYYY-MM')
+			},
+			"endTime": {
+				"name": moment().format('YYYY-MM')
+			},
 			"payFisrt": {
 				"id": '', 
 				"name": '费用类型'

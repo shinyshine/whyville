@@ -136,7 +136,10 @@ angular.module('homeApp.student')
 			"name": '否'
 		}]
 		$scope.filter = {
-			"ser_id": $routeParams.ser_id,
+			"bus": {
+				"id": $routeParams.bus_id
+			},
+			"date": $routeParams.date,
 			"type": {
 				"id": -1,
 				"name": '接或送'
@@ -155,7 +158,10 @@ angular.module('homeApp.student')
 			}]
 		}
 
-		$scope.data = fetchBusRecordById($routeParams);
+		//$scope.data = fetchBusRecordById($routeParams);
+		fetchBusRecordById($scope.filter, function(result) {
+			console.log(result)
+		})
 
 		$scope.modify = function(index) {
 			var status = $scope.data.stuList[index].isEditing;
@@ -165,5 +171,11 @@ angular.module('homeApp.student')
 				console.log($scope.data.stuList[index]);
 			}
 			$scope.data.stuList[index].isEditing = !status;
+		}
+
+		$scope.sendFilter = function() {
+			fetchBusRecordById($scope.filter, function(result) {
+				console.log(result)
+			})
 		}
 	})
