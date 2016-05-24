@@ -125,6 +125,9 @@
   margin-right: 40px;
   margin-bottom: 8px;
 }
+.btns .select-date-container {
+  margin-right: 10px;
+}
 .btns .link-select {
   margin-right: 0;
 }

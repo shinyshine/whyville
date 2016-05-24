@@ -1,4 +1,4 @@
-var ROOT = 'http://10.173.124.106:8000/app/#/';
+var ROOT = 'http://10.173.36.220:8000/app/#/';
 function transformSchArr(arr) {
 	var options = [];
 	for (var i = 0, len = arr.length; i < len; i++) {
@@ -46,7 +46,9 @@ function isTime(str) {
 	if (a == null) {
 		return false;
 	}
-	if (a[1] > 24 || a[3] > 60) {
+	if(!a[2]) {
+		return false;
+	}else if (a[1] > 24 || a[3] > 60) {
 		return false
 	}
 	return true;

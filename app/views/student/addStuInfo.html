@@ -8,12 +8,12 @@
 	    <div class="form-container">
 		    <form name="stuForm" ng-submit="submitStuInfo(stuForm.$valid)">
 		    	<div class="info-card" id="basic">
-			    	<form name="form" action="test.php" method="POST" enctype="multipart/form-data" id="uploadPhoto">
+			    	<!-- <form name="form" method="POST" enctype="multipart/form-data" id="uploadPhoto">
 			    		<div class="upload-container">
 			    			<div class="upload-btn">点击上传照片<input type="file" name="img" id="image"></div>
 							<div class="upload-img"></div>	
 			            </div>
-			        </form>
+			        </form> -->
 		            <div class="input-row">
 		                <label><span class="text-danger">*</span>中文名</label>
 		                <div class="input-text"><input type="text" placeholder="请输入中文名" ng-model="stuInfo.stu_basic.stu_zh_name" required/></div>
@@ -112,8 +112,8 @@
 		            </div>
 		            <div class="input-row">
 		                <label><span class="text-danger">*</span>学期</label>
-		                <div select-item which-item="stuInfo.learn_info.stu_learn_year" select-options="options.years"></div>
-		                <div select-item which-item="stuInfo.learn_info.stu_learn_season" select-options="options.sessions"></div>
+		                <div select-no-id which-item="stuInfo.learn_info.stu_learn_year" select-options="options.years"></div>
+		                <div select-no-id which-item="stuInfo.learn_info.stu_learn_season" select-options="options.sessions"></div>
 		            </div>
 		            <div class="input-row">
 		                <label>学习状态</label>

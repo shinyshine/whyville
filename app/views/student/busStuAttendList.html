@@ -1,7 +1,8 @@
 <div class="stu-container">
 	<div class="btns">
 		<div my-select select-options="options.bus_number" which-school="filter.selectBus" send-filter="sendFilter()"></div>
-		<div select-item select-options="options.years" which-item="filter.selectYear" send-filter="sendFilter()"></div>
+		<!-- <div select-item select-options="options.years" which-item="filter.selectYear" send-filter="sendFilter()"></div> -->
+		<div date-select which-date="filter.date" send-filter="sendFilter()"></div>
 	</div>
 	<div class="table-container">
 		<table class="table table-striped" id="table">

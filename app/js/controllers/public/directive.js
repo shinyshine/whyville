@@ -24,6 +24,35 @@ angular.module('homeApp')
             var name = this.item; 
 
             scope.options.show = false;
+            scope.item.name = name;
+            scope.sendFilter();
+          }
+
+        }
+   }
+})
+.directive('selectNoId', function() {
+      return {
+        restrict: 'EA',
+        scope: {
+          selectOptions: '=selectOptions',
+          item: '=whichItem',
+          sendFilter: '&'
+        },
+        templateUrl: './views/public/select-item-2.html',
+        link: function(scope, element, attrs) {
+          scope.options = {
+            'show': false,
+          };
+
+          scope.toggleOptions = function() {
+            scope.options.show = !scope.options.show;
+          }
+
+          scope.clickOptions = function() {
+            var name = this.item; 
+
+            scope.options.show = false;
             scope.item = name;
             scope.sendFilter();
           }
@@ -222,7 +251,8 @@ angular.module('homeApp')
   return {
     restrict: 'EA',
     scope: {
-      date: '=whichDate'
+      date: '=whichDate',
+      sendFilter: '&'
     },
     templateUrl: './views/public/select-date.html',
     link: function(scope, element, attrs) {
@@ -266,6 +296,7 @@ angular.module('homeApp')
         } else {
           scope.date.day = val;
         }
+        scope.sendFilter();
         $(this).parent().siblings('.content-wrap').html(val);
         $('.options-ul', element).hide();
         $('.click-show-btn').removeClass('down-btn-true');

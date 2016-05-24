@@ -140,31 +140,33 @@ angular.module('homeApp.student')
 			}
 		})
 		
-		previewImage(function(ext_name) {
-			$scope.$apply(function() {
-				$scope.submitStuInfo = function(valid) {
-					if(valid) {
-						console.log($scope.stuInfo);
-						submitStuInfo($scope.stuInfo, function(result) {
-							if(result.status) {
-								console.log(ext_name);
+		// previewImage(function(ext_name) {
+		// 	$scope.$apply(function() {
+				
+		// 	})
+		// })
+		$scope.submitStuInfo = function(valid) {
+			console.log($scope.stuInfo);
+			if(valid) {
+				console.log($scope.stuInfo);
+				submitStuInfo($scope.stuInfo, function(result) {
+					if(result.status) {
+						console.log(ext_name);
 
-								uploadPhoto($('#uploadPhoto'), $scope.stuInfo.stu_basic.stu_id, ext_name, function(result) {
-									if(result.status) {
-										$location('/courseList');
-									}
-								});
-								
-							}else{
-								alert('出现错误，稍后重试');
+						uploadPhoto($('#uploadPhoto'), $scope.stuInfo.stu_basic.stu_id, ext_name, function(result) {
+							if(result.status) {
+								$location('/courseList');
 							}
 						});
+						
 					}else{
-						alert('请检查是否有必须项未填');
-					}		
-				}
-			})
-		})
+						alert('出现错误，稍后重试');
+					}
+				});	
+			}else{
+				alert('请检查是否有必须项未填');
+			}		
+		}
 		
 		
 		$scope.stuInfo = initStuForm.fetchData($routeParams.stu_id);

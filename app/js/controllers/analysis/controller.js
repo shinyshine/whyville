@@ -10,8 +10,12 @@ angular.module('homeApp.analysis')
 				"id": 0,
 				"name": '全部教师'
 			},
-			"startTime": moment().format('YYYY-MM'),
-			"endTime": moment().format('YYYY-MM'),
+			"startTime": {
+				"name": moment().format('YYYY-MM')
+			},
+			"endTime": {
+				"name": moment().format('YYYY-MM')
+			},
 		}
 		fetchTeaSalary($scope.filter, function(result) {
 			$scope.$apply(function() {
@@ -50,10 +54,19 @@ angular.module('homeApp.analysis')
 				"id": 1,
 				"name": '全部校区'
 			},
-			"year": moment().format('YYYY'),
-			"session": '春季班',
-			"startTime": moment().format('YYYY-MM'),
-			"endTime": moment().format('YYYY-MM'),
+			"year": {
+				"name": moment().format('YYYY')
+			},
+			"session": {
+				"id": 1,
+				"name": '春季班'
+			},
+			"startTime": {
+				"name": moment().format('YYYY-MM')
+			},
+			"endTime": {
+				"name": moment().format('YYYY-MM')
+			},
 			"courseType": {
 				"id": $routeParams.type_id,
 				"name": $location.search().c_t
@@ -95,10 +108,19 @@ angular.module('homeApp.analysis')
 				"id": 1,
 				"name": '全部校区'
 			},
-			"year": moment().format('YYYY'),
-			"session": '春季班',
-			"startTime": moment().format('YYYY-MM'),
-			"endTime": moment().format('YYYY-MM'),
+			"year": {
+				"name": moment().format('YYYY')
+			},
+			"session": {
+				"id": 1,
+				"name": '春季班'
+			},
+			"startTime": {
+				"name": moment().format('YYYY-MM')
+			},
+			"endTime": {
+				"name": moment().format('YYYY-MM')
+			},
 			"courseType": {
 				"id": '',
 				"name": '课程类型'
@@ -145,10 +167,19 @@ angular.module('homeApp.analysis')
 				"id": 1,
 				"name": '全部校区'
 			},
-			"year": moment().format('YYYY'),
-			"session": '春季班',
-			"startTime": moment().format('YYYY-MM'),
-			"endTime": moment().format('YYYY-MM'),
+			"year": {
+				"name": moment().format('YYYY')
+			},
+			"session": {
+				"id": 1,
+				"name": '春季班'
+			},
+			"startTime": {
+				"name":moment().format('YYYY-MM')
+			},
+			"endTime": {
+				"name":moment().format('YYYY-MM')
+			},
 			"courseType": {
 				"id": '',
 				"name": '课程类型'
@@ -195,10 +226,19 @@ angular.module('homeApp.analysis')
 				"id": 1,
 				"name": '全部校区'
 			},
-			"year": moment().format('YYYY'),
-			"session": '春季班',
-			"startTime": moment().format('YYYY-MM'),
-			"endTime": moment().format('YYYY-MM'),
+			"year": {
+				"name": moment().format('YYYY')
+			},
+			"session": {
+				"id": 1,
+				"name": '春季班'
+			},
+			"startTime": {
+				"name": moment().format('YYYY-MM')
+			},
+			"endTime": {
+				"name": moment().format('YYYY-MM')
+			},
 			"courseType": {
 				"id": '',
 				"name": '课程类型'
@@ -245,9 +285,15 @@ angular.module('homeApp.analysis')
 				"id": 1,
 				"name": '全部校区'
 			},
-			"startTime": moment().format('YYYY-MM'),
-			"endTime": moment().format('YYYY-MM'), //这个是筛选报名校车的年月
-			"year": moment().format('YYYY'), //这个是筛选报名校车的年份
+			"startTime": {
+				"name": moment().format('YYYY-MM')
+			},
+			"endTime": {
+				"name": moment().format('YYYY-MM')
+			}, //这个是筛选报名校车的年月
+			"year": {
+				"name": moment().format('YYYY')
+			}, //这个是筛选报名校车的年份
 			"busNumber": {
 				"id": 0,
 				"name": '全部车牌'
@@ -281,9 +327,15 @@ angular.module('homeApp.analysis')
 				"id": 1,
 				"name": '全部校区'
 			},
-			"startTime": moment().format('YYYY-MM'),
-			"endTime": moment().format('YYYY-MM'), //这个是筛选报名校车的年月
-			"year": moment().format('YYYY'), //这个是筛选报名校车的年份
+			"startTime": {
+				"name": moment().format('YYYY-MM')
+			},
+			"endTime": {
+				"name": moment().format('YYYY-MM')
+			}, //这个是筛选报名校车的年月
+			"year": {
+				"name": moment().format('YYYY')
+			}, //这个是筛选报名校车的年份
 			"busNumber": {
 				"id": 0,
 				"name": '全部车牌'
@@ -315,12 +367,17 @@ angular.module('homeApp.analysis')
 	.controller('schInfo', function($scope, fetchSchInfo, fetchOptions, getYearSessions) {
 		//$scope.data = fetchSchInfo();
 		$scope.filter = {
-			"selectSchool": {
+			"school": {
 				"id": 1,
 				"name": '全部校区'
 			},
-			"year": moment().format('YYYY'),
-			"session": '春季班' //这里不会传‘全部季度’给你
+			"year": {
+				"name": moment().format('YYYY')
+			},
+			"session":  {
+				"id": '1',
+				"name": '春季班'
+			}
 		}
 		fetchSchInfo($scope.filter, function(result) {
 			console.log(result)
@@ -329,8 +386,13 @@ angular.module('homeApp.analysis')
 			$scope.options = {
 				"schools": result.schools,
 				"year": getYearSessions.year,
-				"session": getYearSessions.session
+				"session": getYearSessions.sessions
 			}
 		})
-		
+
+		$scope.sendFilter = function() {
+			fetchSchInfo($scope.filter, function(result) {
+				console.log(result)
+			})
+		}
 	})

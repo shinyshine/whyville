@@ -98,60 +98,8 @@ angular.module('publicService', [])
 			var item = moment().add(i, 'months').format('YYYY-MM');
 			YM.push(item)
 		}
-
 		return YM;
 	})
-
-	//1.获取支付方式
-	.factory('fetchPayOptions', function($http) {
-		var fetchData = function() {
-			return {
-				"pay_type": [[{
-					"id": '1',
-					"name": '管理费用'
-				},{
-					"id": '2',
-					"name": '营业费用'
-				}],[{
-					"id": '1',
-					"name": '租金'
-				},{
-					"id": '2',
-					"name": '水电费'
-				}],[{
-					"id": '1',
-					"name": '店面装饰'
-				},{
-					"id": '2',
-					"name": '传单'
-				}]],
-				"pay_method": [[{  //只有现金和刷卡，但是你照样返回给我，我好操作
-					"id": '0',
-					"name": '现金'
-				},{
-					"id": '1',
-					"name": '刷卡'
-				}],[{
-					"id": '1',
-					"name": '珠江新城校区'
-				},{
-					"id": '2',
-					"name": '大学城校区'
-				}],[{
-					"id": '1',
-					"name": '123623152'
-				},{
-					"id": '2',
-					"name": '2569888888888'
-				}]]
-			}
-		}
-
-		return function() {
-			return fetchData();
-		}
-	})
-
 	.factory('previewImage', function($http) {
 		return function(callBack) {
 			

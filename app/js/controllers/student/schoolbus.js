@@ -1,7 +1,6 @@
 'use strict';
 angular.module('homeApp.student')
 	.controller('stuBusList', function($scope, fetchOptions, getYearSessions, fetchStuBus) {
-		
 		$scope.filter = {
 			"selectSchool": {
 				"id": '1',
@@ -15,8 +14,13 @@ angular.module('homeApp.student')
 				"id": '1',
 				"name": '接'
 			},
-			"selectSession": '春季班',
-			"selectYear": '2016',
+			"selectSession": {
+				"id": 0,
+				"name": '全部季度'
+			},
+			"selectYear": {
+				"name": '2016'
+			},
 		}
 		fetchOptions('', function(result) {
 			console.log(result)
@@ -94,7 +98,14 @@ angular.module('homeApp.student')
 				"id": '0',
 				"name": '全部车牌'
 			},
-			"selectYear": new Date().getFullYear()
+			"date": {
+				"year": moment().format('YYYY'),
+				"month": moment().format('MM'),
+				"day": moment().format('DD')
+			}
+			// "selectYear": {
+			// 	"name": new Date().getFullYear()
+			// }
 		}
 		fetchOptions('', function(result) {
 			$scope.options = {
@@ -127,12 +138,15 @@ angular.module('homeApp.student')
 		$scope.filter = {
 			"ser_id": $routeParams.ser_id,
 			"type": {
-				"id": '1',
-				"name": '接'
+				"id": -1,
+				"name": '接或送'
 			}
 		}
 		$scope.options = {
 			"type": [{
+				"id": -1,
+				"name": '接或送'
+			},{
 				"id": '0',
 				"name": '送'
 			},{

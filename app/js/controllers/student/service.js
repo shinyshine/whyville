@@ -54,7 +54,7 @@ angular.module('homeApp.studentService', [])
 					"stu_zh_name": '',
 					"stu_en_name": '',
 					"stu_sex": '',
-					"stu_id": stu_id,
+					// "stu_id": stu_id,
 					"stu_country": '',
 					"stu_birth": {
 						"year": moment().format('YYYY'),

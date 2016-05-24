@@ -10,7 +10,9 @@ angular.module('homeApp.student')
 				"id": 0,
 				"name": '全部季度'
 			},
-			"selectYear": '2016',
+			"selectYear": {
+				"name": '2016'
+			},
 			"courseType": {
 				"id": 1,
 				"name": '所有课程类型'
@@ -58,10 +60,9 @@ angular.module('homeApp.student')
 			$scope.options = result;
 			$scope.$apply();
 		})
-		//$scope.options = fetchSchCourseType();
 
 		//初始化表单
-		$scope.addCourseInfo = {
+		$scope.course = {
 			"school": {
 				"id": '',
 				"name": ''
@@ -74,13 +75,16 @@ angular.module('homeApp.student')
 		}
 
 		$scope.addCourse = function() {
-			console.log($scope.addCourseInfo)
-			postCourse($scope.addCourseInfo, function(result) {
-				if(result.status) {
-					alert('添加成功');
-					window.location.href = ROOT + 'courseList';
-				}
-			})
+			if($scope.course.school.id && $scope.course.courseType.id &&$scope.course.courseName) {
+				postCourse($scope.course, function(result) {
+					if(result.status) {
+						alert('添加成功');
+						window.location.href = ROOT + 'courseList';
+					}
+				})
+			}
+			
+			
 		}
 	})
 	.controller('planCourse', function($scope, fetchPlanCouOp, getYearSessions, getWeekDays, planCourse) {
@@ -120,18 +124,23 @@ angular.module('homeApp.student')
 		}
 
 		$scope.submitCourseInfo = function() {
-			if(isTime($scope.course.start_time) && isTime($scope.course.end_time)) {
-				// planCourse($scope.course, function(result) {
-				// 	if(result.status) {
-				// 		alert('成功排课');
-				// 		window.location.href = ROOT + 'courseList';
-				// 	}
-					
-				// })
-				console.log($scope.course);
-			}else{
-				alert('时间格式错误');
+			var cou = $scope.course;
+			if(cou.course_year && cou.course_session && cou.course_name.id && cou.course_teacher.id && cou.course_weekday.id) {
+				if(isTime($scope.course.start_time) && isTime($scope.course.end_time)) {
+					planCourse($scope.course, function(result) {
+						if(result.status) {
+							alert('成功排课');
+							window.location.href = ROOT + 'courseList';
+						}
+					})
+					console.log($scope.course);
+				}else{
+					alert('时间格式错误');
+				}
+			}else {
+				alert('请完成必要信息的额填写');
 			}
+			
 			
 			// console.log($scope.course);
 		}
