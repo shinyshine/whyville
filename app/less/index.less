@@ -13,6 +13,7 @@
 }
 
 .wrapper{
+	position: relative;
 	width: 100%;
 	min-width: 1200px;
 	min-height: 600px;
@@ -20,6 +21,14 @@
 	font-family: "微软雅黑";
 	background-color: @bg-color;
 	float: left;
+}
+.mask{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-color: rgba(0, 0, 0, 0.4);
 }
 .w-container{
 		width: 1200px;

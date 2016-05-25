@@ -40,7 +40,7 @@ angular.module('homeApp.finance')
 				$scope.payList = result;
 
 				//about pagination
-				var total = result.sum;
+				var total = result.total.number;
 				$scope.paginationConf = pagination(total);
 				$scope.paginationConf.onChange = function() {
 					$scope.filter.page = $scope.paginationConf.currentPage;
@@ -61,8 +61,9 @@ angular.module('homeApp.finance')
 
 		$scope.pageChange = function() {
 			fetchPayList($scope.filter, function(result) {
-				$scope.payList = result;
-				$scope.$apply();
+				$scope.$apply(function() {
+					$scope.payList = result;
+				})
 			})	 
 		}
 

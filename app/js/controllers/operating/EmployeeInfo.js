@@ -3,7 +3,7 @@
  */
 'use strict';
 angular.module('homeApp.operating')
-  .controller('addEmp', function($scope, $location, $routeParams, fetchOptions, initEmpForm, submitEmpInfo, previewImage, uploadPhoto) {
+  .controller('addEmp', function($scope, $location, $routeParams, fetchOptions, initEmpForm, submitEmpInfo, previewImage) {
     fetchOptions('', function(result) {
       $scope.$apply(function() {
         $scope.options = {
@@ -13,30 +13,34 @@ angular.module('homeApp.operating')
       })
     })
 
-    var ext_name = '';
+    $scope.employeeInfo = initEmpForm($routeParams.emp_id);
     
+   //图片预览效果
     previewImage(function(ext_name) {
-      ext_name = ext_name;
+      console.log(ext_name);
+      $scope.employeeInfo.emp_pic.ext_name = ext_name;
+      $scope.$apply();
     })
-    $scope.submitInfo = function() {
-      console.log(postData);
-      var postData = $scope.employeeInfo.info;
-      if(postData.emp_sch.id && postData.emp_job.id) {
-        submitEmpInfo(postData, function(result) {
-          if(result.status) {
-            uploadPhoto($('#uploadPhoto'), $scope.postData, ext_name, function(result) {
-              if(result.status ) {
-                window.location.href = ROOT + 'employees';
+    $scope.submitInfo = function(valid) {
+      if(valid) {
+        var postData = $scope.employeeInfo;
+        if(postData.emp_sch.id && postData.emp_job.id) {
+           submitEmpInfo(postData, function(result) {
+              if(result.status) {
+                alert('添加成功');
+              }else{
+                alert('出现错误，稍后重试');
               }
-            });
-            
-          }
-        })
+            })
+        }else{
+          alert('请检查是否有必须项未填');
+        }
       }
+      
       
     }
 
-    $scope.employeeInfo = initEmpForm($routeParams.emp_id);
+    
   })
   .controller('modifyEmp', function($scope, $location, $routeParams, fetchOptions, fetchEmpById, modifyEmp, modifyComment) {
     $scope.sidebar = [{

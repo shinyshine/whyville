@@ -25,7 +25,7 @@ angular.module('homeApp.finance')
 				"name": '全部类型' 
 			},
 			"page": 1,
-			"num":3
+			"num": 3
 		}
 
 		//about pagination
@@ -36,7 +36,8 @@ angular.module('homeApp.finance')
 			$scope.$apply(function() {
 				$scope.incomeList = result;
 				//about pagination
-				var total = result.sum;
+				var total = result.total.number;
+
 				$scope.paginationConf = pagination(total);
 				$scope.paginationConf.onChange = function() {
 					$scope.filter.page = $scope.paginationConf.currentPage;
@@ -114,7 +115,19 @@ angular.module('homeApp.finance')
 				$scope.options = {
 					"schools": result.schools,
 					"pay_method": result.pay_method,
-					"type": ['学费', '书费', '校车费', '其他'],
+					"type": [{
+						"id": 1,
+						"name": '学费'
+					},{
+						"id": 2,
+						"name": '书费'
+					},{
+						"id": 3,
+						"name": '校车费'
+					},{
+						"id": 4,
+						"name": '其他'
+					}],
 					"date": getDate
 				}
 			})

@@ -114,7 +114,7 @@ angular.module('homeApp.student')
 			"name": '学习信息',
 			"link": '#learn'
 		}]
-		//图片预览效果
+		
 		fetchOptions('', function(result) {
 			$scope.options = {
 				"schools": result.schools,
@@ -140,6 +140,8 @@ angular.module('homeApp.student')
 			}
 		})
 		$scope.stuInfo = initStuForm.fetchData($routeParams.stu_id);
+
+		//图片预览效果
 		previewImage(function(ext_name) {
 			$scope.stuInfo.stu_basic.stu_pic.ext_name = ext_name;
 			$scope.$apply();
@@ -147,25 +149,13 @@ angular.module('homeApp.student')
 		$scope.submitStuInfo = function(valid) {
 			if(valid) {
 				console.log($scope.stuInfo);
-				$('#stuForm').submit(function() {
-					console.log($scope.stuInfo);
-					submitStuInfo($scope.stuInfo, function(result) {
-						if(result.status) {
-							if(result.status) {
-								alert('添加成功');
-							}
-							// uploadPhoto($('#uploadPhoto'), $scope.stuInfo.stu_basic.stu_id, ext_name, function(result) {
-							// 	if(result.status) {
-							// 		$location('/courseList');
-							// 	}
-							// });
-							
-						}else{
-							alert('出现错误，稍后重试');
-						}
-					});	
-				})
-				
+				submitStuInfo($scope.stuInfo, function(result) {
+					if(result.status) {
+						alert('添加成功');
+					}else{
+						alert('出现错误，稍后重试');
+					}
+				});	
 			}else{
 				alert('请检查是否有必须项未填');
 			}		

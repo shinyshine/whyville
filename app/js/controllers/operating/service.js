@@ -75,54 +75,68 @@ angular.module('homeApp.operatingService', [])
 	})
 	.factory('submitEmpInfo', function($http, operateAPI) {
 		return function(data, callBack) {
-			postData(operateAPI.submitEmpInfo, data, callBack);
+			$('#empForm').ajaxSubmit({
+				type: "post",
+				url: operateAPI.submitEmpInfo,
+				dataType: 'json',
+				data: data,
+				xhrFields: {
+					withCredentials: true
+				},
+				beforeSend: function() {
+					$('.mask').show();
+				},
+				success: function(result) {
+					callBack(result);
+				},
+				complete: function() {
+					$('.mask').hide()
+				},
+				error: function(msg) {
+					alert("文件上传失败");
+				}
+			});
+			//postData(operateAPI.submitEmpInfo, data, callBack);
 		}
 	})
 	.factory('initEmpForm', function() {
 		return function(emp_id) {
 			return {
-				"info": {
-					"emp_id": emp_id,
-					"emp_name": '',
-					"emp_pic": '',
-					"emp_birth": {
-						"year": moment().format('YYYY'),
-						"month": moment().format('MM'),
-						"day": moment().format('DD')
-					},
-					"emp_sex": 0,
-					"emp_card": '',
-					"emp_tel": '',
-					"emp_email": '',
-					"emp_urgent": '',
-					"emp_sch": {
-						"id": '',
-						"name": ''
-					},
-					"emp_job": {
-						"id": '0',
-						"name": '未选择'
-					},
-					"start_date": {
-						"year": moment().format('YYYY'),
-						"month": moment().format('MM'),
-						"day": moment().format('DD')
-					},
-					// "end_date": {
-					// 	"year": '',
-					// 	"month": '',
-					// 	"day": ''
-					// },
-					"emp_salary": '',
-					"first_comment": '',
+				"emp_id": emp_id,
+				"emp_name": '',
+				"emp_pic": {
+					"ext_name": ''
 				},
-				"comment": {
-					"emp_off": '0',
-					"emp_late": '0',
-					"emp_early_out": '0',
-					"emp_ability": '',
-					"sec_com": ''
-				}
+				"emp_birth": {
+					"year": moment().format('YYYY'),
+					"month": moment().format('MM'),
+					"day": moment().format('DD')
+				},
+				"emp_sex": 0,
+				"emp_card": '',
+				"emp_tel": '',
+				"emp_email": '',
+				"emp_urgent": '',
+				"emp_sch": {
+					"id": '',
+					"name": ''
+				},
+				"emp_job": {
+					"id": '0',
+					"name": '未选择'
+				},
+				"start_date": {
+					"year": moment().format('YYYY'),
+					"month": moment().format('MM'),
+					"day": moment().format('DD')
+				},
+				// "end_date": {
+				// 	"year": '',
+				// 	"month": '',
+				// 	"day": ''
+				// },
+				"emp_salary": '',
+				"first_comment": '',
 			}
 		}
 	})

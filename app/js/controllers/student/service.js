@@ -166,43 +166,6 @@ angular.module('homeApp.studentService', [])
 		}
 	})
 	.factory('fetchStuBus', function(stuAPI) {
-		// var fetchData = function(filter) {
-		// 	//$http
-		// 	return [{
-		// 		"ser_id": '1', //约车id
-		// 		"bus_number": '泰坦尼克号', //车牌号
-		// 		"stu_name": '罗半仙',
-		// 		"place": '阳光大道121',  
-		// 		"weekday": '星期一',
-		// 		"time": '15:30',
-		// 		"type": '1',
-		// 		"finished_num": '15',
-		// 		"sum_count": '40'
-		// 	},{
-		// 		"ser_id": '2', //约车id
-		// 		"bus_number": '泰坦尼克号', //车牌号
-		// 		"stu_name": '罗半仙',
-		// 		"place": '阳光大道121',  
-		// 		"weekday": '星期一',
-		// 		"time": '14:30',
-		// 		"type": '1',
-		// 		"finished_num": '15',
-		// 		"sum_count": '40'
-		// 	},{
-		// 		"ser_id": '3', //约车id
-		// 		"bus_number": '泰坦克号', //车牌号
-		// 		"stu_name": '罗仙',
-		// 		"place": '银华光大道121',  
-		// 		"weekday": '星期一',
-		// 		"time": '19:30',
-		// 		"type": '0',
-		// 		"finished_num": '15',
-		// 		"sum_count": '40'
-		// 	}]
-		// }
-		// return function(filter) {
-		// 	 return fetchData(filter);
-		// }
 		return function(data, callBack) {
 			getData(stuAPI.fetchStuBus, callBack, data);
 		}
@@ -351,8 +314,14 @@ angular.module('homeApp.studentService', [])
 				xhrFields: {
 					withCredentials: true
 				},
+				beforeSend: function() {
+					$('.mask').show()
+				},
 				success: function(result) {
 					callBack(result);
+				},
+				complete: function() {
+					$('.mask').hide();
 				},
 				error: function(msg) {
 					alert("文件上传失败");

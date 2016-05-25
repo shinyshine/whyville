@@ -11,7 +11,7 @@
         </div>
         <div class="input-row">
             <label>类型</label>
-            <div select-item select-options="options.type" which-item="formData.type"></div>
+            <div my-select select-options="options.type" which-school="formData.type"></div>
         </div>
          <div class="input-row">
             <label>支付方式</label>
@@ -28,6 +28,18 @@
         <div class="input-row">
             <label>摘要</label>
             <div class="input-text"><input type="text" name="" placeholder="请输入摘要" ng-model="formData.abstraction"/></div>
+        </div>
+        <div class="input-row">
+            <label>收据1</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入收据编号" ng-model="formData.receipt_1"/></div>
+        </div>
+        <div class="input-row">
+            <label>收据2</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入收据编号" ng-model="formData.receipt_2"/></div>
+        </div>
+        <div class="input-row">
+            <label>收据3</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入收据编号" ng-model="formData.receipt_3"/></div>
         </div>
         <div class="submit-btn"><button type="button" ng-click="addIncome()">完成</button></div>
 	</div>

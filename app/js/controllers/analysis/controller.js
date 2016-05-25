@@ -11,16 +11,16 @@ angular.module('homeApp.analysis')
 				"name": '全部教师'
 			},
 			"startTime": {
-				"year": moment().format('YYYY'),
-				"month": moment().format('MM'),
-				"day": moment().format('DD')
-				//"name": moment().format('YYYY-MM-DD')
+				// "year": moment().format('YYYY'),
+				// "month": moment().format('MM'),
+				// "day": moment().format('DD')
+				"name": moment().format('YYYY-MM-DD')
 			},
 			"endTime": {
-				"year": moment().format('YYYY'),
-				"month": moment().format('MM'),
-				"day": moment().format('DD')
-				//"name": moment().format('YYYY-MM-DD')
+				// "year": moment().format('YYYY'),
+				// "month": moment().format('MM'),
+				// "day": moment().format('DD')
+				"name": moment().format('YYYY-MM-DD')
 			},
 		}
 		fetchTeaSalary($scope.filter, function(result) {

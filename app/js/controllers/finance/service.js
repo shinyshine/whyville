@@ -150,7 +150,10 @@ angular.module('homeApp.financeService', [])
 					"stu_id": stu
 				},
 				"in_date": moment().format('YYYY-MM-DD'),
-				"type": '',
+				"type": {
+					"id": '',
+					"name": ''
+				},
 				"pay_method": {
 					"id": '',
 					"name": ''
@@ -161,7 +164,10 @@ angular.module('homeApp.financeService', [])
 				},
 				"sum": price,
 				"abstraction": '',
-				"charge_name": $cookies.get('user_name')
+				"charge_name": $cookies.get('user_name'),
+				"receipt_1": '',
+				"receipt_2": '',
+				"receipt_3": ''
 			}
 		}
 	})

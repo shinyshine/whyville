@@ -75,11 +75,17 @@ var postData = function(url, data, callBack) {
 		method: 'POST',
 		data: data,
 		dataType: 'json',
+		beforeSend: function() {
+			$('.mask').hide();
+		},
 		xhrFields: {
 			withCredentials: true
 		},
 		success: function(result) {
 			callBack(result);
+		},
+		complete: function() {
+			$('.mask').hide();
 		}
 	})
 }

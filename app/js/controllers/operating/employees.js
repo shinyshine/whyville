@@ -39,6 +39,7 @@ angular.module('homeApp.operating')
 		//选择左上角校区筛选员工
 		$scope.sendFilter = function() {
 			employees($scope.filter, function(result) {
+				console.log(result)
 				$scope.result = result.employees;
 				$scope.$apply();
 			});
