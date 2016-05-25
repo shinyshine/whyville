@@ -139,37 +139,40 @@ angular.module('homeApp.student')
 				}]
 			}
 		})
-		
-		// previewImage(function(ext_name) {
-		// 	$scope.$apply(function() {
-				
-		// 	})
-		// })
+		$scope.stuInfo = initStuForm.fetchData($routeParams.stu_id);
+		previewImage(function(ext_name) {
+			$scope.stuInfo.stu_basic.stu_pic.ext_name = ext_name;
+			$scope.$apply();
+		})
 		$scope.submitStuInfo = function(valid) {
-			console.log($scope.stuInfo);
 			if(valid) {
 				console.log($scope.stuInfo);
-				submitStuInfo($scope.stuInfo, function(result) {
-					if(result.status) {
-						console.log(ext_name);
-
-						uploadPhoto($('#uploadPhoto'), $scope.stuInfo.stu_basic.stu_id, ext_name, function(result) {
+				$('#stuForm').submit(function() {
+					console.log($scope.stuInfo);
+					submitStuInfo($scope.stuInfo, function(result) {
+						if(result.status) {
 							if(result.status) {
-								$location('/courseList');
+								alert('添加成功');
 							}
-						});
-						
-					}else{
-						alert('出现错误，稍后重试');
-					}
-				});	
+							// uploadPhoto($('#uploadPhoto'), $scope.stuInfo.stu_basic.stu_id, ext_name, function(result) {
+							// 	if(result.status) {
+							// 		$location('/courseList');
+							// 	}
+							// });
+							
+						}else{
+							alert('出现错误，稍后重试');
+						}
+					});	
+				})
+				
 			}else{
 				alert('请检查是否有必须项未填');
 			}		
 		}
 		
 		
-		$scope.stuInfo = initStuForm.fetchData($routeParams.stu_id);
+		
 	})
 
 	.controller('modifyStuInfo', function($scope, $timeout, $location, $routeParams, fetchStuInfoById, fetchOptions, getYearSessions, modifyStuInfo) {

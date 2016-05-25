@@ -6,14 +6,12 @@
 	        </ul>
 	    </div>
 	    <div class="form-container">
-		    <form name="stuForm" ng-submit="submitStuInfo(stuForm.$valid)">
+		    <form name="stuForm" ng-submit="submitStuInfo(stuForm.$valid)" enctype="multipart/form-data" id="stuForm" method="post">
 		    	<div class="info-card" id="basic">
-			    	<!-- <form name="form" method="POST" enctype="multipart/form-data" id="uploadPhoto">
-			    		<div class="upload-container">
-			    			<div class="upload-btn">点击上传照片<input type="file" name="img" id="image"></div>
-							<div class="upload-img"></div>	
-			            </div>
-			        </form> -->
+		    		<div class="upload-container">
+		    			<div class="upload-btn">点击上传照片<input type="file" name="img" id="image"></div>
+						<div class="upload-img"></div>	
+		            </div>
 		            <div class="input-row">
 		                <label><span class="text-danger">*</span>中文名</label>
 		                <div class="input-text"><input type="text" placeholder="请输入中文名" ng-model="stuInfo.stu_basic.stu_zh_name" required/></div>

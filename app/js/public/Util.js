@@ -1,4 +1,4 @@
-var ROOT = 'http://10.173.36.220:8000/app/#/';
+var ROOT = 'http://10.173.125.58:8000/app/#/';
 function transformSchArr(arr) {
 	var options = [];
 	for (var i = 0, len = arr.length; i < len; i++) {

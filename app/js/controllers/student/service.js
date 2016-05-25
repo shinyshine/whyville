@@ -54,7 +54,10 @@ angular.module('homeApp.studentService', [])
 					"stu_zh_name": '',
 					"stu_en_name": '',
 					"stu_sex": '',
-					// "stu_id": stu_id,
+				    "stu_id": stu_id,
+				    "stu_pic": {
+				    	"ext_name": ''
+				    },
 					"stu_country": '',
 					"stu_birth": {
 						"year": moment().format('YYYY'),
@@ -339,7 +342,24 @@ angular.module('homeApp.studentService', [])
 
 	.factory('submitStuInfo', function(stuAPI) {
 		return function(data, callBack) {
-			postData(stuAPI.submitStuInfo, data, callBack);
+			$('#stuForm').ajaxSubmit({
+				type: "post",
+				url: stuAPI.submitStuInfo,
+				dataType: 'json',
+				// data: {"id": id, "ext_name": ext_name},
+				data: data,
+				xhrFields: {
+					withCredentials: true
+				},
+				success: function(result) {
+					callBack(result);
+				},
+				error: function(msg) {
+					alert("文件上传失败");
+				}
+			});
+
+			//postData(stuAPI.submitStuInfo, data, callBack);
 		}
 	})
 
