@@ -20,6 +20,10 @@ angular.module('homeApp.finance')
 				"id": '',
 				"name": ''
 			},
+			"type": {
+				"id": 0,
+				"name": '全部类型' 
+			},
 			"page": 1,
 			"num":3
 		}
@@ -45,7 +49,23 @@ angular.module('homeApp.finance')
 			$scope.options ={
 				"yearMonth": getYearMonth,
 				"schools": result.schools,
-				"pay_method": result.pay_method
+				"pay_method": result.pay_method,
+				"type": [{
+					"id": 0,
+					"name": '全部类型'
+				},{
+					"id": 1,
+					"name": '学费'
+				},{
+					"id": 2,
+					"name": '书费'
+				},{
+					"id": 3,
+					"name": '校车费'
+				},{
+					"id": 4,
+					"name": '其他'
+				}]
 			}
 			$scope.$apply();
 		})
@@ -83,7 +103,7 @@ angular.module('homeApp.finance')
 			console.log($scope.formData);
 		}
 	})
-	.controller('addIncome', function($scope, $location, fetchOptions, initAddIncomeForm, addIncome) {
+	.controller('addIncome', function($scope, $location, fetchOptions, initAddIncomeForm, addIncome, getDate) {
 		var search = $location.search(),
 			price = search.co,
 			s_id = search.s_id,
@@ -94,7 +114,8 @@ angular.module('homeApp.finance')
 				$scope.options = {
 					"schools": result.schools,
 					"pay_method": result.pay_method,
-					"type": ['学费', '书费', '校车费', '其他']
+					"type": ['学费', '书费', '校车费', '其他'],
+					"date": getDate
 				}
 			})
 		})

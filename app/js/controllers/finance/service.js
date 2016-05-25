@@ -149,7 +149,7 @@ angular.module('homeApp.financeService', [])
 					"select_id": s_id,
 					"stu_id": stu
 				},
-				"date": moment().format('YYYY-MM-DD'),
+				"in_date": moment().format('YYYY-MM-DD'),
 				"type": '',
 				"pay_method": {
 					"id": '',

@@ -104,15 +104,16 @@ angular.module('homeApp.finance')
 			})
 		}
 	})
-	.controller('addPay', function($scope, fetchOptions, initAddPayForm, addPay) {
+	.controller('addPay', function($scope, fetchOptions, initAddPayForm, addPay, getDate) {
 		$scope.formData = initAddPayForm;
 		fetchOptions('', function(result) {
 			$scope.options = {
 				"schools": result.schools,
 				"pay_method": result.pay_method,
-				"pay_type": result.pay_type
+				"pay_type": result.pay_type,
+				"date": getDate
 			}
-			$scope.$apply()
+			$scope.$apply();
 		})
 
 		$scope.addPay = function() {

@@ -193,6 +193,17 @@ angular.module('publicService', [])
 		}
 	})
 
+	.factory('getDate', function() {
+		var dateArr = [];
+
+		for(var i = 0; i >=-10 ; i --) {
+			var item = moment().add(i, 'day').format('YYYY-MM-DD');
+			dateArr.push(item)
+		}
+		return dateArr;
+
+	})
+
 	//获得校区和校车选项
 	.factory('fetchSchoolAndBus', function($http) {
 		return function() {
