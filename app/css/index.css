@@ -251,6 +251,12 @@
 .table > tfoot > tr > td {
   border-top: none;
 }
+.hover-table tbody tr:hover {
+  cursor: pointer;
+}
+.hover-table tbody tr:hover td {
+  color: #190d5a;
+}
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #ffffff !important;
 }

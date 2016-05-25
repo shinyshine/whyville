@@ -386,7 +386,9 @@ angular.module('homeApp.analysis')
 			}
 		}
 		fetchSchInfo($scope.filter, function(result) {
-			console.log(result)
+			console.log(result);
+			$scope.data = result;
+			$scope.$apply();
 		})
 		fetchOptions('', function(result) {
 			$scope.options = {

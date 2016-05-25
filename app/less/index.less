@@ -276,7 +276,17 @@
 .table > tfoot > tr > td{
 	border-top: none;
 }
-
+.hover-table{
+	tbody{
+		tr:hover{
+			cursor: pointer;
+			td{
+				color: @dark-blue;
+			}
+			
+		}
+	}
+}
 .table-striped > tbody > tr:nth-of-type(odd){
 	background-color: #ffffff !important;
 }
@@ -1243,3 +1253,4 @@
 		padding: 20px;
 	}
 }
+
