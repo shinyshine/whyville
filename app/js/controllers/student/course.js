@@ -193,127 +193,144 @@ angular.module('homeApp.student')
 			"new_callback": ''
 		}
 
+		var chart = {
+			"items": ['Reading', 'Writing', 'Listening'],
+			"score": {
+				"entrance": [52, 62, 72],
+				"midterm": [59, 42, 95],
+				"endTerm": [45, 72, 79]
+			}
+		}
+
 		$scope.submitCallback = function() {
 			console.log($scope.postData);
 		}
 	})
-	.controller('report', function($scope, postReport) {
-		
-		$scope.data = {
-			"info": {
-				"course_type": 'ESL', //最大的那个课程类别
-				"stu_name": '罗半仙',
-				"teacher": 'Mary',
-				"course_name": 'EEE#', //课程名称
-				"course_year": '2014',
-				"course_session": '暑假班'
-			},
-			"report_items": {
-				"basic": {
-					"comment": '这里是英文评价',
-					"comment_zh": '这里是中文评价',
-					"items": [{
-						"branches_num": '3', //有多少个分支
-						"item_name": 'speaking',
-						"score": ['50','80','85'], //返回格式可以商量
-						"sec_item": { //这里放第一个分支，剩下的放到下面的branches
-							"item_name": 'Volume',
-							"item_name_zh": '音量',
-							"score": ['60','65', '85']
-						},
-						"branches": [{
-							"item_name": 'Intonation',
-							"item_name_zh": '语音/语调',
-							"score": ['40','55', '83']
-						},{
-							"item_name": 'Pronunciation',
-							"item_name_zh": '发音',
-							"score": ['40','55', '83']
-						}]
-					},{
-						"branches_num": '2',
-						"item_name": 'Listening',
-						"score": ['50','80','85'], //返回格式可以商量
-						"sec_item": {
-							"item_name": 'firw',
-							"item_name_zh": 'shabi',
-							"score": ['60','65', '85']
-						},
-						"branches": [{
-							"item_name": 'Intonation',
-							"item_name_zh": '语音/语调',
-							"score": ['40','55', '83']
-						}]
-					}]
-				},
-				"study": {
-					"item_num": '5', //一共有5项
-					"items": [{
-						"item_name": 'Class Quality',
-						"item_name_zh": '课堂效率',
-						"score": ['70','85','90']
-					},{
-						"item_name": 'Class Quality',
-						"item_name_zh": '课堂效率',
-						"score": ['70','85','90']
-					},{
-						"item_name": 'Class Quality',
-						"item_name_zh": '课堂效率',
-						"score": ['70','85','90']
-					},{
-						"item_name": 'Review',
-						"item_name_zh": '效率',
-						"score": ['70','85','90']
-					},{
-						"item_name": 'Class Quality',
-						"item_name_zh": '课堂效率',
-						"score": ['70','85','90']
-					}],
-					"total_score": ['90','90','90'],
-					"comment": '这里是英文评价',
-					"comment_zh": '这里是中文评价'
-				},
-				"character": {
-					"item_num": 3,
-					"items": [{
-						"item_name": 'Concentration',
-						"item_name_zh": '集中力',
-						"score": [40,50,60]
-					},{
-						"item_name": 'Concentration',
-						"item_name_zh": '集中力',
-						"score": [40,50,60]
-					},{
-						"item_name": 'Concentration',
-						"item_name_zh": '集中力',
-						"score": [40,50,60]
-					}],
-					"total_score": [90,95,96],
-					"comment": '这里是英文评价',
-					"comment_zh": '这里是中文评价'
-				}
-			},
-			"attend": {
-				"attend": '',
-				"homework": ''
-			},
-			"chart_data": [{//做折线图用的
-				"name": 'speaking',
-				"data": [90, 91, 92]
-			},{
-				"name": 'listening',
-				"data": [90, 91, 92]
-			},{
-				"name": 'writing',
-				"data": [90, 91, 92]
-			}]
-		}
-		$scope.report = $scope.data.report_items;
+	.controller('report', function($scope, $routeParams, getReport, postReport, createChart) {
 
-		$scope.submitReport = function() {
-			console.log($scope.data.report_items);
-			postReport($scope.data.report_items, function(result) {
-				console.log(result);
-			})
-		}
+		getReport($routeParams, function(result) {
+			console.log(result);
+			$scope.data = result;
+			$scope.$apply();
+		})
+
+		createChart();
+		
+		// $scope.data = {
+		// 	"info": {
+		// 		"course_type": 'ESL', //最大的那个课程类别
+		// 		"stu_name": '罗半仙',
+		// 		"teacher": 'Mary',
+		// 		"course_name": 'EEE#', //课程名称
+		// 		"course_year": '2014',
+		// 		"course_session": '暑假班'
+		// 	},
+		// 	"report_items": {
+		// 		"basic": {
+		// 			"comment": '这里是英文评价',
+		// 			"comment_zh": '这里是中文评价',
+		// 			"items": [{
+		// 				"branches_num": '3', //有多少个分支
+		// 				"item_name": 'speaking',
+		// 				"score": ['50','80','85'], //返回格式可以商量
+		// 				"sec_item": { //这里放第一个分支，剩下的放到下面的branches
+		// 					"item_name": 'Volume',
+		// 					"item_name_zh": '音量',
+		// 					"score": ['60','65', '85']
+		// 				},
+		// 				"branches": [{
+		// 					"item_name": 'Intonation',
+		// 					"item_name_zh": '语音/语调',
+		// 					"score": ['40','55', '83']
+		// 				},{
+		// 					"item_name": 'Pronunciation',
+		// 					"item_name_zh": '发音',
+		// 					"score": ['40','55', '83']
+		// 				}]
+		// 			},{
+		// 				"branches_num": '2',
+		// 				"item_name": 'Listening',
+		// 				"score": ['50','80','85'], //返回格式可以商量
+		// 				"sec_item": {
+		// 					"item_name": 'firw',
+		// 					"item_name_zh": 'shabi',
+		// 					"score": ['60','65', '85']
+		// 				},
+		// 				"branches": [{
+		// 					"item_name": 'Intonation',
+		// 					"item_name_zh": '语音/语调',
+		// 					"score": ['40','55', '83']
+		// 				}]
+		// 			}]
+		// 		},
+		// 		"study": {
+		// 			"item_num": '5', //一共有5项
+		// 			"items": [{
+		// 				"item_name": 'Class Quality',
+		// 				"item_name_zh": '课堂效率',
+		// 				"score": ['70','85','90']
+		// 			},{
+		// 				"item_name": 'Class Quality',
+		// 				"item_name_zh": '课堂效率',
+		// 				"score": ['70','85','90']
+		// 			},{
+		// 				"item_name": 'Class Quality',
+		// 				"item_name_zh": '课堂效率',
+		// 				"score": ['70','85','90']
+		// 			},{
+		// 				"item_name": 'Review',
+		// 				"item_name_zh": '效率',
+		// 				"score": ['70','85','90']
+		// 			},{
+		// 				"item_name": 'Class Quality',
+		// 				"item_name_zh": '课堂效率',
+		// 				"score": ['70','85','90']
+		// 			}],
+		// 			"total_score": ['90','90','90'],
+		// 			"comment": '这里是英文评价',
+		// 			"comment_zh": '这里是中文评价'
+		// 		},
+		// 		"character": {
+		// 			"item_num": 3,
+		// 			"items": [{
+		// 				"item_name": 'Concentration',
+		// 				"item_name_zh": '集中力',
+		// 				"score": [40,50,60]
+		// 			},{
+		// 				"item_name": 'Concentration',
+		// 				"item_name_zh": '集中力',
+		// 				"score": [40,50,60]
+		// 			},{
+		// 				"item_name": 'Concentration',
+		// 				"item_name_zh": '集中力',
+		// 				"score": [40,50,60]
+		// 			}],
+		// 			"total_score": [90,95,96],
+		// 			"comment": '这里是英文评价',
+		// 			"comment_zh": '这里是中文评价'
+		// 		}
+		// 	},
+		// 	"attend": {
+		// 		"attend": '',
+		// 		"homework": ''
+		// 	},
+		// 	"chart_data": [{//做折线图用的
+		// 		"name": 'speaking',
+		// 		"data": [90, 91, 92]
+		// 	},{
+		// 		"name": 'listening',
+		// 		"data": [90, 91, 92]
+		// 	},{
+		// 		"name": 'writing',
+		// 		"data": [90, 91, 92]
+		// 	}]
+		// }
+		// $scope.report = $scope.data.report_items;
+
+		// $scope.submitReport = function() {
+		// 	console.log($scope.data.report_items);
+		// 	postReport($scope.data.report_items, function(result) {
+		// 		console.log(result);
+		// 	})
+		// }
 	})

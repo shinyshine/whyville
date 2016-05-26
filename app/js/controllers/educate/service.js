@@ -10,6 +10,13 @@ angular.module('homeApp.educateService', [])
 			"fetchStuAttend": server + 'get_student_attendance',
 			"modifyStuAttend": server + 'change_student_attendance',
 			"allAttend": server + 'change_student_attendance',
+			"fetchCallBack": server + ''
+		}
+	})
+
+	.factory('fetchCallBack', function(eduAPI) {
+		return function(data, callBack) {
+			getData(eduAPI.fetchCallBack, callBack, data);
 		}
 	})
 	.factory('fecthAllCourse', function(eduAPI) {
@@ -23,38 +30,6 @@ angular.module('homeApp.educateService', [])
 		}
 	})
 	.factory('fetchTodayClass', function(eduAPI) {
-		//var fetchData = function(course_id) {
-			// return {
-			// 	"courseInfo": {
-			// 		"course_id": '1', //该课程的id，与下面的course_id不一样的
-			// 		"course_name": 'EEL课程',
-			// 		"course_year": '2016',
-			// 		"course_session": '冬季班',
-			// 		"course_weekday": '星期三',
-			// 		"start_time": '14:00',
-			// 		"end_time": '16:00'
-			// 	},
-			// 	"classes": [{
-			// 		"id": '2', //课程记录id，应该就是教师的考勤id
-			// 		"date": '2016-06-06',
-			// 		"start_time": '12:00',
-			// 		"end_time": '16:00',
-			// 		"attend_state": 1, //只要有一个学生的考勤是还没有填的，就返回0
-			// 		"comment_state": 1, //只要有一个学生的作业评价是还没有填的，就返回0
-			// 		"note": '很安静', //课程记录
-			// 		"idEditing": 0 
-			// 	},{
-			// 		"id": '3', 
-			// 		"date": '2016-06-06',
-			// 		"start_time": '12:00',
-			// 		"end_time": '16:00',
-			// 		"attend_state": 0, 
-			// 		"comment_state": 0, 
-			// 		"note": '很吵闹',
-			// 		"idEditing": 0  
-			// 	}]
-			// }
-
 		return function(data, callBack) {
 			getData(eduAPI.fetchTodayClass, callBack, data);
 		}

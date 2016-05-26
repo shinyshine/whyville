@@ -7,13 +7,10 @@ angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'publicServi
         templateUrl: 'views/home/calendar.html',
         controller: 'calendar'
       })
-      // .when('/modifyPwd', {
-      //   templateUrl: 'views/public/modifyPwd.html',
-      //   controller: 'modifyPwd'
-      // })
-  	  .otherwise({
-  	  	redirectTo: '/'
-  	  });
+      
+  	  // .otherwise({
+  	  // 	redirectTo: ''
+  	  // });
   })
   .controller('homeApp', function($scope, $cookies) {
     $scope.user = {
@@ -55,3 +52,42 @@ angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'publicServi
 
   })
   
+
+angular.module('homeMobile', ['ngRoute'])
+  .config(function($routeProvider) {
+    $routeProvider
+      .when('/dailyMobile', {
+        templateUrl: 'views/public/daily.html',
+        controller: 'daily'
+      })
+  })
+
+  //财务日报
+  .controller('daily', function($scope) {
+    $scope.daily = {
+      "schools": [{
+        "school": '龙口西校区',
+        "income": '12365412',
+        "pay": '666666',
+        "profit": '55555'
+      },{
+        "school": '珠江新城校区',
+        "income": '12365412',
+        "pay": '666666',
+        "profit": '55555'
+      }],
+      "pay_method": [{
+        "first": '现金',
+        "second": '龙口西校区',
+        "income": '20000',
+        "pay": '552222',
+        "remain": '700000'
+      },{
+        "first": '刷卡',
+        "second": '4561351',
+        "income": '20000',
+        "pay": '552222',
+        "remain": '700000'
+      }]
+    }
+  })

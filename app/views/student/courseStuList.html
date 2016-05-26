@@ -28,7 +28,7 @@
 		    		<td>{{stu.stu_name}}</td>
 		    		<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
 		    		<td><a ng-class="{'warning': stu.callback_status == 0}" href="#/callback/{{stu.course_id}}/{{stu.stu_id}}">回访</a></td>
-		    		<td><a href="#/report/{{stu.course_id}}/{{stu.stu_id}}">report</a></td>
+		    		<td><a href="#/report/{{stuCourse.courseInfo.course_id}}/{{stu.stu_id}}/">report</a></td>
 		    		<td></td>
 		    		<td class="operate-btns">
 		    			<!-- <a href="#/modStuCourse/{{stu.course_id}}/{{stu.stu_id}}">修改</a> -->

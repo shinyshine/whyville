@@ -34,6 +34,59 @@ angular.module('homeApp.studentService', [])
 			postData(stuAPI.postReport, data, callBack);
 		}
 	})
+
+	.factory('getReport', function(stuAPI) {
+		return function(data, callBack) {
+			getData(stuAPI.postReport, callBack, data);
+		}
+	})
+
+	.factory('createChart', function() {
+		return function() {
+		    $('#chart').highcharts({
+		        title: {
+		            text: 'Chart',
+		            x: -20 //center
+		        },
+		        // subtitle: {
+		        //     text: 'Source: WorldClimate.com',
+		        //     x: -20
+		        // },
+		        xAxis: {
+		            categories: ['Reading', 'Writing', 'Listening']
+		        },
+		        yAxis: {
+		            title: {
+		                text: 'Score'
+		            },
+		            plotLines: [{
+		                value: 0,
+		                width: 1,
+		                color: '#808080'
+		            }]
+		        },
+		        tooltip: {
+		            valueSuffix: ''
+		        },
+		        legend: {
+		            layout: 'vertical',
+		            align: 'right',
+		            verticalAlign: 'middle',
+		            borderWidth: 0
+		        },
+		        series: [{
+		            name: 'Entrance Score',
+		            data: [52, 62, 72]
+		        }, {
+		            name: 'Midterm Score',
+		            data: [59, 42, 95]
+		        }, {
+		            name: 'End Term Score',
+		            data: [45, 72, 79]
+		        }]
+		    });
+		}
+	})
 	//获得所有学生列表
 	.factory('fecthStudents', function(stuAPI) {
 		return function(callBack, filter) {

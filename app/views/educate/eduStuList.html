@@ -11,12 +11,12 @@
 		<table class="table table-striped" id="table">
 			<thead>
 				<tr>
-					<th width="240">学号</th>
-					<th width="240">姓名</th>
-					<th width="240">上课次数</th>
-					<th width="240">初次成绩录入</th>
-					<th width="240">report</th>
-					<!-- <th width="200">备注</th> -->
+					<th width="200">学号</th>
+					<th width="200">姓名</th>
+					<th width="200">上课次数</th>
+					<th width="200">初次成绩录入</th>
+					<th width="200">callback</th>
+					<th width="200">report</th>
 				</tr>		
 		    </thead>
 		    <tbody>
@@ -25,8 +25,8 @@
 		    		<td><a href="#/teaStuInfo/{{stu.stu_id}}">{{stu.stu_name}}</td>
 		    		<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
 		    		<td ><span ng-class="{'warning': !stu.first_state}">{{stu.first_state | checkEnter}}</span></td>
+		    		<td><a ng-class="{'warning': stu.callback_status == 0}" href="#/teaCallback/{{data.courseInfo.course_id}}/{{stu.stu_id}}">callback</a></td>
 		    		<td><a href="#{{stu.course_id}}/{{stu.stu_id}}">report</a></td>
-		    		<!-- <td>{{stu.remark}}</td> -->
 		    	</tr>
 		    </tbody>
 		</table>

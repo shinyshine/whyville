@@ -22,7 +22,7 @@ angular.module('homeApp.educate')
 		//$scope.data = fetchTodayClass($routeParams);
 
 		fetchTodayClass($routeParams, function(result) {
-			console.log(result)
+			console.log(result);
 			$scope.$apply(function() {
 				$scope.data = result;
 			})
@@ -41,4 +41,10 @@ angular.module('homeApp.educate')
 			}
 			$scope.data.classes[index].isEditing = !status;
 		}
+	})
+
+	.controller('teaCallback', function($scope, $routeParams, fetchCallBack) {
+		fetchCallBack($routeParams, function(result) {
+			console.log(result);
+		})
 	})
