@@ -43,8 +43,31 @@ angular.module('homeApp.educate')
 		}
 	})
 
-	.controller('teaCallback', function($scope, $routeParams, fetchCallBack) {
-		fetchCallBack($routeParams, function(result) {
-			console.log(result);
-		})
+	.controller('teaCallback', function($scope, $routeParams, fetchCallBack, postCallback) {
+		// fetchCallBack($routeParams, function(result) {
+		// 	console.log(result);
+		// })
+
+		$scope.callback = {
+			//教师的只需返回自己写的，应该都是英文的吧
+			"info": {
+				"stu_name": '罗半仙',
+				"course_name": 'EEEE!',
+				"start_date": '2016-02-02',
+				"end_date": '2016-08-09'
+			},
+			"content": ['啦啦啦啦很认真啊', '啦啦啦啦这个是第二次回访记录啊', '啦啦啦这个是第三次回访哦']
+		}
+
+		$scope.postData = {
+			"cuorse_id": $routeParams.course_id,
+			"stu_id": $routeParams.stu_id,
+			"new_callback": ''
+		}
+
+		// postCallback($scope.postData, function(result) {
+		// 	if(result.status) {
+		// 		alert('submit successfully');
+		// 	}
+		// })
 	})

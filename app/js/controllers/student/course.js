@@ -185,14 +185,27 @@ angular.module('homeApp.student')
 		// fetchCallBack($routeParams, function(result) {
 
 		// })
-		$scope.callback = fetchCallBack();
-		console.log($scope.callback)
-		$scope.postData = {
-			"att_id": $routeParams.course_id,
-			"stu_id": $routeParams.stu_id,
-			"new_callback": ''
+	console.log($routeParams)
+		$scope.callback = {
+			"info": {
+				"stu_name": '罗半仙',
+				"course_name": 'EEEE!',
+				"start_date": '2016-02-02',
+				"end_date": '2016-08-09'
+			},
+			"content": [{
+				"id": 1,
+				"tea_comment": 'excellent',
+				"translation": '非常棒',
+				"parent": '平时比较懒，喜欢打游戏'
+			},{
+				"id": 2,
+				"tea_comment": 'bad boy',
+				"translation": '不好',
+				"parent": '整天玩不读书'
+			}]
 		}
-
+		console.log($scope.callback)
 		var chart = {
 			"items": ['Reading', 'Writing', 'Listening'],
 			"score": {
@@ -202,8 +215,11 @@ angular.module('homeApp.student')
 			}
 		}
 
-		$scope.submitCallback = function() {
-			console.log($scope.postData);
+		$scope.submitCallback = function(index) {
+			var postData = $scope.callback.content[index];
+			postData.course_id = $routeParams.course_id;
+			postData.stu_id = $routeParams.stu_id;
+			console.log(postData);
 		}
 	})
 	.controller('report', function($scope, $routeParams, getReport, postReport, createChart) {

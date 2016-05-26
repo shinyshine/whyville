@@ -19,6 +19,12 @@ angular.module('homeApp.educateService', [])
 			getData(eduAPI.fetchCallBack, callBack, data);
 		}
 	})
+
+	.factory('postCallback', function(eduAPI) {
+		return function(data, callBack) {
+			postData(eduAPI.postCallback, data, callBack);
+		}
+	})
 	.factory('fecthAllCourse', function(eduAPI) {
 		return function(data, callBack) {
 			getData(eduAPI.fecthAllCourse, callBack, data);

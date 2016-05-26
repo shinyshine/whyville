@@ -5,16 +5,16 @@
 			<div class="stu-info">
 				<table>
 					<tr>
-						<td width="560">学生姓名: {{callback.stuInfo.stu_name}}</td>
-						<td width="560">课程: {{callback.stuInfo.course_name}}</td>
+						<td width="560">学生姓名: {{callback.info.stu_name}}</td>
+						<td width="560">课程: {{callback.info.course_name}}</td>
 					</tr>
 					<tr>
-						<td width="560">开始时间: {{callback.start_date}}</td>
-						<td width="560">结束时间: {{callback.end_date}}</td>
+						<td width="560">开始时间: {{callback.info.start_date}}</td>
+						<td width="560">结束时间: {{callback.info.end_date}}</td>
 					</tr>
 				</table>
 			</div>
-			<div class="callback-item" ng-repeat="callback in callback.callbacks">
+			<div class="callback-item" ng-repeat="callback in callback.content">
                 <label>第{{($index+1)*10}}节课记录</label>
                 <textarea disabled>{{callback}}</textarea>
             </div>
