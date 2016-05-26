@@ -1146,3 +1146,7 @@
 .total-cal span {
   padding: 20px;
 }
+.daily-header span {
+  color: #666666;
+  margin-right: 10px;
+}
