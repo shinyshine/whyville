@@ -229,6 +229,7 @@ angular.module('homeApp.homeService', [])
 	})
 	.factory('fetchApps', function(homeAPI) {
 		return function(filter, callBack) {
+			console.log(filter);
 			getData(homeAPI.fetchApps, callBack, filter);
 		}
 	})

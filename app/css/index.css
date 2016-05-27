@@ -520,6 +520,24 @@
 .form-container .input-row .text-no-border {
   border: none;
 }
+.form-container .input-row .input-checkbox {
+  width: 1120px;
+  color: #666666;
+  font-size: 16px;
+  line-height: 60px;
+  margin-left: 160px;
+  height: 60px;
+  padding: 0 10px;
+}
+.form-container .input-row .input-checkbox .check-box {
+  display: inline-block;
+  width: 190px;
+}
+.form-container .input-row .input-checkbox .check-box input[type=checkbox] {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
 .form-container .input-row .text-no-input {
   color: #666666;
   font-size: 16px;
@@ -1010,6 +1028,11 @@
 }
 .add-course-form .input-row .input-time input {
   text-align: center;
+}
+.add-course-form .input-row .start-end-time {
+  display: inline-block;
+  float: left;
+  margin-right: 30px;
 }
 .add-course-form .input-row .input-short-text {
   width: 150px;

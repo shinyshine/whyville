@@ -405,3 +405,54 @@ angular.module('homeApp.studentService', [])
 		}
 	})
 
+	.factory('initPlanForm', function() {
+		return {
+			"course_year": '',
+			"course_session": '',
+			"course_name": {
+				"id": '',
+				"name": ''
+			},
+			"course_teacher": {
+				"id": '',
+				"name": ''
+			},
+			"course_weekday": {
+				"id": '',
+				"name": ''
+			},
+			"start_time": '',
+			"end_time": '',
+
+			// "weekdays": [{
+			// 	"choose": false,
+			// 	"weekday": 1,
+			// 	"start_time": '',
+			// 	"end_time": ''
+			// },{
+			// 	"choose": false,
+			// 	"weekday": 2,
+			// 	"start_time": '',
+			// 	"end_time": ''
+			// },{
+			// 	"choose": false,
+			// 	"weekday": 3,
+			// 	"start_time": '',
+			// 	"end_time": ''
+			// },{
+			// 	"choose": false,
+			// 	"weekday": 4,
+			// 	"start_time": '',
+			// 	"end_time": ''
+			// },{
+			// 	"choose": false,
+			// 	"weekday": 5,
+			// 	"start_time": '',
+			// 	"end_time": ''
+			// }],
+			"sum_count": '',
+			"per_price": '',
+			"book_price": ''
+		}
+	})
+

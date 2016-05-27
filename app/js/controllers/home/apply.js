@@ -1,6 +1,18 @@
 'use strict';
 angular.module('homeApp.home')
 	.controller('applications', function($scope, $location, fetchOptions, fetchApps, pagination) {
+		$scope.filter = {
+			"selectSchool": {
+				"id": 1,
+				"name": '全部校区'
+			},
+			"type": {
+				"id": 0,
+				"name": '全部申请表'
+			},
+			"page": 1,
+			"num": 3
+		}
 		fetchOptions('', function(result) {
 			$scope.$apply(function() {
 				$scope.options = {
@@ -19,18 +31,7 @@ angular.module('homeApp.home')
 			})
 		})
 		
-		$scope.filter = {
-			"selectSchool": {
-				"id": 1,
-				"name": '全部校区'
-			},
-			"type": {
-				"id": 0,
-				"name": '全部申请表'
-			},
-			"page": 1,
-			"num": 3
-		}
+		
 
 		//about pagination
 		$scope.paginationConf = {};
@@ -43,9 +44,10 @@ angular.module('homeApp.home')
 				//pagination
 				var total = result.sum;
 				$scope.paginationConf = pagination(total);
+
 				$scope.paginationConf.onChange = function() {
 					$scope.filter.page = $scope.paginationConf.currentPage;
-					$scope.sendFilter();
+					$scope.pageChange();
 				}
 			})
 		});
@@ -68,23 +70,16 @@ angular.module('homeApp.home')
 			$location.path('/modifyApp/' + id);
 
 		}
-		// $scope.deleteApp = function(del_status, app_id) {
-		// 	if(del_status == 0) {
-		// 		return false;
-		// 	}
-		// 	var data = {
-		// 		"app_id": app_id
-		// 	}
-		// 	if(confirm('确认删除？')) {
-		// 		deleteApp(data, function(result) {
-		// 			id(result.status) {
-		// 				window.reload();
-		// 			}
-		// 		})
-		// 	}
-		// }
+		
+		$scope.pageChange = function() {
+			fetchApps($scope.filter, function(result) {
+				$scope.applicate = result.result;
+				$scope.$apply();
+			});
+		}
 
 		$scope.sendFilter = function() {
+			$scope.filter.page = 1;
 			fetchApps($scope.filter, function(result) {
 				console.log(result);
 				$scope.applicate = result.result;

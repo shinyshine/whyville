@@ -87,7 +87,7 @@ angular.module('homeApp.student')
 			
 		}
 	})
-	.controller('planCourse', function($scope, fetchPlanCouOp, getYearSessions, getWeekDays, planCourse) {
+	.controller('planCourse', function($scope, fetchPlanCouOp, initPlanForm, getYearSessions, getWeekDays, planCourse) {
 		fetchPlanCouOp('', function(result) {
 			console.log(result);
 			$scope.options = {
@@ -101,27 +101,7 @@ angular.module('homeApp.student')
 			console.log($scope.options);
 		})
 		
-		$scope.course = {
-			"course_year": '',
-			"course_session": '',
-			"course_name": {
-				"id": '',
-				"name": ''
-			},
-			"course_teacher": {
-				"id": '',
-				"name": ''
-			},
-			"course_weekday": {
-				"id": '',
-				"name": ''
-			},
-			"start_time": '',
-			"end_time": '',
-			"sum_count": '',
-			"per_price": '',
-			"book_price": ''
-		}
+		$scope.course = initPlanForm;
 
 		$scope.submitCourseInfo = function() {
 			var cou = $scope.course;
@@ -142,7 +122,7 @@ angular.module('homeApp.student')
 			}
 			
 			
-			// console.log($scope.course);
+			console.log($scope.course);
 		}
 	})
 	.controller('addStuToCourse', function($scope, $routeParams, initAddToCourseForm, fetchCourseInfo, addStuToCourse, fetchOptions) {
