@@ -5,18 +5,18 @@
 			<div class="stu-info">
 				<table>
 					<tr>
-						<td width="560">学生姓名: {{callback.info.stu_name}}</td>
-						<td width="560">课程: {{callback.info.course_name}}</td>
+						<td width="560">学生姓名: {{callback.stuInfo.stu_name}}</td>
+						<td width="560">课程: {{callback.stuInfo.course_name}}</td>
 					</tr>
 					<tr>
-						<td width="560">开始时间: {{callback.info.start_date}}</td>
-						<td width="560">结束时间: {{callback.info.end_date}}</td>
+						<td width="560">开始时间: {{callback.stuInfo.start_date}}</td>
+						<td width="560">结束时间: {{callback.stuInfo.end_date}}</td>
 					</tr>
 				</table>
 			</div>
-			<div class="callback-item" ng-repeat="callback in callback.content">
+			<div class="callback-item" ng-repeat="callback in callback.callbacks">
                 <label>第 {{($index+1)*10}} 节课 教师评论</label>
-                <textarea disabled>{{callback.tea_comment}}</textarea>
+                <textarea disabled>{{callback.teacher_comment}}</textarea>
                 <label>工作人员翻译</label>
                 <textarea ng-model="callback.translation" placeholder="工作人员翻译"></textarea>
                 <lebel>家长谈话记录</lebel>

@@ -3,15 +3,15 @@
 	<div class="btns">
 		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()">
 		</div>
-		<div class="add-btn"><a href="javascript:void(0);" ng-class='{disabled: !state.notice}' ng-click="addSchedule()">添加日程</a></div>
-		<div class="add-btn"><a href="javascript:void(0);" ng-class='{disabled: !state.notice}' ng-click="addNotice()">添加公告</a></div>
+		<div class="add-btn"><a href="javascript:void(0);" ng-click="addSchedule()">添加日程</a></div>
+		<div class="add-btn"><a href="javascript:void(0);" ng-click="addNotice()">添加公告</a></div>
 	</div>
 	<div class="calendar-and-bulletin">
 		<div class="calendar">
 		   <div class="cal1"></div>
 		</div>
 		<div class="notice-container">
-			<header ng-click="test()"><span class="ch-text">公告栏</span><br/><span class="eng-text">Bulletin</span></header>
+			<header><span class="ch-text">公告栏</span><br/><span class="eng-text">Bulletin</span></header>
 			<div class="date">2016-04-24</div>
 			<div class="day-schedule-container">
 				<span ng-hide="home1.sche_len" class="zero-item">无日程</span>

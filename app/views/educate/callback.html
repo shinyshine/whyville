@@ -5,24 +5,26 @@
 			<div class="stu-info">
 				<table>
 					<tr>
-						<td width="560">学生姓名: {{callback.info.stu_name}}</td>
-						<td width="560">课程: {{callback.info.course_name}}</td>
+						<td width="560">学生姓名: {{callback.stuInfo.stu_name}}</td>
+						<td width="560">课程: {{callback.stuInfo.course_name}}</td>
 					</tr>
 					<tr>
-						<td width="560">开始时间: {{callback.info.start_date}}</td>
-						<td width="560">结束时间: {{callback.info.end_date}}</td>
+						<td width="560">开始时间: {{callback.stuInfo.start_date}}</td>
+						<td width="560">结束时间: {{callback.stuInfo.end_date}}</td>
 					</tr>
 				</table>
 			</div>
-			<div class="callback-item" ng-repeat="callback in callback.content">
-                <label>第{{($index+1)*10}}节课记录</label>
-                <textarea disabled>{{callback}}</textarea>
-            </div>
-            <div class="callback-item">
+			<div class="callback-item">
                 <label>最新回访记录</label>
-                <textarea ng-model="postData.new_callback"></textarea>
+                <textarea ng-model="postData.content"></textarea>
             </div>
             <div class="submit-btn"><button type="button" ng-click="submitCallback()">保存</button></div>
+			<div class="callback-item" ng-repeat="callback in callback.callbacks">
+                <label>第{{($index+1)*10}}节课记录</label>
+                <textarea ng-model="callback.teacher_comment"></textarea>
+                <div class="submit-btn"><button type="button" ng-click="modify($index)">保存</button></div>
+            </div>
+            
 		</div>		
 	</div>
 </div>

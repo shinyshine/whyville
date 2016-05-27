@@ -43,31 +43,47 @@ angular.module('homeApp.educate')
 		}
 	})
 
-	.controller('teaCallback', function($scope, $routeParams, fetchCallBack, postCallback) {
-		// fetchCallBack($routeParams, function(result) {
-		// 	console.log(result);
-		// })
+	.controller('teaCallback', function($scope, $routeParams, fetchTeaCallBack, postCallback, modifyCallback) {
+		fetchCallBack($routeParams, function(result) {
+			$scope.callback = result;
+			$scope.$apply();
+			console.log(result);
+		})
 
-		$scope.callback = {
-			//教师的只需返回自己写的，应该都是英文的吧
-			"info": {
-				"stu_name": '罗半仙',
-				"course_name": 'EEEE!',
-				"start_date": '2016-02-02',
-				"end_date": '2016-08-09'
-			},
-			"content": ['啦啦啦啦很认真啊', '啦啦啦啦这个是第二次回访记录啊', '啦啦啦这个是第三次回访哦']
-		}
+		// $scope.callback = {
+		// 	//教师的只需返回自己写的，应该都是英文的吧
+		// 	"info": {
+		// 		"stu_name": '罗半仙',
+		// 		"course_name": 'EEEE!',
+		// 		"start_date": '2016-02-02',
+		// 		"end_date": '2016-08-09'
+		// 	},
+		// 	"content": ['啦啦啦啦很认真啊', '啦啦啦啦这个是第二次回访记录啊', '啦啦啦这个是第三次回访哦']
+		// }
 
 		$scope.postData = {
-			"cuorse_id": $routeParams.course_id,
+			"course_id": $routeParams.course_id,
 			"stu_id": $routeParams.stu_id,
-			"new_callback": ''
+			"content": ''
+		}
+		$scope.submitCallback = function() {
+			postCallback($scope.postData, function(result) {
+				if(result.status) {
+					alert('submit successfully');
+				}
+			})
 		}
 
-		// postCallback($scope.postData, function(result) {
-		// 	if(result.status) {
-		// 		alert('submit successfully');
-		// 	}
-		// })
+		$scope.modify = function(index) {
+			var data = $scope.callback.callbacks[index];
+			data.course_id = $routeParams.course_id;
+			data.stu_id = $routeParams.stu_id
+			modifyCallback(data, function(result) {
+				if(result.status) {
+					alert('modify successfully');
+				}
+			})
+		}
+
+		
 	})

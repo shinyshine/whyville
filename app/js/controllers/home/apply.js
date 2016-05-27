@@ -93,17 +93,34 @@ angular.module('homeApp.home')
 		}
 	})
     .controller('applyfor', function($scope, $location, initAppForm, addApp) {
-    	$scope.level = 3;
     	$scope.appForm = initAppForm;
+    	var itemModel = {
+			"app_content": '',
+			"app_per": '',
+			"app_num": ''
+		}
+
+    	$scope.addItem = function() {
+    		$scope.count++;
+    		$scope.appForm.app.push(itemModel);
+    		console.log($scope.appForm);
+    	}
+
+    	$scope.total_price = 0;
+    	$scope.countTotal = function() {
+    		for(var i = 0, len = $scope.appForm.app.length; i < len; i ++) {
+	    		$scope.total_price += $scope.appForm.app[i].app_per * $scope.appForm.app[i].app_num;
+	    	}
+    	}
+    	
 
     	$scope.submitApp = function() {
-    		if(checkInputInObj($scope.appForm.app)) {
-    			addApp($scope.appForm, function(result) {
-	    			if(result.status) {
-	    				window.location.href = ROOT + 'applications';
-	    			}
-	    		})
-    		}
+    		console.log($scope.appForm);
+			addApp($scope.appForm, function(result) {
+    			if(result.status) {
+    				window.location.href = ROOT + 'applications';
+    			}
+    		})
     	}
     })
     .controller('modifyApp', function($scope, $location, $routeParams, fetchApplyById, modifyApp) {

@@ -168,16 +168,13 @@ angular.module('homeApp.homeService', [])
 				"date": getCurrentDate(),
 				"emp_sch": $cookies.get('sch_name'),//cookie
 				"emp_name": $cookies.get('user_name'),  //cookie
+				"app_title": ''
 			},
-			"app": {
-				"app_title": '',
+			"app": [{
 				"app_content": '',
 				"app_per": '',
-				"app_num": '',
-				// "boss_name": '',
-				// "boss_opinion": ''
-			}
-					
+				"app_num": ''
+			}]
 		}
 	})
 	.factory('fetchApplyById', function(homeAPI) {

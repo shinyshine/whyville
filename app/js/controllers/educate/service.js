@@ -10,19 +10,27 @@ angular.module('homeApp.educateService', [])
 			"fetchStuAttend": server + 'get_student_attendance',
 			"modifyStuAttend": server + 'change_student_attendance',
 			"allAttend": server + 'change_student_attendance',
-			"fetchCallBack": server + ''
+			"fetchTeaCallBack": server + 'get_callback2',
+			"postCallback": server + 'add_callback',
+			"modifyCallback": server + 'change_callback'
 		}
 	})
 
-	.factory('fetchCallBack', function(eduAPI) {
+	.factory('fetchTeaCallBack', function(eduAPI) {
 		return function(data, callBack) {
-			getData(eduAPI.fetchCallBack, callBack, data);
+			getData(eduAPI.fetchTeaCallBack, callBack, data);
 		}
 	})
 
 	.factory('postCallback', function(eduAPI) {
 		return function(data, callBack) {
 			postData(eduAPI.postCallback, data, callBack);
+		}
+	})
+
+	.factory('modifyCallback', function(eduAPI) {
+		return function(data, callBack) {
+			postData(eduAPI.modifyCallback, data, callBack);
 		}
 	})
 	.factory('fecthAllCourse', function(eduAPI) {

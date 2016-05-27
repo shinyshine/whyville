@@ -12,7 +12,7 @@
 					<td>申请人: {{appForm.user.emp_name}}</td>
 				</tr>
 				<tr>
-					<td colspan="2">标题: <input class="app-title" type="text" ng-model="appForm.app.app_title" /></td>
+					<td colspan="2"><label>标题: </label><input class="app-title" type="text" ng-model="appForm.app.app_title" /></td>
 				</tr>
 			</table>
 			<table class="table table-bordered table-2" width="1200">
@@ -29,8 +29,11 @@
 					<td><input type="text" value="{{appForm.app.app_per * appForm.app.app_num}}" /></td>
 				</tr>
 			</table>
-			<p>总经理: {{autoData.sign_name}}</p>
-			<textarea ng-model="appForm.app.boss_opinion" disabled>审批意见: </textarea>
+			<div class="accept-container">
+				<p>总经理: {{autoData.sign_name}}</p>
+				<textarea ng-model="appForm.app.boss_opinion" disabled>审批意见: </textarea>
+			</div>
+			
 			<footer>
 				<div class="footer-logo"></div>
 			</footer>

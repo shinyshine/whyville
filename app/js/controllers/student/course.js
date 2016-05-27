@@ -181,45 +181,23 @@ angular.module('homeApp.student')
 			console.log($scope.formData);
 		}
 	})
-	.controller('callback', function($scope, $routeParams, fetchCallBack, submitCallback) {
-		// fetchCallBack($routeParams, function(result) {
-
-		// })
-	console.log($routeParams)
-		$scope.callback = {
-			"info": {
-				"stu_name": '罗半仙',
-				"course_name": 'EEEE!',
-				"start_date": '2016-02-02',
-				"end_date": '2016-08-09'
-			},
-			"content": [{
-				"id": 1,
-				"tea_comment": 'excellent',
-				"translation": '非常棒',
-				"parent": '平时比较懒，喜欢打游戏'
-			},{
-				"id": 2,
-				"tea_comment": 'bad boy',
-				"translation": '不好',
-				"parent": '整天玩不读书'
-			}]
-		}
-		console.log($scope.callback)
-		var chart = {
-			"items": ['Reading', 'Writing', 'Listening'],
-			"score": {
-				"entrance": [52, 62, 72],
-				"midterm": [59, 42, 95],
-				"endTerm": [45, 72, 79]
-			}
-		}
-
+	.controller('callback', function($scope, $routeParams, fetchCallBack, modifyCallback) {
+		fetchCallBack($routeParams, function(result) {
+			$scope.callback = result;
+			$scope.$apply();
+			console.log(result);
+		})
+		
 		$scope.submitCallback = function(index) {
-			var postData = $scope.callback.content[index];
+			var postData = $scope.callback.callbacks[index];
 			postData.course_id = $routeParams.course_id;
 			postData.stu_id = $routeParams.stu_id;
 			console.log(postData);
+			modifyCallback(postData, function(result) {
+				if(result.status) {
+					alert('操作成功');
+				}
+			})
 		}
 	})
 	.controller('report', function($scope, $routeParams, getReport, postReport, createChart) {

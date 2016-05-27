@@ -19,8 +19,8 @@ angular.module('homeApp.studentService', [])
 			"modifyStuAttend": server + 'change_student_attendance',
 			"allParticipated": server + 'change_student_attendance',
 			"fetchStuAttTable": server + 'get_student_all_attendance',
-			"fetchCallBack": server + '',
-			"submitCallback": server + '',
+			"fetchCallBack": server + 'get_callback',
+			"modifyCallback": server + 'change_callback2',
 			"fetchStuBus": server + 'get_bus',
 			"addStuToBus": server + 'add_student_to_bus',
 			"fetchBusRecord": server + 'get_bus_attendance',
@@ -393,22 +393,15 @@ angular.module('homeApp.studentService', [])
 	})
 	//callback
 	.factory('fetchCallBack', function(stuAPI) {
+
 		return function(data, callBack) {
-			//getData(stuAPI.callback, callBack, data);
-			return {
-				"stuInfo": {
-					"stu_name": '罗半仙',
-					"course_name": 'EE1',
-					"start_date": '2016-06-03',
-					"end_date": '2016-09-03'
-				},
-				"callbacks": ['啦啦啦啦很认真啊', '啦啦啦啦这个是第二次回访记录啊', '啦啦啦这个是第三次回访哦']
-			}
+			getData(stuAPI.fetchCallBack, callBack, data);
 		}
 	})
 
-	.factory('submitCallback', function(stuAPI) {
+	.factory('modifyCallback', function(stuAPI) {
 		return function(data, callBack) {
-			postData(stuAPI.submitCallback, data, callBack);
+			postData(stuAPI.modifyCallback, data, callBack);
 		}
 	})
+
