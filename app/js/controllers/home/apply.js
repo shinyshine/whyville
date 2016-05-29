@@ -96,7 +96,6 @@ angular.module('homeApp.home')
 		}
 
     	$scope.addItem = function() {
-    		$scope.count++;
     		$scope.appForm.app.push(itemModel);
     		console.log($scope.appForm);
     	}
@@ -121,15 +120,45 @@ angular.module('homeApp.home')
     .controller('modifyApp', function($scope, $location, $routeParams, fetchApplyById, modifyApp) {
     	fetchApplyById($routeParams, function(result) {
     		$scope.appForm = result;
+    		$scope.total_price = 0;
+    		for(var i = 0, len = $scope.appForm.app.length; i < len; i ++) {
+	    		$scope.total_price += $scope.appForm.app[i].app_per * $scope.appForm.app[i].app_num;
+	    	}
     		$scope.$apply();
     		console.log($scope.appForm);
     	});
 
+    	var itemModel = {
+			"app_content": '',
+			"app_per": '',
+			"app_num": ''
+		}
+
+    	$scope.addItem = function() {
+    		$scope.appForm.app.push(itemModel);
+    		console.log($scope.appForm);
+    	}
+
+
+    	//$scope.total_price = 0;
+
+    	$scope.countTotal = function() {
+    		if(isNaN($scope.total_price)) {
+    			$scope.total_price = 0;
+    		}
+    		for(var i = 0, len = $scope.appForm.app.length; i < len; i ++) {
+	    		$scope.total_price += $scope.appForm.app[i].app_per * $scope.appForm.app[i].app_num;
+	    	}
+    	}
     	$scope.submitApp = function() {
-    		$scope.appForm.app.app_id = $routeParams.app_id;
-    		modifyApp($scope.appForm.app, function(result) {
+    		var data = {
+    			app_id: $routeParams.app_id,
+    			app_title: $scope.appForm.user.app_title,
+    			app: $scope.appForm.app
+    		}
+    		modifyApp(data, function(result) {
     			if(result.status) {
-    				window.location.href = ROOT + $cookies.get('user_id');
+    				alert('修改成功');
     			}
     		})
     	}

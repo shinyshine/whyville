@@ -1,5 +1,11 @@
 module.exports = function(grunt) {
+    var config = {
+        controller: './app/js/controllers/',
+        minCon: './app/js/min-controller/',
+    }
+
     grunt.initConfig({
+        config: config,
         pkg: grunt.file.readJSON('package.json'),
         less: {
             development: {
@@ -33,6 +39,12 @@ module.exports = function(grunt) {
                     //base: ['./app']  //注意根目录的配置
                 }
             }
+        },
+        concat: {
+            operate: {
+                src: ['<%= config.controller %>operating/operating.js', '<%= config.controller %>operating/service.js','<%= config.controller %>operating/EmployeeInfo.js','<%= config.controller %>operating/employees.js','<%= config.controller %>operating/school.js'],
+                dest: '<%= config.minCon %>operating.js'
+            }
         }
 
     });
@@ -40,6 +52,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('default', ['connect', 'watch']);
 }

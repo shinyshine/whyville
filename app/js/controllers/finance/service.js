@@ -72,7 +72,7 @@ angular.module('homeApp.financeService', [])
 	.factory('initAddIncomeForm', function(financeAPI, $cookies) {
 		return function(price, s_id, stu) {
 			return {
-				"in_id": '',
+				// "in_id": '',
 				"school": {
 					"id": '',
 					"name": ''
@@ -97,9 +97,7 @@ angular.module('homeApp.financeService', [])
 				"sum": price,
 				"abstraction": '',
 				"charge_name": $cookies.get('user_name'),
-				"receipt_1": '',
-				"receipt_2": '',
-				"receipt_3": ''
+				"receipt_no": ['', '', '']
 			}
 		}
 	})

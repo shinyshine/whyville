@@ -1131,6 +1131,9 @@
 .report-container #reportTable .report-table .title {
   line-height: 30px;
 }
+.report-container #reportTable .report-basic tbody td {
+  line-height: 28px;
+}
 .report-container .chart-container {
   height: 300px;
   border: 1px solid #999999;
@@ -1176,4 +1179,18 @@
 .daily-header span {
   color: #666666;
   margin-right: 10px;
+}
+@media screen and (max-width: 500px) {
+  .header {
+    display: none;
+  }
+  .wrapper {
+    width: 100%;
+    min-width: 100%;
+    padding: 20px;
+    font-size: 13px;
+  }
+  .w-container {
+    width: 100%;
+  }
 }

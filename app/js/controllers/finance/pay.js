@@ -75,7 +75,6 @@ angular.module('homeApp.finance')
 					$scope.paginationConf.totalItems = result.sum;
 				})
 			})
-
 			console.log($scope.paginationConf)
 		}
 	})

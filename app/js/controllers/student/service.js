@@ -26,6 +26,7 @@ angular.module('homeApp.studentService', [])
 			"fetchBusRecord": server + 'get_bus_attendance',
 			"fetchBusRecordById": server + 'get_bus_service_information',
 			"postReport": server + 'get_report',
+			"submitReport": server + 'change_report'
 		}
 	})
 
@@ -41,6 +42,11 @@ angular.module('homeApp.studentService', [])
 		}
 	})
 
+	.factory('submitReport', function(stuAPI) {
+		return function(data, callBack) {
+			postData(stuAPI.submitReport, data, callBack);
+		}
+	})
 	.factory('createChart', function() {
 		return function() {
 		    $('#chart').highcharts({

@@ -180,7 +180,7 @@ angular.module('homeApp.student')
 			})
 		}
 	})
-	.controller('report', function($scope, $routeParams, getReport, postReport, createChart) {
+	.controller('report', function($scope, $routeParams, getReport, postReport, createChart, submitReport) {
 
 		getReport($routeParams, function(result) {
 			console.log(result);
@@ -190,6 +190,14 @@ angular.module('homeApp.student')
 
 		createChart();
 		
+		$scope.submitReport = function() {
+			console.log($scope.data);
+			$scope.data.stu_id = $routeParams.stu_id;
+			$scope.data.course_id = $routeParams.course_id;
+			submitReport($scope.data, function(result) {
+				console.log(result);
+			})
+		}
 		// $scope.data = {
 		// 	"info": {
 		// 		"course_type": 'ESL', //最大的那个课程类别

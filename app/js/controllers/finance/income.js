@@ -134,6 +134,7 @@ angular.module('homeApp.finance')
 		})
 
 		$scope.addIncome = function() {
+			console.log($scope.formData)
 			addIncome($scope.formData, function(result) {
 				if(result.status) {
 					alert('成功添加收入');

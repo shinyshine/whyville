@@ -25,7 +25,7 @@
 				<div class="colorful-jpg"></div>
 			</div>
 			<div class="table-container">
-				<table class="table table-bordered report-table">
+				<table class="table table-bordered report-table report-basic">
 					<thead>
 						<tr>
 							<td width="120"></td>
@@ -44,13 +44,13 @@
 							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}">{{item.score[0]}}</td>
 							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}">{{item.score[1]}}</td>
 							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}">{{item.score[2]}}</td>
-							<td><input type="text" ng-model="item.sec_item.item_name"</td>
-							<td><input type="text" ng-model="item.sec_item.score[0]"</td>
-							<td><input type="text" ng-model="item.sec_item.score[1]"</td>
-							<td><input type="text" ng-model="item.sec_item.score[2]"</td>
+							<td>{{item.sec_item.item_name}}<br>{{item.sec_item.item_name_zh}}</td>
+							<td><input type="text" ng-model="item.sec_item.score[0]"></td>
+							<td><input type="text" ng-model="item.sec_item.score[1]"></td>
+							<td><input type="text" ng-model="item.sec_item.score[2]"></td>
 						</tr>
 						<tr ng-repeat="sec_item in item.branches">
-							<td><input type="text" ng-model="sec_item.item_name"></td>
+							<td>{{sec_item.item_name}}<br>{{sec_item.item_name_zh}}</td>
 							<td><input type="text" ng-model="sec_item.score[0]"></td>
 							<td><input type="text" ng-model="sec_item.score[1]"></td>
 							<td><input type="text" ng-model="sec_item.score[2]"></td>

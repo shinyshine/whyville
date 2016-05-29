@@ -31,16 +31,24 @@ angular.module('homeApp.operating')
 			$scope.paginationConf = pagination(total);
 			$scope.paginationConf.onChange = function() {
 				$scope.filter.page = $scope.paginationConf.currentPage;
-				$scope.sendFilter();
+				$scope.pageChange();
 			}
 			$scope.$apply();
 		});
+		$scope.pageChange = function() {
+			employees($scope.filter, function(result) {
+				$scope.result = result.employees;
+				$scope.$apply();
+			});
+		}
 
 		//选择左上角校区筛选员工
 		$scope.sendFilter = function() {
+			$scope.filter.page = 1;
 			employees($scope.filter, function(result) {
-				console.log(result)
+				console.log(result);
 				$scope.result = result.employees;
+				$scope.paginationConf.totalItems = result.sum;
 				$scope.$apply();
 			});
 

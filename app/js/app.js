@@ -1,15 +1,25 @@
 'use strict';
-angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'publicService', 'homeApp.operating', 'homeApp.home', 'homeApp.student', 'homeApp.educate', 'homeApp.finance', 'homeApp.analysis'])
+angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'publicService', 'homeApp.home', 'homeApp.operating', 'homeApp.student', 'homeApp.educate', 'homeApp.finance', 'homeApp.analysis'])
   .config(function($routeProvider) {
         
   	$routeProvider
+      // .when('/employees', {
+      //     templateUrl: 'views/operating/employees.html',
+      //     controller: 'employees',
+      //     resolve: {
+      //       operate: function(injectOperating) {
+      //         return injectOperating.inject();
+      //       }
+      //     }
+      // })
   	  .when('/:user_id', {
         templateUrl: 'views/home/calendar.html',
         controller: 'calendar'
       })
       
+      
   	  // .otherwise({
-  	  // 	redirectTo: ''
+  	  // 	redirectTo: '/'
   	  // });
   })
   .controller('homeApp', function($scope, $cookies) {

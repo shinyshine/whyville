@@ -3,6 +3,25 @@ angular.module('publicService', [])
 	.factory('server', function() {
 		return 'http://139.129.45.236:8002/'
 	})
+
+	.factory('injectOperating', function($q, $timeout) {
+		return {
+			inject: function() {
+				console.log('inject');
+				var defered = $q.defer(),
+					loadScript = function() {
+						$.getScript('./js/min-controller/operating.js', function() {
+							defered.resolve();
+						});
+
+					}
+
+				loadScript();
+				return defered.promise;
+
+			}
+		}
+	})
 	.factory('API', function(server) {
 		return {
 			"fetchSchools": 'fetchSchools',
