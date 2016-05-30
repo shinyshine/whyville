@@ -22,6 +22,7 @@ angular.module('homeApp.studentService', [])
 			"fetchCallBack": server + 'get_callback',
 			"modifyCallback": server + 'change_callback2',
 			"fetchStuBus": server + 'get_bus',
+			"modBusStuAttend": server + 'change_student_bus_attendance',
 			"addStuToBus": server + 'add_student_to_bus',
 			"fetchBusRecord": server + 'get_bus_attendance',
 			"fetchBusRecordById": server + 'get_bus_service_information',
@@ -230,6 +231,12 @@ angular.module('homeApp.studentService', [])
 		}
 	})
 
+	.factory('modBusStuAttend', function(stuAPI) {
+		return function(data, callBack) {
+			getData(stuAPI.modBusStuAttend, callBack, data);
+		}
+	})
+
 	.factory('initAddToBusForm', function() {
 		return {
 			//"stu_name": '',
@@ -242,8 +249,13 @@ angular.module('homeApp.studentService', [])
 				"id": '',
 				"name":''
 			},
-			"year": '',
-			"session": '',
+			"year": {
+				"name": ''
+			},
+			"session": {
+				"id": '',
+				"name": ''
+			},
 			"discount_type": {
 				"id": '',
 				"name": ''

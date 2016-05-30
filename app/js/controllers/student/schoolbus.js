@@ -127,12 +127,12 @@ angular.module('homeApp.student')
 			})
 		}
 	})
-	.controller('busStuAttend', function($scope, $routeParams, fetchBusRecordById) {
+	.controller('busStuAttend', function($scope, $routeParams, fetchBusRecordById, modBusStuAttend) {
 		$scope.attendType = [{
-			"id": '0',
+			"id": '1',
 			"name": '是'
 		},{
-			"id": '1',
+			"id": '0',
 			"name": '否'
 		}]
 		$scope.filter = {
@@ -161,21 +161,35 @@ angular.module('homeApp.student')
 		//$scope.data = fetchBusRecordById($routeParams);
 		fetchBusRecordById($scope.filter, function(result) {
 			console.log(result)
+			$scope.busAttend = result;
+			$scope.$apply();
 		})
 
 		$scope.modify = function(index) {
-			var status = $scope.data.stuList[index].isEditing;
+			var cur = $scope.busAttend.list[index],
+				status = cur.isEditing;
+
 			if(status) {
-				//$http 
-				console.log('发送请求给后台，修改出勤状况');
-				console.log($scope.data.stuList[index]);
+				var data = {
+					"ser_id": {
+						"id": cur.ser_id
+					},
+					"state": cur.attend_state.id
+				}
+				//console.log('发送请求给后台，修改出勤状况');
+				modBusStuAttend(data, function(result) {
+					if(result.status) {
+						alert('考勤成功');
+					}
+				})
 			}
-			$scope.data.stuList[index].isEditing = !status;
+			$scope.busAttend.list[index].isEditing = !status;
 		}
 
 		$scope.sendFilter = function() {
 			fetchBusRecordById($scope.filter, function(result) {
-				console.log(result)
+				$scope.busAttend = result;
+				$scope.$apply();
 			})
 		}
 	})

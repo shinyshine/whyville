@@ -1,7 +1,7 @@
 <div class="stu-container">
 	<div class="info-header">
-		<span>车牌号码: {{data.busInfo.bus_number}}</span>
-		<span>日期: {{data.busInfo.date}}</span>
+		<span>车牌号码: {{busAttend.bus_number}}</span>
+		<span>日期: {{busAttend.date}}</span>
 	</div>
 	<div class="btns">
 	    <div my-select select-options="options.type" which-school="filter.type" send-filter="sendFilter()"></div>
@@ -20,7 +20,7 @@
 				</tr>		
 		    </thead>
 		    <tbody>
-		    	<tr ng-repeat="item in data.stuList">
+		    	<tr ng-repeat="item in busAttend.list">
 		    		<td>{{item.stu_name}}</td>
 		    		<td>{{item.place}}</td>
 		    		<td>{{item.time}}</td>

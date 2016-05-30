@@ -14,10 +14,10 @@
 				</tr>		
 		    </thead>
 		    <tbody>
-		    	<tr ng-repeat="item in recordList">
-		    		<td>{{item.bus_number}}</td>
+		    	<tr ng-repeat="item in data">
+		    		<td>{{item.bus_number.name}}</td>
 		    		<td>{{item.date}}</td>
-		    		<td><a ng-class="{'warning': !item.attend_state}" href="#/busStuAttend/{{ser_id}}">{{item.attend_state | checkAttend}}</a></td>
+		    		<td><a ng-class="{'warning': !item.attend_state}" href="#/busStuAttend/{{item.bus_number.id}}/{{item.date}}">{{item.attend_state | checkAttend}}</a></td>
 		    	</tr>
 		    </tbody>
 		</table>
