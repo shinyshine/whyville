@@ -12,7 +12,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="acc in account">
+				<tr ng-repeat="acc in account.list">
 					<td>{{acc.sec_type.name}}</td>
 					<td class="input-td" ng-class="{'editing': acc.isEditing}"><input type="text" ng-model="acc.remain" ng-disabled="!acc.isEditing"></td>
 					<td class="operate-btns">
@@ -22,6 +22,6 @@
 				
 			</tbody>
 		</table>
-		<p class="total-cal"><span>合计: ￥{{data.total}}</span></p>
+		<p class="total-cal"><span>合计: ￥{{account.total}}</span></p>
 	</div>
 </div>

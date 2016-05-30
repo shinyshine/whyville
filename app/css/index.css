@@ -1034,6 +1034,20 @@
   float: left;
   margin-right: 30px;
 }
+.add-course-form .input-row .start-end-time .input-time {
+  width: 80px;
+  float: left;
+  margin-left: 0;
+  margin-top: 18px;
+}
+.add-course-form .input-row .start-end-time .input-time input {
+  text-align: center;
+  width: 70px;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #cccccc;
+}
 .add-course-form .input-row .input-short-text {
   width: 150px;
   margin-left: 0;

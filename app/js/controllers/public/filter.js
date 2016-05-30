@@ -128,4 +128,14 @@ angular.module('homeApp')
 		}
 	})
 
+	.filter('NaNtoO', function() {
+		return function(input) {
+			if(isNaN(input)) {
+				return 0;
+			}else{
+				return input;
+			}
+		}
+	})
+
 	

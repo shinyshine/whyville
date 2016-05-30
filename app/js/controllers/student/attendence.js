@@ -40,6 +40,7 @@ angular.module('homeApp.student')
 					"tea_id": course.course_teacher,
 					"teacher_state": course.teacher_state
 				}
+				console.log(data)
 				modifyClassInfo(data, function(result) {
 					if(result.status) {
 						//window.location.reload();

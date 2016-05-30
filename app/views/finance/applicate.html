@@ -4,15 +4,15 @@
 		<div id="tables">
 			<table class="table table-bordered table-1" width="1200">
 				<tr>
-					<td>编号: {{data.app_id}}</td>
-					<td>日期: {{data.app_date}}</td>
+					<td>编号: {{appForm.user.emp_id}}</td>
+					<td>日期: {{appForm.user.date}}</td>
 				</tr>
 				<tr>
-					<td>校区: {{data.school}}</td>
-					<td>申请人: {{data.emp_name}}</td>
+					<td>校区: {{appForm.user.emp_sch}}</td>
+					<td>申请人: {{appForm.user.emp_name}}</td>
 				</tr>
 				<tr>
-					<td colspan="2" class="app-title">标题: <span>{{data.app_title}}</span></td>
+					<td colspan="2" class="app-title">标题: <span>{{appForm.user.app_title}}</span></td>
 				</tr>
 			</table>
 			<table class="table table-bordered table-2" width="1200">
@@ -22,22 +22,15 @@
 					<td width="145">数量</td>
 					<td width="145">总价</td>
 				</tr>
-				<tr>
-					<td>{{data.content}}</td>
-					<td>{{data.per_price}}</td>
-					<td>{{data.number}}</td>
-					<td>{{data.total_price}}</td>
+				<tr ng-repeat="item in appForm.app">
+					<td>{{item.app_content}}</td>
+					<!-- <td><input type="text" ng-model="item.app_content" required/></td> -->
+					<td>{{item.app_per}}</td>
+					<td>{{item.app_num}}</td>
+					<td>{{item.app_per * item.app_num}}</td>
 				</tr>
 			</table>
 			<div class="date-container">
-				<!-- <div class="date-row">
-					<label>款项所属期间: </label>
-					<div class="date-select" date-select which-date="appForm.app.dur_day"></div>
-				</div>
-				<div class="date-row">
-					<label>到期支付日: </label>
-					<div class="date-select" date-select which-date="appForm.app.pay_day"></div>
-				</div> -->
 				<p class="date-row">
 					<label>审批日期: </label>
 					<span>{{data.accept_date}}</span>

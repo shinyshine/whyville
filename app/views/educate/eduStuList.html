@@ -26,7 +26,7 @@
 		    		<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
 		    		<td ><span ng-class="{'warning': !stu.first_state}">{{stu.first_state | checkEnter}}</span></td>
 		    		<td><a ng-class="{'warning': stu.callback_status == 0}" href="#/teaCallback/{{data.courseInfo.course_id}}/{{stu.stu_id}}">callback</a></td>
-		    		<td><a href="#{{stu.course_id}}/{{stu.stu_id}}">report</a></td>
+		    		<td><a href="#/teaReport/{{data.courseInfo.course_id}}/{{stu.stu_id}}">report</a></td>
 		    	</tr>
 		    </tbody>
 		</table>

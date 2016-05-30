@@ -11,7 +11,21 @@ angular.module('homeApp.financeService', [])
 			"fetchAppById": server + 'get_application_information',
 			"payForApp": server + 'accept_application',
 			"modPay": server + 'change_cost',
-			"modifyAccount": server + ''
+			"modifyAccount": server + 'change_balance',
+			"fetchAccounts": server + 'get_balance',
+			"daily": server + 'get_cost_income',
+			"modIncome": server + 'change_income',
+		}
+	})
+
+	.factory('fetchDaily', function(financeAPI) {
+		return function(data, callBack) {
+			getData(financeAPI.daily, callBack, data);
+		}
+	})
+	.factory('fetchAccounts', function(financeAPI) {
+		return function(data, callBack) {
+			getData(financeAPI.fetchAccounts, callBack, data);
 		}
 	})
 	.factory('fetchPayList', function(financeAPI) {
@@ -108,32 +122,9 @@ angular.module('homeApp.financeService', [])
 		}
 	})
 
-	.factory('fetchInForm', function($http) {
-		var fetchData = function(in_id) {
-			return {
-				"in_id": 2,
-				"school": {
-					"id": 1,
-					"name": '大学城校区'
-				},
-				"date": '2016-06-03',
-				"type": '书费',
-				"pay_method": {
-					"id": '0',
-					"name": '现金'
-				},
-				"pay_to": {
-					"id": '2',
-					"name": '珠江新城'
-				},
-				"sum": '5000',
-				"abstraction": '摘要啊',
-				"charge_name": '罗半仙'
-			}
-		}
-
-		return function(in_id) {
-			return fetchData(in_id);
+	.factory('fetchIncomeById', function(financeAPI) {
+		return function(data, callBack) {
+			getData(financeAPI.modIncome, callBack, data);
 		}
 	})
 	.factory('fetchAppList', function(financeAPI) {

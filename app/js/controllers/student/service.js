@@ -49,7 +49,7 @@ angular.module('homeApp.studentService', [])
 		}
 	})
 	.factory('createChart', function() {
-		return function() {
+		return function(items, score) {
 		    $('#chart').highcharts({
 		        title: {
 		            text: 'Chart',
@@ -60,7 +60,7 @@ angular.module('homeApp.studentService', [])
 		        //     x: -20
 		        // },
 		        xAxis: {
-		            categories: ['Reading', 'Writing', 'Listening']
+		            categories: items
 		        },
 		        yAxis: {
 		            title: {
@@ -83,13 +83,13 @@ angular.module('homeApp.studentService', [])
 		        },
 		        series: [{
 		            name: 'Entrance Score',
-		            data: [52, 62, 72]
+		            data: score.entrance
 		        }, {
 		            name: 'Midterm Score',
-		            data: [59, 42, 95]
+		            data: score.midterm
 		        }, {
 		            name: 'End Term Score',
-		            data: [45, 72, 79]
+		            data: score.endTerm
 		        }]
 		    });
 		}
@@ -317,7 +317,9 @@ angular.module('homeApp.studentService', [])
 				"book_fee_to": {
 					"id": '',
 					"name": ''
-				}
+				},
+				"book_fee": '',
+				"remark": ''
 			}
 		}
 		
@@ -435,42 +437,41 @@ angular.module('homeApp.studentService', [])
 				"id": '',
 				"name": ''
 			},
-			"course_weekday": {
-				"id": '',
-				"name": ''
-			},
-			"start_time": '',
-			"end_time": '',
-
-			// "weekdays": [{
-			// 	"choose": false,
-			// 	"weekday": 1,
-			// 	"start_time": '',
-			// 	"end_time": ''
-			// },{
-			// 	"choose": false,
-			// 	"weekday": 2,
-			// 	"start_time": '',
-			// 	"end_time": ''
-			// },{
-			// 	"choose": false,
-			// 	"weekday": 3,
-			// 	"start_time": '',
-			// 	"end_time": ''
-			// },{
-			// 	"choose": false,
-			// 	"weekday": 4,
-			// 	"start_time": '',
-			// 	"end_time": ''
-			// },{
-			// 	"choose": false,
-			// 	"weekday": 5,
-			// 	"start_time": '',
-			// 	"end_time": ''
-			// }],
+			// "course_weekday": {
+			// 	"id": '',
+			// 	"name": ''
+			// },
+			// "start_time": '',
+			// "end_time": '',
+			"weekdays": [{
+				"choose": false,
+				"weekday": 1,
+				"start_time": '',
+				"end_time": ''
+			},{
+				"choose": false,
+				"weekday": 2,
+				"start_time": '',
+				"end_time": ''
+			},{
+				"choose": false,
+				"weekday": 3,
+				"start_time": '',
+				"end_time": ''
+			},{
+				"choose": false,
+				"weekday": 4,
+				"start_time": '',
+				"end_time": ''
+			},{
+				"choose": false,
+				"weekday": 5,
+				"start_time": '',
+				"end_time": ''
+			}],
 			"sum_count": '',
 			"per_price": '',
-			"book_price": ''
+			"book_fee": ''
 		}
 	})
 

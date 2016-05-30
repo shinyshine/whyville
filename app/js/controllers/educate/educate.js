@@ -34,4 +34,8 @@ angular.module('homeApp.educate', ['ngRoute', 'homeApp.educateService'])
 				templateUrl: 'views/educate/callback.html',
 				controller: 'teaCallback'
 			})
+			.when('/teaReport/:course_id/:stu_id', {
+				templateUrl: 'views/educate/teaReport.html',
+				controller: 'teaReport'
+			})
 	})

@@ -17,7 +17,7 @@
                 <label>任课老师</label>
                 <div my-select select-options="options.teachers" which-school="course.course_teacher"></div>
             </div>
-            <div class="input-row">
+            <!-- <div class="input-row">
                 <label>星期</label>
                 <div my-select select-options="options.weekdays" which-school="course.course_weekday"></div>
             </div>
@@ -26,8 +26,8 @@
                 <div class="input-text input-time"><input type="text" placeholder="开始时间" ng-model="course.start_time" required/></div>
                 <i class="to-icon">~</i>
                 <div class="input-text input-time"><input type="text" placeholder="结束时间" ng-model="course.end_time" required/></div>
-            </div>
-           <!--  <div class="input-row">
+            </div> -->
+            <div class="input-row">
                 <label>星期</label>
                 <div class="input-checkbox">
                     <div class="check-box"><input type="checkbox" value="1" ng-model="course.weekdays[0].choose"> 星期一</div>
@@ -62,7 +62,7 @@
                     <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[4].start_time" /><i>-</i></div>
                     <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[4].end_time" /></div>
                 </div>
-            </div> -->
+            </div>
             <div class="input-row">
                 <label>课程总次数</label>
                 <div class="input-text"><input type="text" placeholder="课程总次数" ng-model="course.sum_count" required></div>
@@ -73,7 +73,7 @@
             </div>
              <div class="input-row">
                 <label>书本费用</label>
-                <div class="input-text"><input type="text" placeholder="书本费用" ng-model="course.book_price" required></div>
+                <div class="input-text"><input type="text" placeholder="书本费用" ng-model="course.book_fee" required></div>
             </div>
             <div class="submit-btn"><button type="submit" ng-disabled="planForm.$invalid">完成</button></div>
         </form>

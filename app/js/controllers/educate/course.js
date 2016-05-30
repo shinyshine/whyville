@@ -44,7 +44,7 @@ angular.module('homeApp.educate')
 	})
 
 	.controller('teaCallback', function($scope, $routeParams, fetchTeaCallBack, postCallback, modifyCallback) {
-		fetchCallBack($routeParams, function(result) {
+		fetchTeaCallBack($routeParams, function(result) {
 			$scope.callback = result;
 			$scope.$apply();
 			console.log(result);
@@ -84,6 +84,25 @@ angular.module('homeApp.educate')
 				}
 			})
 		}
+	})
 
+	.controller('teaReport', function($scope, $routeParams, getReport, postReport, createChart, submitReport) {
+
+		getReport($routeParams, function(result) {
+			console.log(result);
+			$scope.data = result;
+			createChart(result.chart_data.items, result.chart_data.score);
+			$scope.$apply();
+		})
+
+		createChart();
 		
+		$scope.submitReport = function() {
+			console.log($scope.data);
+			$scope.data.stu_id = $routeParams.stu_id;
+			$scope.data.course_id = $routeParams.course_id;
+			submitReport($scope.data, function(result) {
+				console.log(result);
+			})
+		}
 	})

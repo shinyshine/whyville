@@ -12,12 +12,12 @@
         </div>
         <div class="input-row">
             <label>学费</label>
-            <!-- <div class="input-text"><input type="text" name="" placeholder="请输入学费金额" ng-model="formData.school_fee"/></div> -->
+            <div class="input-text">{{courseInfo.per_price*formData.sum_count}}</div>
         </div>
 		<div class="input-row input-row-son">
             <label>计费方式</label>
             <div class="text-no-input">每节 {{courseInfo.per_price}} 元</div>
-            <div class="text-no-input">共 {{courseInfo.sum_count}} 节</div>
+            <div class="text-no-input">还剩 {{courseInfo.sum_count}} 节</div>
             <div class="input-text input-short-text">预订<input type="text" ng-model="formData.sum_count">节</div>
         </div>
         <div class="input-row input-row-son">
@@ -34,18 +34,23 @@
             <div link-select select-options="options.pay_method" tab-options="tabOptions" first-one="formData.fee_method" second-one="formData.fee_to"></div>
         </div>
 
-        <!-- <div class="input-row">
+        <div class="input-row">
             <label>书费</label>
-            <div class="input-text"><input type="text" placeholder="请输入书费金额" ng-model="formData.book_fee"/></div>
+            <div class="input-text"><input type="text" placeholder="参考金额 {{courseInfo.book_fee}}" ng-model="formData.book_fee"/></div>
         </div>
-        <div class="input-row input-row-son">
+       <!--  <div class="input-row input-row-son">
             <label>折扣</label>
             <div class="input-text input-short-text">打<input type="text" ng-model="formData.book_discount">折</div>
             <div class="input-text input-short-text">减<input type="text" ng-model="formData.book_cut">元</div>
         </div> -->
-        <div class="input-row">
+        <div class="input-row input-row-son">
             <label>书费收费方式</label>
             <div link-select select-options="options.pay_method" tab-options="tabOptions" first-one="formData.book_fee_method" second-one="formData.book_fee_to"></div>
+        </div>
+
+         <div class="input-row">
+            <label>备注</label>
+            <div class="input-text"><input type="text" placeholder="请填写备注" ng-model="formData.remark"/></div>
         </div>
         <div class="submit-btn"><button type="button" ng-click="submitData()">完成</button></div>
 	</div>

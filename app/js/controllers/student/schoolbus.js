@@ -84,7 +84,7 @@ angular.module('homeApp.student')
 			addStuToBus($scope.formData, function(result) {
 				if(result.status) {
 					alert('操作成功');
-					window.location.href = ROOT + 'stuBusList';
+					
 				}
 			})
 		}
@@ -123,7 +123,8 @@ angular.module('homeApp.student')
 		$scope.sendFilter = function() {
 			console.log($scope.filter);
 			fetchBusRecord($scope.filter, function(result) {
-				console.log(result);
+				$scope.data = result;
+				$scope.$apply();
 			})
 		}
 	})

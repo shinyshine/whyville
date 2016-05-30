@@ -88,17 +88,35 @@ angular.module('homeApp.finance')
 			})
 		}
 	})
-	.controller('modIncome', function($scope, $routeParams, fetchSchools, fetchPayOptions, fetchInForm) {
-		var options = fetchPayOptions();
-		$scope.options = {
-			"schools": fetchSchools,
-			"pay_method": options['pay_method'],
-			"in_type": []
-		}
-		var inType = ['学费', '书费', '车费'];
-		$scope.options.in_type = inType;
+	.controller('modIncome', function($scope, $routeParams, fetchSchools, fetchOptions, fetchIncomeById, getDate) {
+		fetchOptions('', function(result) {
+			$scope.options = {
+				"schools": result.schools,
+				"pay_method": result.pay_method,
+				"type": [{
+					"id": 0,
+					"name": '全部类型'
+				},{
+					"id": 1,
+					"name": '学费'
+				},{
+					"id": 2,
+					"name": '书费'
+				},{
+					"id": 3,
+					"name": '校车费'
+				},{
+					"id": 4,
+					"name": '其他'
+				}],
+				"date": getDate
+			}
+		})
+		
 
-		$scope.formData = fetchInForm($routeParams);
+		fetchIncomeById($routeParams, function(result) {
+			console.log(result);
+		})
 
 		$scope.submitData = function() {
 			console.log($scope.formData);

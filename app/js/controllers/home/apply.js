@@ -1,6 +1,7 @@
 'use strict';
 angular.module('homeApp.home')
-	.controller('applications', function($scope, $location, fetchOptions, fetchApps, pagination) {
+	.controller('applications', function($scope, $rootScope, $location, fetchOptions, fetchApps, pagination) {
+		console.log($rootScope);
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -83,27 +84,41 @@ angular.module('homeApp.home')
 			fetchApps($scope.filter, function(result) {
 				console.log(result);
 				$scope.applicate = result.result;
+				//pagination
+				var total = result.sum;
+				$scope.paginationConf = pagination(total);
 				$scope.$apply();
 			});
 		}
 	})
     .controller('applyfor', function($scope, $location, initAppForm, addApp) {
     	$scope.appForm = initAppForm;
-    	var itemModel = {
-			"app_content": '',
-			"app_per": '',
-			"app_num": ''
-		}
+    	
 
     	$scope.addItem = function() {
+    		var itemModel = {
+				"app_content": '',
+				"app_per": '',
+				"app_num": ''
+			}
     		$scope.appForm.app.push(itemModel);
     		console.log($scope.appForm);
     	}
 
-    	$scope.total_price = 0;
+
+    	$scope.total = {
+    		total_price: 0
+    	}
     	$scope.countTotal = function() {
+    		$scope.total.total_price = 0;
+    		var total = $scope.total.total_price;
+    		
+    		if(isNaN(total)) {
+    			console.log("NaN");
+    			$scope.total.total_price = 0;
+    		}
     		for(var i = 0, len = $scope.appForm.app.length; i < len; i ++) {
-	    		$scope.total_price += $scope.appForm.app[i].app_per * $scope.appForm.app[i].app_num;
+	    		$scope.total.total_price += $scope.appForm.app[i].app_per * $scope.appForm.app[i].app_num;
 	    	}
     	}
     	
@@ -128,13 +143,14 @@ angular.module('homeApp.home')
     		console.log($scope.appForm);
     	});
 
-    	var itemModel = {
-			"app_content": '',
-			"app_per": '',
-			"app_num": ''
-		}
+    	
 
     	$scope.addItem = function() {
+    		var itemModel = {
+				"app_content": '',
+				"app_per": '',
+				"app_num": ''
+			}
     		$scope.appForm.app.push(itemModel);
     		console.log($scope.appForm);
     	}
@@ -181,9 +197,11 @@ angular.module('homeApp.home')
     	}
 
     	$scope.acceptApp = function() {
+    		console.log($scope.postData);
     		acceptApp($scope.postData, function(result) {
-    			if(result.status) {
-    				window.location.href = ROOT + 'applications';
+    			if(result.status == 1) {
+    				alert('审批成功');
+    				//window.location.href = ROOT + 'applications';
     			}else{
     				alert('操作失败，请尝试重新提交');
     			}

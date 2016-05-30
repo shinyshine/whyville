@@ -12,7 +12,7 @@
 					<td>申请人: {{appForm.user.emp_name}}</td>
 				</tr>
 				<tr>
-					<td colspan="2">标题: {{appForm.app.app_title}}</td>
+					<td colspan="2" class="app-title">标题: <span>{{appForm.user.app_title}}</span></td>
 				</tr>
 			</table>
 			<table class="table table-bordered table-2" width="1200">
@@ -22,11 +22,12 @@
 					<td width="145">数量</td>
 					<td width="145">总价</td>
 				</tr>
-				<tr>
-					<td>{{appForm.app.app_content}}</td>
-					<td>{{appForm.app.app_per}}</td>
-					<td>{{appForm.app.app_num}}</td>
-					<td>{{appForm.app.app_per * appForm.app.app_num}}</td>
+				<tr ng-repeat="item in appForm.app">
+					<td>{{item.app_content}}</td>
+					<!-- <td><input type="text" ng-model="item.app_content" required/></td> -->
+					<td>{{item.app_per}}</td>
+					<td>{{item.app_num}}</td>
+					<td>{{item.app_per * item.app_num}}</td>
 				</tr>
 			</table>
 			<div class="date-container">
@@ -36,7 +37,7 @@
 				</p>
 			</div>
 			<p>总经理: {{autoData.sign_name}}</p>
-			<textarea ng-disabled="!user.authority" ng-model="appForm.app.boss_opinion">审批意见: </textarea>
+			<textarea ng-model="postData.opinion">审批意见: </textarea>
 			<footer>
 				<div class="footer-logo"></div>
 			</footer>

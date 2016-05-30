@@ -28,13 +28,12 @@
 					</tr>
 					<tr ng-repeat="item in appForm.app">
 						<td><textarea ng-model="item.app_content"></textarea></td>
-						<!-- <td><input type="text" ng-model="item.app_content" required/></td> -->
 						<td><input type="text" ng-model="item.app_per" ng-change="countTotal()" required/></td>
 						<td><input type="text" ng-model="item.app_num" ng-change="countTotal()" required/></td>
-						<td><input type="text" value="{{item.app_per * item.app_num}}" /></td>
+						<td><input type="text" value="{{item.app_per * item.app_num | NaNtoO}}" /></td>
 					</tr>
 				</table>
-				<p class="total-cal"><span>合计: ￥{{total_price}}</span></p>
+				<p class="total-cal"><span>合计: ￥{{total.total_price | NaNtoO}}</span></p>
 				<footer>
 					<div class="footer-logo"></div>
 				</footer>

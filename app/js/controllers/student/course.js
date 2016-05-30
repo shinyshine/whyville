@@ -105,18 +105,19 @@ angular.module('homeApp.student')
 
 		$scope.submitCourseInfo = function() {
 			var cou = $scope.course;
-			if(cou.course_year && cou.course_session && cou.course_name.id && cou.course_teacher.id && cou.course_weekday.id) {
-				if(isTime($scope.course.start_time) && isTime($scope.course.end_time)) {
-					planCourse($scope.course, function(result) {
-						if(result.status) {
-							alert('成功排课');
-							window.location.href = ROOT + 'courseList';
-						}
-					})
-					console.log($scope.course);
-				}else{
-					alert('时间格式错误');
-				}
+			if(cou.course_year && cou.course_session && cou.course_name.id && cou.course_teacher.id) {
+				// if(isTime($scope.course.start_time) && isTime($scope.course.end_time)) {
+					
+				// }else{
+				// 	alert('时间格式错误');
+				// }
+				planCourse($scope.course, function(result) {
+					if(result.status == 1) {
+						alert('成功排课');
+						window.location.href = ROOT + 'courseList';
+					}
+				})
+				console.log($scope.course);
 			}else {
 				alert('请完成必要信息的额填写');
 			}
@@ -153,9 +154,11 @@ angular.module('homeApp.student')
 
 		$scope.submitData = function() {
 			addStuToCourse($scope.formData, function(result) {
-				if(result.status) {
+				if(result.status == 1) {
 					alert('添加成功');
 					window.location.href = ROOT + 'courseStuList/' + $routeParams.course_id;
+				}else {
+					alert('出现错误');
 				}
 			})
 			console.log($scope.formData);
@@ -185,17 +188,22 @@ angular.module('homeApp.student')
 		getReport($routeParams, function(result) {
 			console.log(result);
 			$scope.data = result;
+			createChart(result.chart_data.items, result.chart_data.score);
 			$scope.$apply();
 		})
 
-		createChart();
+		
 		
 		$scope.submitReport = function() {
 			console.log($scope.data);
 			$scope.data.stu_id = $routeParams.stu_id;
 			$scope.data.course_id = $routeParams.course_id;
 			submitReport($scope.data, function(result) {
-				console.log(result);
+				if(result.status) {
+					alert('操作成功');
+				}else{
+					alert('请完善信息');
+				}
 			})
 		}
 		// $scope.data = {

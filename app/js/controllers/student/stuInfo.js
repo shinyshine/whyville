@@ -152,6 +152,7 @@ angular.module('homeApp.student')
 				submitStuInfo($scope.stuInfo, function(result) {
 					if(result.status) {
 						alert('添加成功');
+						$location.path('/courseList');
 					}else{
 						alert('出现错误，稍后重试');
 					}
