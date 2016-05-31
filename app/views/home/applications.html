@@ -22,8 +22,8 @@
 				<td class="notice-title">{{app.app_title}}</td>
 				<td>{{app.app_time}}</td>
 				<td class="operate-btns">
-					<a ng-class='{disabled: user.authority != 0, accepted: app.status == 1}' href="javascript:void(0);" ng-click="accept(app.app_id, 1)">通过</a>
-					<a ng-class='{disabled: user.authority != 0, unaccepted: app.status == 0}' href="javascript:void(0);" ng-click="accept(app.app_id, 2)">不通过</a>
+					<a ng-class='{disabled: emp_type.authority != 0, accepted: app.status == 1}' href="javascript:void(0);" ng-click="accept(app.app_id, 1)">通过</a>
+					<a ng-class='{disabled: emp_type.authority != 0, unaccepted: app.status == 2}' href="javascript:void(0);" ng-click="accept(app.app_id, 2)">不通过</a>
 					<a ng-class='{disabled: app.modify != 1}' href="javascript:void(0);" ng-click="modify(app.modify, app.app_id)">修改</a>
 					<!-- <a ng-class='{disabled: app.delete != 1}' href="javascript:void(0);" ng-click="deleteApp(app.delete, app.app_id)" class="btn-delete" href="#">删除</a> -->
 				</td>

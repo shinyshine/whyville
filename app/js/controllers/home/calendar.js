@@ -1,12 +1,7 @@
 'use strict';
 angular.module('homeApp.home')
 	.controller('calendar', function($scope, $rootScope, $cookies, $location, fetchOptions, $routeParams, clickDate, fetchHomeInfo, fetchHomeByYearM, deleteNotice, deleteSche) {
-		//$scope.userId = $cookies.get('user_id');
-		// $rootScope.user = {
-		// 	authority: $cookies.get('authority'),
-		// 	user_id: $cookies.get('user_id')
-		// }
-		console.log($rootScope)
+		
 		if($location.search().s_id) {
 			$scope.filter = {
 				"selectSchool": {
@@ -30,15 +25,20 @@ angular.module('homeApp.home')
 		})
 
 		fetchHomeInfo($scope.filter, function(result){
-			console.log(result);
-			$scope.home1 = result;
-			//为了显示无日程和无公告
-			$scope.home1.ntc_len = $scope.home1.notice.length;
-			$scope.home1.sche_len = $scope.home1.schedule.length;
-			var eventArray = $scope.home1.cur_mon_sche;
+			if(result.status == 2) {
+				alert('没有权限查看');
+			}else {
+				console.log(result);
+				$scope.home1 = result;
+				//为了显示无日程和无公告
+				$scope.home1.ntc_len = $scope.home1.notice.length;
+				$scope.home1.sche_len = $scope.home1.schedule.length;
+				var eventArray = $scope.home1.cur_mon_sche;
 
-			calendar(result.cur_mon_sche);
-			$scope.$apply();
+				calendar(result.cur_mon_sche);
+				$scope.$apply();
+			}
+			
 		});
 
 		var curMonth = moment().format('YYYY-MM'),
@@ -103,22 +103,27 @@ angular.module('homeApp.home')
 				$scope.$apply();
 			})
 		}
-		var authority = $cookies.get('authority');
-		$scope.addSchedule = function() {
-			if (authority != 0 && authority != 1) {
-				alert('您没有权限执行该操作');
-				return false;
-			}
-			$location.path('/addSchedule');
+		//var authority = $cookies.get('authority');
+		$scope.emp_type = {
+			authority: $cookies.get('authority'),
+			type: $cookies.get('type')
 		}
-		
-		$scope.addNotice = function() {
-			if (authority != 0 && authority != 1) {
-				alert('您没有权限执行该操作');
-				return false;
-			}
-			$location.path('/addNotice');
-		}
+
+		//限定添加日程和公告的权限
+		// $scope.addSchedule = function() {
+		// 	if ($scope.emp_type.authority != 0 && $scope.emp_type.type != 1) {
+		// 		alert('您没有权限执行该操作');
+		// 		return false;
+		// 	}
+		// 	$location.path('/addSchedule');
+		// }	
+		// $scope.addNotice = function() {
+		// 	if ($scope.emp_type.authority != 0 && $scope.emp_type.type != 1) {
+		// 		alert('您没有权限执行该操作');
+		// 		return false;
+		// 	}
+		// 	$location.path('/addNotice');
+		// }
 
 		$scope.modifySche = function(status, ntc_id) {
 			if (status == 0) {

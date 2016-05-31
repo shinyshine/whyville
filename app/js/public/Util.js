@@ -1,4 +1,4 @@
-var ROOT = 'http://10.173.125.60:8000/app/#/';
+var ROOT = 'http://10.173.124.114:8000/app/#/';
 //var ROOT = 'http://192.168.1.114:8000/app/#/';
 function transformSchArr(arr) {
 	var options = [];
@@ -77,7 +77,7 @@ var postData = function(url, data, callBack) {
 		data: data,
 		dataType: 'json',
 		beforeSend: function() {
-			$('.mask').hide();
+			$('.mask').show();
 		},
 		xhrFields: {
 			withCredentials: true
@@ -96,11 +96,17 @@ var getData = function(url, callBack, data) {
 		method: 'GET',
 		data: data,
 		dataType: 'json',
+		beforeSend: function() {
+			$('.mask').show();
+		},
 		xhrFields: {
 			withCredentials: true
 		},
 		success: function(result) {
 			callBack(result);
+		},
+		complete: function() {
+			$('.mask').hide();
 		}
 	})
 }

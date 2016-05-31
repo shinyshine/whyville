@@ -1,7 +1,10 @@
 'use strict';
 angular.module('homeApp.home')
-	.controller('applications', function($scope, $rootScope, $location, fetchOptions, fetchApps, pagination) {
-		console.log($rootScope);
+	.controller('applications', function($scope, $cookies, $location, fetchOptions, fetchApps, pagination) {
+		$scope.emp_type = {
+			authority: $cookies.get('authority')
+		}
+		console.log($scope.emp_type);
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -57,7 +60,7 @@ angular.module('homeApp.home')
 
 
 		$scope.accept = function(id, status) {
-			if($scope.user.authority != 0) {
+			if($scope.emp_type.authority != 0) {
 				return false;
 			}
 			//发送请求同意审核

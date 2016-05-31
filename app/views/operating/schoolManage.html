@@ -1,6 +1,6 @@
 <div class="school-container">
 	<div class="btns">
-		<div class="add-btn"><a href="javascript:void(0);" ng-click="addSchool()">添加校区</a></div>
+		<div class="add-btn" ng-hide="{{emp_type.authority != 0}}"><a href="javascript:void(0);" ng-click="addSchool()">添加校区</a></div>
 	</div>
 	<div class="table-container">
 	<table class="table table-striped" id="table">

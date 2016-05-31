@@ -1,4 +1,7 @@
 'use strict';
+var user = {
+  authority: ''
+}
 var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'publicService', 'homeApp.home', 'homeApp.operating', 'homeApp.student', 'homeApp.educate', 'homeApp.finance', 'homeApp.analysis'])
   .config(function($routeProvider) {
         

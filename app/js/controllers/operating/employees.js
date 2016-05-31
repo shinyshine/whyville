@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('homeApp.operating')
-	.controller('employees', function($scope, $location, employees, deleteEmp, resetPwd, createId, fetchOptions, pagination) {
+	.controller('employees', function($scope, $cookies, $location, employees, deleteEmp, resetPwd, createId, fetchOptions, pagination) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
 				"name": '全部校区'
 			},
 			"page": 1,
-			"num": 3
+			"num": 3,
+			"authority": $cookies.get('authority')
 		}
 		fetchOptions('', function(result) {
 			$scope.$apply(function() {
