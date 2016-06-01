@@ -24,7 +24,6 @@
 		    	<tr ng-repeat="course in courseInfo.courseList">
 		    		<td>第{{$index+1}}节</td>
 		    		<td class="input-td" ng-class="{'editing': course.isEditing}"><input type="text" ng-model="course.course_date_time" ng-disabled="!course.isEditing"></td>
-		    		<!-- <td class="input-td" ng-class="{'editing': course.isEditing}"><input type="text" ng-model="course.course_teacher" ng-disabled="!course.isEditing"></td> -->
 		    		<td class="input-td"><div my-select-attend select-options="options.teachers" which-school="course.course_teacher" icon-show="course.isEditing"></div></td>
 		    		<td class="input-td"><div class="teacher-attend" teach-attend select-options="attendType" which-item="course.teacher_state" icon-show="course.isEditing"></div></td>
 		    		<td><a href="#/stuAttend/{{course.course_id}}">已填写</a></td>

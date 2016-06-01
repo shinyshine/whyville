@@ -13,7 +13,7 @@
 		    	<tr ng-repeat="course in courseList">
 		    		<td><a href="#/eduStuList/{{course.course_id}}">{{course.course_name}}</a></td>
 		    		<td>{{course.stu_num}}</td>
-		    		<td>{{course.weekday}}</td>
+		    		<td>{{course.weekday | numberToWeek}}</td>
 		    		<td>{{course.start_time}}~{{course.end_time}}</td>
 		    	</tr>
 		    </tbody>

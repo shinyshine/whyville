@@ -3,6 +3,7 @@ angular.module('homeApp.educate')
 	.controller('eduCourseList', function($scope, fecthAllCourse) {
 		//$scope.courseList = fecthAllCourse();
 		fecthAllCourse('', function(result) {
+			console.log(result)
 			$scope.$apply(function() {
 				$scope.courseList = result;
 			})
@@ -50,21 +51,10 @@ angular.module('homeApp.educate')
 			console.log(result);
 		})
 
-		// $scope.callback = {
-		// 	//教师的只需返回自己写的，应该都是英文的吧
-		// 	"info": {
-		// 		"stu_name": '罗半仙',
-		// 		"course_name": 'EEEE!',
-		// 		"start_date": '2016-02-02',
-		// 		"end_date": '2016-08-09'
-		// 	},
-		// 	"content": ['啦啦啦啦很认真啊', '啦啦啦啦这个是第二次回访记录啊', '啦啦啦这个是第三次回访哦']
-		// }
-
 		$scope.postData = {
 			"course_id": $routeParams.course_id,
 			"stu_id": $routeParams.stu_id,
-			"content": ''
+			"new_callback": ''
 		}
 		$scope.submitCallback = function() {
 			postCallback($scope.postData, function(result) {
@@ -95,14 +85,27 @@ angular.module('homeApp.educate')
 			$scope.$apply();
 		})
 
-		createChart();
+		
 		
 		$scope.submitReport = function() {
 			console.log($scope.data);
 			$scope.data.stu_id = $routeParams.stu_id;
 			$scope.data.course_id = $routeParams.course_id;
 			submitReport($scope.data, function(result) {
-				console.log(result);
+				if(result.status) {
+					alert('操作成功');
+				}else{
+					alert('请完善信息');
+				}
 			})
 		}
+		
+		// $scope.submitReport = function() {
+		// 	console.log($scope.data);
+		// 	$scope.data.stu_id = $routeParams.stu_id;
+		// 	$scope.data.course_id = $routeParams.course_id;
+		// 	submitReport($scope.data, function(result) {
+		// 		console.log(result);
+		// 	})
+		// }
 	})

@@ -37,7 +37,8 @@ angular.module('homeApp')
         scope: {
           selectOptions: '=selectOptions',
           item: '=whichItem',
-          sendFilter: '&'
+          sendFilter: '&',
+          
         },
         templateUrl: './views/public/select-item-2.html',
         link: function(scope, element, attrs) {
@@ -47,6 +48,7 @@ angular.module('homeApp')
 
           scope.toggleOptions = function() {
             scope.options.show = !scope.options.show;
+
           }
 
           scope.clickOptions = function() {
@@ -67,6 +69,7 @@ angular.module('homeApp')
 
     $scope.toggleOptions = function() {
       $scope.options.show = !$scope.options.show;
+      $scope.downClick();
     }
 
     $scope.clickOptions = function() {
@@ -108,6 +111,7 @@ angular.module('homeApp')
         selectOptions: '=selectOptions',
         selected: '=whichSchool',
         sendFilter: '&',
+        downClick: '&'
       },
       template: '<div class="select-container"><div class="options">' +
         '<div class="content-wrap" ng-bind="selected.name | chooseForNone"></div>' +

@@ -9,7 +9,7 @@
 		<div link-select select-options="options.pay_type" first-one="filter.payFisrt" second-one="filter.paySec" send-filter="sendFilter()"></div>
 		<div link-select select-options="options.pay_method" first-one="filter.payMethod" second-one="filter.payTo" send-filter="sendFilter()"></div>
 		
-		<div class="add-btn"><a href="#/addPay">添加记录</a></div>
+		<div class="add-btn" ng-hide="{{emp_type.type != 1}}"><a href="#/addPay">添加记录</a></div>
 	</div>
 	<div class="table-container">
 		<table class="table table-striped" id="table">

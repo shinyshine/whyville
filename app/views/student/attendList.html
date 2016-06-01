@@ -16,7 +16,7 @@
 			</tr>
 			<tr ng-repeat="stu in courseAttend.attendence">
 				<td width="200">{{stu.stu_name}}</td>
-				<td ng-repeat="item in stu.attend_list" ng-class="{'absence': !item.state}"></td>
+				<td ng-repeat="item in stu.attend_list" ng-class="{'absence': !item.state, 'attend': item.state == 1}"></td>
 			</tr>
 		</table>
 	</div>

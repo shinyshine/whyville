@@ -18,10 +18,29 @@
                 <label>接送地点</label>
                 <div class="input-text"><input type="text" name="" placeholder="请输入接送地点" ng-model="formData.place" required/></div>
             </div>
-             <div class="input-row">
+            <!--  <div class="input-row">
                 <label>接送时间</label>
                 <div my-select select-options="options.weekdays" which-school="formData.weekday"></div>
                 <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.time" required/></div>
+            </div> -->
+            <div class="input-row">
+                <label>星期</label>
+                <div class="input-checkbox">
+
+                    <div class="check-box check-box-bus"><input type="checkbox" value="1" ng-model="formData.weekdays[0].choose"> 星期一</div>
+                    <div class="check-box check-box-bus"><input type="checkbox" value="2" ng-model="formData.weekdays[1].choose"> 星期二</div>
+                    <div class="check-box check-box-bus"><input type="checkbox" value="3" ng-model="formData.weekdays[2].choose"> 星期三</div>
+                    <div class="check-box check-box-bus"><input type="checkbox" value="4" ng-model="formData.weekdays[3].choose"> 星期四</div>
+                    <div class="check-box check-box-bus"><input type="checkbox" value="5" ng-model="formData.weekdays[4].choose"> 星期五</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>接送时间</label>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[0].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[1].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[2].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[3].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[4].time"/></div>
             </div>
             <div class="input-row">
                 <label>车牌号</label>

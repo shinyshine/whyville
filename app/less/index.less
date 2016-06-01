@@ -369,6 +369,9 @@
 	.absence{
 		background-color: #e1000f;
 	}
+	.attend{
+		background-color: #eeeeee;
+	}
 	.col-400{
 		.select-container{
 			margin-left: 100px;
@@ -527,7 +530,7 @@
     }
     label{
           display: inline-block;
-          width: 160px;
+          min-width: 160px;
           color: #666666;
           float: left;
           font-size: 16px;
@@ -582,8 +585,10 @@
 	          	}
 	          	display: inline-block;
 	          	width: 190px;
-	          	// margin-right: 110px;
-	          }
+	        }
+	        .check-box-bus{
+	        	width: 170px;
+	        }
         }
         .text-no-input{
         	color: @text-color;
@@ -929,6 +934,7 @@
 		}
 		label{
 			width: 96px;
+			min-width: 96px;
 			font-size: 16px;
 			color: @dark-blue;
 			padding-left: 20px;
@@ -1315,6 +1321,9 @@
 	}
 }
 
+.hide{
+	display: none;
+}
 
 @media screen and (max-width: 500px) {
 	.header{

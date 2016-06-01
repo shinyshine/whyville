@@ -1,6 +1,14 @@
 'use strict';
 angular.module('homeApp.home')
 	.controller('applications', function($scope, $cookies, $location, fetchOptions, fetchApps, pagination) {
+		var emp_type = {
+			type: $cookies.get('type'),
+			user_id: $cookies.get('user_id')
+		};
+		if(emp_type.type == 3 || emp_type.type == 4) {
+			alert('没有访问权限');
+			$location.path('/' + emp_type.user_id)
+		}
 		$scope.emp_type = {
 			authority: $cookies.get('authority')
 		}
@@ -94,46 +102,54 @@ angular.module('homeApp.home')
 			});
 		}
 	})
-    .controller('applyfor', function($scope, $location, initAppForm, addApp) {
-    	$scope.appForm = initAppForm;
-    	
-
-    	$scope.addItem = function() {
-    		var itemModel = {
-				"app_content": '',
-				"app_per": '',
-				"app_num": ''
-			}
-    		$scope.appForm.app.push(itemModel);
-    		console.log($scope.appForm);
-    	}
-
-
-    	$scope.total = {
-    		total_price: 0
-    	}
-    	$scope.countTotal = function() {
-    		$scope.total.total_price = 0;
-    		var total = $scope.total.total_price;
-    		
-    		if(isNaN(total)) {
-    			console.log("NaN");
-    			$scope.total.total_price = 0;
-    		}
-    		for(var i = 0, len = $scope.appForm.app.length; i < len; i ++) {
-	    		$scope.total.total_price += $scope.appForm.app[i].app_per * $scope.appForm.app[i].app_num;
+    .controller('applyfor', function($scope, $cookies, $location, initAppForm, addApp) {
+    	var emp_type = {
+			type: $cookies.get('type'),
+			user_id: $cookies.get('user_id')
+		};
+		if(emp_type.type == 3 || emp_type.type == 4) {
+			alert('没有访问权限');
+			$location.path('/' + emp_type.user_id)
+		}else {
+			$scope.appForm = initAppForm;
+	    	$scope.addItem = function() {
+	    		var itemModel = {
+					"app_content": '',
+					"app_per": '',
+					"app_num": ''
+				}
+	    		$scope.appForm.app.push(itemModel);
+	    		console.log($scope.appForm);
 	    	}
-    	}
-    	
 
-    	$scope.submitApp = function() {
-    		console.log($scope.appForm);
-			addApp($scope.appForm, function(result) {
-    			if(result.status) {
-    				window.location.href = ROOT + 'applications';
-    			}
-    		})
-    	}
+
+	    	$scope.total = {
+	    		total_price: 0
+	    	}
+	    	$scope.countTotal = function() {
+	    		$scope.total.total_price = 0;
+	    		var total = $scope.total.total_price;
+	    		
+	    		if(isNaN(total)) {
+	    			console.log("NaN");
+	    			$scope.total.total_price = 0;
+	    		}
+	    		for(var i = 0, len = $scope.appForm.app.length; i < len; i ++) {
+		    		$scope.total.total_price += $scope.appForm.app[i].app_per * $scope.appForm.app[i].app_num;
+		    	}
+	    	}
+	    	
+
+	    	$scope.submitApp = function() {
+	    		console.log($scope.appForm);
+				addApp($scope.appForm, function(result) {
+	    			if(result.status) {
+	    				window.location.href = ROOT + 'applications';
+	    			}
+	    		})
+	    	}
+		}
+    	
     })
     .controller('modifyApp', function($scope, $location, $routeParams, fetchApplyById, modifyApp) {
     	fetchApplyById($routeParams, function(result) {

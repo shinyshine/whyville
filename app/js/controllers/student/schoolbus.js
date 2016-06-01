@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.student')
-	.controller('stuBusList', function($scope, fetchOptions, getYearSessions, fetchStuBus) {
+	.controller('stuBusList', function($scope, fetchOptions, getYearSessions, fetchStuBus, deleteBus) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": '1',
@@ -48,10 +48,22 @@ angular.module('homeApp.student')
 
 		$scope.sendFilter = function() {
 			fetchStuBus($scope.filter, function(result) {
-				console.log(result)
 				$scope.$apply(function() {
 					$scope.stuBus = result;
 				})
+			})
+		}
+
+		$scope.deleteBus = function(ser_id) {
+			var data = {
+				ser_id: ser_id
+			}
+			deleteBus(data, function(result) {
+				if(result.status == 1) {
+					alert('删除成功');
+				}else{
+					alert('无法删除');
+				}
 			})
 		}
 	})
@@ -81,8 +93,9 @@ angular.module('homeApp.student')
 		})
 		$scope.formData = initAddToBusForm;
 		$scope.submitData = function() {
+			console.log($scope.formData)
 			addStuToBus($scope.formData, function(result) {
-				if(result.status) {
+				if(result.status == 1) {
 					alert('操作成功');
 					
 				}
@@ -175,7 +188,7 @@ angular.module('homeApp.student')
 					"ser_id": {
 						"id": cur.ser_id
 					},
-					"state": cur.attend_state.id
+					"state": cur.attend_state
 				}
 				//console.log('发送请求给后台，修改出勤状况');
 				modBusStuAttend(data, function(result) {

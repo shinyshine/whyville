@@ -7,7 +7,7 @@ angular.module('homeApp.finance')
 				"name": '全部校区'
 			},
 			"startTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
 				"name": moment().format('YYYY-MM')
@@ -26,7 +26,7 @@ angular.module('homeApp.finance')
 			$scope.$apply(function() {
 				$scope.app = result.result;
 				//about pagination
-				var total = result.sum;
+				var total = result.total.number;
 				$scope.paginationConf = pagination(total);
 				$scope.paginationConf.onChange = function() {
 					$scope.filter.page = $scope.paginationConf.currentPage;

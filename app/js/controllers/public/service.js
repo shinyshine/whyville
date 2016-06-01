@@ -28,57 +28,17 @@ angular.module('publicService', [])
 			"fetchAllJobs": server + 'jobs',
 			"uploadPhoto": server + 'upload_img',
 			"fetchSchCourseType": server + 'get_schools_coursetype',
-			"fetchOptions": server + 'common_data'
+			"fetchOptions": server + 'common_data',
+			"fetchCourseByStu": server + 'get_sch_by_stu'
 		}
 	})
-	.factory('fetchSchools', function($http, API) {
-		return [{
-			"id": '0',
-			"name": '全部校区'
-		}, {
-			"id": '1',
-			"name": '华南校区'
-		}, {
-			"id": '2',
-			"name": '大学城校区'
-		}]
-	})
-	
-	//获取课程类型
-	.factory('fetchCourseType', function() {
-		return [{
-			"id": '1',
-			"name": 'ESL'
-		},{
-			"id": '2',
-			"name": 'ELS'
-		}]
+	.factory('fetchCourseByStu', function(API) {
+		return function(data, callBack) {
+			getData(API.fetchCourseByStu, callBack, data);
+		}
 	})
 
-	.factory('fetchSchCourseType', function(API) {
-		return function(data, callBack) {
-			getData(API.fetchSchCourseType, callBack, data);
-			return {
-				"schools": [{
-					"id": '0',
-					"name": '全部校区'
-				}, {
-					"id": '1',
-					"name": '华南校区'
-				}, {
-					"id": '2',
-					"name": '大学城校区'
-				}],
-				"courseType": [{
-					"id": '1',
-					"name": 'ESL'
-				},{
-					"id": '2',
-					"name": 'ELS'
-				}]
-			}
-		}
-	})
+	
 	.factory('fetchOptions', function(API) {
 		return function(data, callBack) {
 			getData(API.fetchOptions, callBack, data);

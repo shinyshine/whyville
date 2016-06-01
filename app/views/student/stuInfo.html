@@ -138,11 +138,12 @@
 	    			<table class="table table-bordered">
 	    				<thead>
 		            		<tr>
-		            			<td width="140">类型</td>
+		            			<td width="100">类型</td>
 		            			<td width="200">地点</td>
 		            			<td width="140">时间</td>
-		            			<td width="140">周次</td>
-		            			<td width="140">金额</td>
+		            			<td width="260">明细</td>
+		            			<td width="100">合计金额</td>
+		            			<td width="100">备注</td>
 		            		</tr>
 		            	</thead>
 	            		<tbody>
@@ -150,8 +151,9 @@
 		            			<td>{{bus.type | busType}}</td>
 		            			<td>{{bus.pick_ads}}</td>
 		            			<td>{{bus.weekday | numberToWeek}} {{bus.pick_time}}</td>
-		            			<td>{{bus.times_per_week}}次/周</td>
+		            			<td>{{bus.per_price}}/次; 打{{bus.discount}}折; 减价:{{bus.cut}}元; 共{{bus.sum_count}}次</td>
 		            			<td>￥ {{bus.total_price}}</td>
+		            			<td><a href="javascript:void(0);" ng-class="{'warning': !bus.bus_fee_state}" ng-click="pay(bus.bus_id, bus.total_price, bus.bus_fee_state)">{{bus.bus_fee_state | feeOrNot}}</a></td>
 		            		</tr>
 	            		</tbody>
 	    			</table>
@@ -176,9 +178,9 @@
 	            			<tr ng-repeat="fee in stuInfo.course_fee">
 		            			<td>{{fee.course_name}}</td>
 		            			<td>{{fee.per_price}} 元/节; 打{{fee.discount}}折; 减价:{{fee.cut}}元; 共{{fee.sum_count}}节课</td>
-		            			<td>{{fee.per_price*fee.discount*fee.sum_count - fee.cut}}</td>
+		            			<td>{{fee.total_price}}</td>
 		            			<td>{{fee.book_fee}}</td>
-		            			<td>学费:<a href="javascript:void(0);" ng-class="{'warning': !fee.fee_or_not}" ng-click="pay(fee.sch_id, fee.per_price*fee.discount*fee.sum_count/10 - fee.cut, fee.fee_or_not)">{{fee.fee_or_not | feeOrNot}}</a> 书费:<a href="javascript:void(0);" ng-class="{'warning': !fee.book_fee_or_not}" ng-click="pay(fee.sch_id, fee.book_fee, fee.book_fee_or_not)">{{fee.book_fee_or_not | feeOrNot}}</a></td>
+		            			<td>学费:<a href="javascript:void(0);" ng-class="{'warning': !fee.fee_or_not}" ng-click="pay(fee.sch_id, fee.total_price, fee.fee_or_not)">{{fee.fee_or_not | feeOrNot}}</a> 书费:<a href="javascript:void(0);" ng-class="{'warning': !fee.book_fee_or_not}" ng-click="pay(fee.sch_id, fee.book_fee, fee.book_fee_or_not)">{{fee.book_fee_or_not | feeOrNot}}</a></td>
 		            		</tr>
 	            		</tbody>
 	    			</table>

@@ -15,9 +15,16 @@ angular.module('homeApp.financeService', [])
 			"fetchAccounts": server + 'get_balance',
 			"daily": server + 'get_cost_income',
 			"modIncome": server + 'change_income',
+			"deleteIncome": server + 'delete_income',
 		}
 	})
 
+	//删除收入记录
+	.factory('deleteIncome', function(financeAPI) {
+		return function(data, callBack) {
+			getData(financeAPI.deleteIncome, callBack, data);
+		}
+	})
 	.factory('fetchDaily', function(financeAPI) {
 		return function(data, callBack) {
 			getData(financeAPI.daily, callBack, data);
@@ -84,7 +91,7 @@ angular.module('homeApp.financeService', [])
 		}
 	})
 	.factory('initAddIncomeForm', function(financeAPI, $cookies) {
-		return function(price, s_id, stu) {
+		return function(price, s_id, stu, bus_id) {
 			return {
 				// "in_id": '',
 				"school": {
@@ -92,7 +99,14 @@ angular.module('homeApp.financeService', [])
 					"name": ''
 				},
 				"other_data": {
-					"select_id": s_id,
+					"course": {
+						"id": s_id,
+						"name": ''
+					},
+					"bus": {
+						"id": s_id,
+						"name": ''
+					},
 					"stu_id": stu
 				},
 				"in_date": moment().format('YYYY-MM-DD'),
@@ -111,7 +125,7 @@ angular.module('homeApp.financeService', [])
 				"sum": price,
 				"abstraction": '',
 				"charge_name": $cookies.get('user_name'),
-				"receipt_no": ['', '', '']
+				"receipt_no": ''
 			}
 		}
 	})

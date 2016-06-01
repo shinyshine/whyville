@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.student')
-	.controller('courseList', function($scope, fetchOptions, getYearSessions, fetchCourseList) {
+	.controller('courseList', function($scope, deleteCourse, fetchOptions, getYearSessions, fetchCourseList) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -45,14 +45,40 @@ angular.module('homeApp.student')
 				$scope.$apply();
 			});
 		}
+
+		//delete course
+		$scope.deleteCourse = function(course_id) {
+			var data = {
+				course_id: course_id
+			}
+			deleteCourse(data, function(result) {
+				if(result.status == 1) {
+					alert('成功删除一门课程');
+				}
+			})
+		}
 	})
-	.controller('courseStuList', function($scope, $routeParams, fetchStuInfoOfTheCourse) {
+	.controller('courseStuList', function($scope, $routeParams, deleteStuInCourse, fetchStuInfoOfTheCourse) {
 		fetchStuInfoOfTheCourse($routeParams, function(result) {
 			console.log(result);
 			$scope.stuCourse = result;
 			$scope.$apply();
 			//console.log(result);
 		})
+
+		$scope.deleteStu = function(stu_id) {
+			var data = {
+				course_id: $routeParams.course_id,
+				stu_id: stu_id
+			}
+			deleteStuInCourse(data, function(result) {
+				if(result.status == 1) {
+					alert('成功删除一位学生');
+				}else{
+					alert('该学生不可被删除');
+				}
+			})
+		}
 	})
 	.controller('addCourse', function($scope, fetchSchCourseType, postCourse) {
 		fetchSchCourseType('', function(result) {

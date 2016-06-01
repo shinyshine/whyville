@@ -72,7 +72,7 @@ angular.module('homeApp.student')
 	})
 
 	//那个长长的学生信息的
-	.controller('stuInfo', function($scope, $routeParams, fetchStuInfoById) {
+	.controller('stuInfo', function($scope, $location, $routeParams, fetchStuInfoById) {
 		$scope.sidebar = [{
 			"name": '基本信息',
 			"link": '#basic',
@@ -91,6 +91,7 @@ angular.module('homeApp.student')
 			"link": '#fee'
 		}]
 		fetchStuInfoById($routeParams, function(result) {
+			console.log(result)
 			$scope.stuInfo = result;
 			$scope.$apply();
 		});
@@ -161,9 +162,6 @@ angular.module('homeApp.student')
 				alert('请检查是否有必须项未填');
 			}		
 		}
-		
-		
-		
 	})
 
 	.controller('modifyStuInfo', function($scope, $timeout, $location, $routeParams, fetchStuInfoById, fetchOptions, getYearSessions, modifyStuInfo) {
@@ -177,12 +175,6 @@ angular.module('homeApp.student')
 		},{
 			"name": '学习信息',
 			"link": '#learn'
-		},{
-			"name": '服务信息',
-			"link": '#service'
-		},{
-			"name": '学费信息',
-			"link": '#fee'
 		}]
 		fetchOptions('', function(result) {
 			$scope.$apply(function() {

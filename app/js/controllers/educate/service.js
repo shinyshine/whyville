@@ -12,7 +12,7 @@ angular.module('homeApp.educateService', [])
 			"allAttend": server + 'change_student_attendance',
 			"fetchTeaCallBack": server + 'get_callback2',
 			"postCallback": server + 'add_callback',
-			"modifyCallback": server + 'change_callback'
+			"modifyCallback": server + 'change_callback2'
 		}
 	})
 

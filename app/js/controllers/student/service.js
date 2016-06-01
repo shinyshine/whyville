@@ -20,17 +20,25 @@ angular.module('homeApp.studentService', [])
 			"allParticipated": server + 'change_student_attendance',
 			"fetchStuAttTable": server + 'get_student_all_attendance',
 			"fetchCallBack": server + 'get_callback',
-			"modifyCallback": server + 'change_callback2',
+			"modifyCallback": server + 'change_callback',
 			"fetchStuBus": server + 'get_bus',
 			"modBusStuAttend": server + 'change_student_bus_attendance',
 			"addStuToBus": server + 'add_student_to_bus',
 			"fetchBusRecord": server + 'get_bus_attendance',
 			"fetchBusRecordById": server + 'get_bus_service_information',
 			"postReport": server + 'get_report',
-			"submitReport": server + 'change_report'
+			"submitReport": server + 'change_report',
+			"deleteCourse": server + 'delete_course2',
+			"deleteStuInCourse": server + 'delete_course3',
+			"deleteBus": server + 'delete_bus_service'
 		}
 	})
-
+	//删除约车记录
+	.factory('deleteBus', function(stuAPI) {
+		return function(data, callBack) {
+			getData(stuAPI.deleteBus, callBack, data);
+		}
+	})
 	.factory('postReport', function(stuAPI) {
 		return function(data, callBack) {
 			postData(stuAPI.postReport, data, callBack);
@@ -106,6 +114,7 @@ angular.module('homeApp.studentService', [])
 			getData(stuAPI.createStuId, callBack);
 		}
 	})
+
 	//初始化学生 表单
 	.factory('initStuForm', function() {
 		var fetchData = function(stu_id) {
@@ -209,6 +218,19 @@ angular.module('homeApp.studentService', [])
 			getData(stuAPI.fetchCourseList, callBack, filter);
 		}
 	})
+
+	//delete course
+	.factory('deleteCourse', function(stuAPI){
+		return function(data, callBack) {
+			getData(stuAPI.deleteCourse, callBack, data);
+		}
+	})
+
+	.factory('deleteStuInCourse', function(stuAPI) {
+		return function(data, callBack) {
+			getData(stuAPI.deleteStuInCourse, callBack, data);
+		}
+	})
 	.factory('fetchPlanCouOp', function(stuAPI) {
 		return function(data, callBack) {
 			getData(stuAPI.fetchPlanCouOp, callBack, data);
@@ -245,10 +267,32 @@ angular.module('homeApp.studentService', [])
 				"id": '',
 				"name": ''
 			},
-			"weekday": {
-				"id": '',
-				"name":''
-			},
+			// "weekday": {
+			// 	"id": '',
+			// 	"name":''
+			// },
+
+			"weekdays": [{
+				"choose": false,
+				"weekday": 1,
+				"time": ''
+			},{
+				"choose": false,
+				"weekday": 2,
+				"time": ''
+			},{
+				"choose": false,
+				"weekday": 3,
+				"time": ''
+			},{
+				"choose": false,
+				"weekday": 4,
+				"time": ''
+			},{
+				"choose": false,
+				"weekday": 5,
+				"time": ''
+			}],
 			"year": {
 				"name": ''
 			},
@@ -265,7 +309,7 @@ angular.module('homeApp.studentService', [])
 				"name": ''
 			},
 			"place": '',
-			"time": '',
+			//"time": '',
 			"per_price": '',
 			"sum_count": '',
 			"discount": '',

@@ -337,6 +337,9 @@
 .table .absence {
   background-color: #e1000f;
 }
+.table .attend {
+  background-color: #eeeeee;
+}
 .table .col-400 .select-container {
   margin-left: 100px;
 }
@@ -484,7 +487,7 @@
 }
 .form-container label {
   display: inline-block;
-  width: 160px;
+  min-width: 160px;
   color: #666666;
   float: left;
   font-size: 16px;
@@ -537,6 +540,9 @@
   width: 12px;
   height: 12px;
   cursor: pointer;
+}
+.form-container .input-row .input-checkbox .check-box-bus {
+  width: 170px;
 }
 .form-container .input-row .text-no-input {
   color: #666666;
@@ -858,6 +864,7 @@
 }
 .home-container .login-container label {
   width: 96px;
+  min-width: 96px;
   font-size: 16px;
   color: #190d5a;
   padding-left: 20px;
@@ -1193,6 +1200,9 @@
 .daily-header span {
   color: #666666;
   margin-right: 10px;
+}
+.hide {
+  display: none;
 }
 @media screen and (max-width: 500px) {
   .header {

@@ -1,4 +1,4 @@
-var ROOT = 'http://10.173.124.114:8000/app/#/';
+var ROOT = 'http://10.173.124.172:8000/app/#/';
 //var ROOT = 'http://192.168.1.114:8000/app/#/';
 function transformSchArr(arr) {
 	var options = [];
@@ -43,7 +43,6 @@ function isDate(str) {
 //检查时间格式
 function isTime(str) {
 	var a = str.match(/^(\d{1,2})(:)?(\d{1,2})$/);
-	console.log(a);
 	if (a == null) {
 		return false;
 	}

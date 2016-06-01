@@ -11,11 +11,12 @@
 		<table class="table table-striped" id="table">
 			<thead>
 				<tr>
-					<th width="240">课程名称</th>
-					<th width="240">任课老师</th>
-					<th width="240">学生人数</th>
-					<th width="240">星期</th>
-					<th width="240">上课时间</th>
+					<th width="200">课程名称</th>
+					<th width="200">任课老师</th>
+					<th width="200">学生人数</th>
+					<th width="200">星期</th>
+					<th width="200">上课时间</th>
+					<th width="200">操作</th>
 				</tr>		
 		    </thead>
 		    <tbody>
@@ -25,6 +26,9 @@
 		    		<td>{{course.stu_num}}</td>
 		    		<td>{{course.course_weekday}}</td>
 		    		<td>{{course.start_time}}~{{course.end_time}}</td>
+		    		<td class="operate-btns">
+		    			<a class="btn-delete" href="javascript:void(0);" ng-click="deleteCourse(course.course_id)">删除</a>
+		    		</td>
 		    	</tr>
 		    </tbody>
 		</table>
