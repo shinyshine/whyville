@@ -42,6 +42,10 @@ angular.module('homeApp.finance', ['ngRoute', 'homeApp.financeService'])
 				templateUrl: 'views/finance/account.html',
 				controller: 'account'
 			})
+			.when('/checkApp/:app_id', {
+				templateUrl: 'views/finance/application.html',
+				controller: 'checkApp'
+			})
 	})
 
 	//财务日报

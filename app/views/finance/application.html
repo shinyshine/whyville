@@ -24,7 +24,6 @@
 				</tr>
 				<tr ng-repeat="item in appForm.app">
 					<td>{{item.app_content}}</td>
-					<!-- <td><input type="text" ng-model="item.app_content" required/></td> -->
 					<td>{{item.app_pri}}</td>
 					<td>{{item.app_num}}</td>
 					<td>{{item.app_pri * item.app_num}}</td>
@@ -37,21 +36,9 @@
 				</p>
 				<p class="date-row">
 					<label>支付日期: </label>
-					<span>{{autoData.pay_date}}</span>
+					<span>{{appForm.pay_date}}</span>
 				</p>
 			</div>
-			<div class="pay-method-container">
-				<div class="pay-row">
-					<label>费用类型: </label>
-					<div link-select class="select" select-options="options.pay_type" first-one="postData.type.payFisrt" second-one="postData.type.paySec"></div>
-				</div>
-				<div class="pay-row">
-					<label>支付方式: </label>
-					<div link-select class="select" select-options="options.pay_method" first-one="postData.method.payMethod" second-one="postData.method.payTo"
-					></div>
-				</div>
-			</div>
-
 			<footer>
 				<div class="footer-logo"></div>
 			</footer>

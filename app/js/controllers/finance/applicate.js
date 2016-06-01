@@ -62,11 +62,13 @@ angular.module('homeApp.finance')
 	//对申请表进行付款
 	.controller('payForApp', function($scope, $routeParams, fetchAppById, fetchOptions, payForApp) {
 		// $scope.data = fetchAppById($routeParams);
-		// $scope.data.pay_date = moment().format('YYYY-MM-DD');
+		$scope.autoData = {
+			pay_date: moment().format('YYYY-MM-DD')
+		}
 		fetchAppById($routeParams, function(result) {
 			console.log(result);
 			$scope.$apply(function() {
-				$scope.data = result;
+				$scope.appForm = result;
 			})
 		})
 
@@ -112,5 +114,14 @@ angular.module('homeApp.finance')
 				}
 			})
 		}
+	})
 
+	.controller('checkApp', function($scope, $routeParams, fetchAppById) {
+		console.log($routeParams)
+		fetchAppById($routeParams, function(result) {
+			console.log(result);
+			$scope.$apply(function() {
+				$scope.appForm = result;
+			})
+		})
 	})

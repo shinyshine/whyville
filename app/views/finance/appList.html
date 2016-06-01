@@ -27,7 +27,8 @@
 					<td ng-hide="{{app.status == 1}}"><span ng-class="{'warning': app.status}">{{app.status | pay_or_not}}</span></td>
 					<td ng-hide="{{app.status == 0}}">{{app.pay_method}}--{{app.pay_to}}</td>
 					<td class="operate-btns">
-		    			<a href="#/payForApp/{{app.app_id}}">付款</a>
+		    			<a ng-hide="{{app.status == 1}}" href="#/payForApp/{{app.app_id}}">付款</a>
+		    			<a ng-hide="{{app.status == 0}}" href="#/checkApp/{{app.app_id}}">查看</a>
 		    		</td>
 				</tr>
 			</tbody>

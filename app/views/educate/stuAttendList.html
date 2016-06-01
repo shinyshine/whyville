@@ -12,11 +12,11 @@
 		<table class="table table-bordered">
 			<tr>
 				<td>学生姓名</td>
-				<td ng-repeat="item in courseNum" width="25">{{item}}</td>
+				<td ng-repeat="item in courseAttend.courseInfo.course_arr" width="25">{{item}}</td>
 			</tr>
 			<tr ng-repeat="stu in courseAttend.attendence">
 				<td width="200">{{stu.stu_name}}</td>
-				<td ng-repeat="item in stu.attend_list" ng-class="{'absence': !item.state}"></td>
+				<td ng-repeat="item in stu.attend_list" ng-class="{'absence': !item.state, 'attend': item.state == 1}"></td>
 			</tr>
 		</table>
 	</div>

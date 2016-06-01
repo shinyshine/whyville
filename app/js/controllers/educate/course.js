@@ -19,7 +19,7 @@ angular.module('homeApp.educate')
 		// $scope.data = fetchCourseStu($routeParams);
 		// console.log($scope.data);
 	})
-	.controller('todayClass', function($scope, $routeParams, fetchTodayClass) {
+	.controller('todayClass', function($scope, $routeParams, fetchTodayClass, postClassRecord) {
 		//$scope.data = fetchTodayClass($routeParams);
 
 		fetchTodayClass($routeParams, function(result) {
@@ -29,15 +29,20 @@ angular.module('homeApp.educate')
 			})
 		})
 		$scope.modify = function(index) {
-			var status = $scope.data.classes[index].isEditing;
+			var cur = $scope.data.classes[index],
+				status = cur.isEditing;
+
 			if(status) {
 				var postData = {
-					"course_id": '1', //排课编号,
-					"att_id": '课程记录id',
-					"note": '修改后的课堂记录的内容'
+					"course_id": cur.id, //排课编号,
+					"att_id": cur.id,
+					"note": cur.note
 				}
-				//$http 
-				console.log('发送请求给后台，修改出勤状况');
+				postClassRecord(postData, function(result) {
+					if(result.status == 1) {
+						alert('提交成功')
+					}
+				})
 				console.log($scope.data.classes[index].note);
 			}
 			$scope.data.classes[index].isEditing = !status;

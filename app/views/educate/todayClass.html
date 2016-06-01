@@ -5,7 +5,7 @@
 		<span>时间: {{data.courseInfo.course_weekday | numberToWeek}} {{data.courseInfo.start_time}}~{{data.courseInfo.end_time}}</span>
 	</div>
 	<div class="btns">
-	    <div class="add-btn"><a href="#/stuAttendList/5">查看考勤表</a></div>
+	    <div class="add-btn"><a href="#/stuAttendList/{{data.courseInfo.course_id}}">查看考勤表</a></div>
 	</div>
 	<div class="table-container">
 		<table class="table table-striped" id="table">

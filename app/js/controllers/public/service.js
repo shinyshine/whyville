@@ -121,9 +121,9 @@ angular.module('publicService', [])
 					success: function(result) {
 						callBack(result);
 					},
-					error: function(msg) {
-						alert("文件上传失败");
-					}
+					// error: function(msg) {
+					// 	alert("文件上传失败");
+					// }
 				});
 				return false;
 			});
