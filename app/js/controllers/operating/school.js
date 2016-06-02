@@ -1,7 +1,7 @@
 'use strict'
 angular.module('homeApp.operating')
 	.controller('SchoolManage', function($scope, $cookies, $location, fetchAllSchools) {
-		var emp_type = {
+		$scope.emp_type = {
 			authority: $cookies.get('authority')
 		}
 		fetchAllSchools('', function(result) {

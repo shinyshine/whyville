@@ -11,16 +11,10 @@ angular.module('homeApp.analysis')
 				"name": '全部教师'
 			},
 			"startTime": {
-				// "year": moment().format('YYYY'),
-				// "month": moment().format('MM'),
-				// "day": moment().format('DD')
-				"name": moment().format('YYYY-MM-DD')
+				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				// "year": moment().format('YYYY'),
-				// "month": moment().format('MM'),
-				// "day": moment().format('DD')
-				"name": moment().format('YYYY-MM-DD')
+				"name": moment().format('YYYY-MM')
 			},
 		}
 		fetchTeaSalary($scope.filter, function(result) {
@@ -68,7 +62,7 @@ angular.module('homeApp.analysis')
 				"name": '春季班'
 			},
 			"startTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
 				"name": moment().format('YYYY-MM')
@@ -122,7 +116,7 @@ angular.module('homeApp.analysis')
 				"name": '春季班'
 			},
 			"startTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
 				"name": moment().format('YYYY-MM')
@@ -181,7 +175,7 @@ angular.module('homeApp.analysis')
 				"name": '春季班'
 			},
 			"startTime": {
-				"name":moment().format('YYYY-MM')
+				"name":moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
 				"name":moment().format('YYYY-MM')
@@ -240,7 +234,7 @@ angular.module('homeApp.analysis')
 				"name": '春季班'
 			},
 			"startTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
 				"name": moment().format('YYYY-MM')
@@ -292,14 +286,14 @@ angular.module('homeApp.analysis')
 				"name": '全部校区'
 			},
 			"startTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
 				"name": moment().format('YYYY-MM')
-			}, //这个是筛选报名校车的年月
+			}, 
 			"year": {
 				"name": moment().format('YYYY')
-			}, //这个是筛选报名校车的年份
+			}, 
 			"busNumber": {
 				"id": 0,
 				"name": '全部车牌'
@@ -334,14 +328,14 @@ angular.module('homeApp.analysis')
 				"name": '全部校区'
 			},
 			"startTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
 				"name": moment().format('YYYY-MM')
-			}, //这个是筛选报名校车的年月
+			}, 
 			"year": {
 				"name": moment().format('YYYY')
-			}, //这个是筛选报名校车的年份
+			}, 
 			"busNumber": {
 				"id": 0,
 				"name": '全部车牌'
@@ -371,7 +365,6 @@ angular.module('homeApp.analysis')
 		}
 	})
 	.controller('schInfo', function($scope, fetchSchInfo, fetchOptions, getYearSessions) {
-		//$scope.data = fetchSchInfo();
 		$scope.filter = {
 			"school": {
 				"id": 1,

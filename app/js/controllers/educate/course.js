@@ -82,7 +82,9 @@ angular.module('homeApp.educate')
 	})
 
 	.controller('teaReport', function($scope, $routeParams, getReport, postReport, createChart, submitReport) {
-
+		//hide the whole header, for the printing reasons
+		$('#header').hide();
+		
 		getReport($routeParams, function(result) {
 			console.log(result);
 			$scope.data = result;
