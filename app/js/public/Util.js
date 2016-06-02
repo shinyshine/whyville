@@ -1,5 +1,5 @@
-//var ROOT = 'http://10.173.124.172:8000/app/#/';
-var ROOT = 'http://192.168.1.120:8000/app/#/';
+var ROOT = 'http://10.173.125.162:8000/app/#/';
+//var ROOT = 'http://192.168.1.120:8000/app/#/';
 function transformSchArr(arr) {
 	var options = [];
 	for (var i = 0, len = arr.length; i < len; i++) {
