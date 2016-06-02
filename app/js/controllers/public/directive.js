@@ -357,3 +357,19 @@ angular.module('homeApp')
     }
   }
 })
+
+  //valid time format 12:00 with valid-time
+  .directive('validTime', [function () {
+      return {
+          require: "ngModel",
+          link: function (scope, element, attr, ngModel) {
+              var customValidator = function (value) {
+                  var validity = ngModel.$isEmpty(value) || isTime(value);
+                  ngModel.$setValidity("timeFormat", validity);
+                  return validity ? value : undefined;
+              };
+              ngModel.$formatters.push(customValidator);
+              ngModel.$parsers.push(customValidator);
+          }
+      };
+  }])

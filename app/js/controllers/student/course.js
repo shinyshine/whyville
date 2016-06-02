@@ -80,10 +80,13 @@ angular.module('homeApp.student')
 			})
 		}
 	})
-	.controller('addCourse', function($scope, fetchSchCourseType, postCourse) {
-		fetchSchCourseType('', function(result) {
+	.controller('addCourse', function($scope, fetchOptions, postCourse) {
+		fetchOptions('', function(result) {
 			console.log(result);
-			$scope.options = result;
+			$scope.options = {
+				schools: result.schools,
+				courseType: result.courseType
+			}
 			$scope.$apply();
 		})
 
@@ -132,11 +135,22 @@ angular.module('homeApp.student')
 		$scope.submitCourseInfo = function() {
 			var cou = $scope.course;
 			if(cou.course_year && cou.course_session && cou.course_name.id && cou.course_teacher.id) {
-				// if(isTime($scope.course.start_time) && isTime($scope.course.end_time)) {
-					
-				// }else{
-				// 	alert('时间格式错误');
-				// }
+				
+				//filter time format
+				var week = cou.weekdays;
+
+				for(var item in week) {
+					var cur = week[item];
+					if(cur.choose) {
+						//console.log(week[item]);
+						if(!isTime(cur.start_time) || !isTime(cur.end_time)) {
+							alert('请使用正确的时间格式, 12:00');
+							return false;
+						}
+					}
+				}
+
+				console.log($scope.course);
 				planCourse($scope.course, function(result) {
 					if(result.status == 1) {
 						alert('成功排课');
@@ -147,9 +161,6 @@ angular.module('homeApp.student')
 			}else {
 				alert('请完成必要信息的额填写');
 			}
-			
-			
-			console.log($scope.course);
 		}
 	})
 	.controller('addStuToCourse', function($scope, $routeParams, initAddToCourseForm, fetchCourseInfo, addStuToCourse, fetchOptions) {

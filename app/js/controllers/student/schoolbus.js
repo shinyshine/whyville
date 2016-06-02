@@ -93,13 +93,33 @@ angular.module('homeApp.student')
 		})
 		$scope.formData = initAddToBusForm;
 		$scope.submitData = function() {
-			console.log($scope.formData)
-			addStuToBus($scope.formData, function(result) {
-				if(result.status == 1) {
-					alert('操作成功');
-					
+			var data = $scope.formData;
+			console.log(data);
+			if(data.bus_number.id && data.type.id && data.discount_type.id && data.session.name && data.year.name) {
+				
+				//filter time format
+				var week = data.weekdays;
+
+				for(var item in week) {
+					var cur = week[item];
+					if(cur.choose) {
+						//console.log(week[item]);
+						if(!isTime(cur.time)) {
+							alert('请使用正确的时间格式, 12:00');
+							return false;
+						}
+					}
 				}
-			})
+
+				addStuToBus($scope.formData, function(result) {
+					if(result.status == 1) {
+						alert('操作成功');
+					}
+				})
+			}else{
+				alert('请完善信息');
+			}
+			
 		}
 	})
 	.controller('modStuBus', function($scope) {

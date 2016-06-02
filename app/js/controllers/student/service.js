@@ -267,11 +267,6 @@ angular.module('homeApp.studentService', [])
 				"id": '',
 				"name": ''
 			},
-			// "weekday": {
-			// 	"id": '',
-			// 	"name":''
-			// },
-
 			"weekdays": [{
 				"choose": false,
 				"weekday": 1,
@@ -291,6 +286,14 @@ angular.module('homeApp.studentService', [])
 			},{
 				"choose": false,
 				"weekday": 5,
+				"time": ''
+			},{
+				"choose": false,
+				"weekday": 6,
+				"time": ''
+			},{
+				"choose": false,
+				"weekday": 7,
 				"time": ''
 			}],
 			"year": {
@@ -481,12 +484,6 @@ angular.module('homeApp.studentService', [])
 				"id": '',
 				"name": ''
 			},
-			// "course_weekday": {
-			// 	"id": '',
-			// 	"name": ''
-			// },
-			// "start_time": '',
-			// "end_time": '',
 			"weekdays": [{
 				"choose": false,
 				"weekday": 1,
@@ -510,6 +507,16 @@ angular.module('homeApp.studentService', [])
 			},{
 				"choose": false,
 				"weekday": 5,
+				"start_time": '',
+				"end_time": ''
+			},{
+				"choose": false,
+				"weekday": 6,
+				"start_time": '',
+				"end_time": ''
+			},{
+				"choose": false,
+				"weekday": 7,
 				"start_time": '',
 				"end_time": ''
 			}],

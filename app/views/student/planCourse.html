@@ -17,24 +17,15 @@
                 <label>任课老师</label>
                 <div my-select select-options="options.teachers" which-school="course.course_teacher"></div>
             </div>
-            <!-- <div class="input-row">
-                <label>星期</label>
-                <div my-select select-options="options.weekdays" which-school="course.course_weekday"></div>
-            </div>
-            <div class="input-row">
-                <label>上课时间</label>
-                <div class="input-text input-time"><input type="text" placeholder="开始时间" ng-model="course.start_time" required/></div>
-                <i class="to-icon">~</i>
-                <div class="input-text input-time"><input type="text" placeholder="结束时间" ng-model="course.end_time" required/></div>
-            </div> -->
+            
             <div class="input-row">
                 <label>星期</label>
                 <div class="input-checkbox">
-                    <div class="check-box"><input type="checkbox" value="1" ng-model="course.weekdays[0].choose"> 星期一</div>
-                    <div class="check-box"><input type="checkbox" value="2" ng-model="course.weekdays[1].choose"> 星期二</div>
-                    <div class="check-box"><input type="checkbox" value="3" ng-model="course.weekdays[2].choose"> 星期三</div>
-                    <div class="check-box"><input type="checkbox" value="4" ng-model="course.weekdays[3].choose"> 星期四</div>
-                    <div class="check-box"><input type="checkbox" value="5" ng-model="course.weekdays[4].choose"> 星期五</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[0].choose"> 星期一</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[1].choose"> 星期二</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[2].choose"> 星期三</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[3].choose"> 星期四</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[4].choose"> 星期五</div>
                 </div>
             </div>
             <div class="input-row">
@@ -61,6 +52,24 @@
                 <div class="start-end-time">
                     <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[4].start_time" /><i>-</i></div>
                     <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[4].end_time" /></div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>星期</label>
+                <div class="input-checkbox">
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[5].choose"> 星期六</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[6].choose"> 星期日</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>上课时间</label>
+                <div class="start-end-time">
+                    <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[5].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[5].end_time" /></div>
+                </div>
+                <div class="start-end-time">
+                     <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[6].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[6].end_time" /></div>
                 </div>
             </div>
             <div class="input-row">
