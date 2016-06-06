@@ -30,7 +30,8 @@ angular.module('homeApp.studentService', [])
 			"submitReport": server + 'change_report',
 			"deleteCourse": server + 'delete_course2',
 			"deleteStuInCourse": server + 'delete_course3',
-			"deleteBus": server + 'delete_bus_service'
+			"deleteBus": server + 'delete_bus_service',
+			
 		}
 	})
 	//删除约车记录
@@ -61,12 +62,9 @@ angular.module('homeApp.studentService', [])
 		    $('#chart').highcharts({
 		        title: {
 		            text: 'Chart',
-		            x: -20 //center
+		            x: -20 
 		        },
-		        // subtitle: {
-		        //     text: 'Source: WorldClimate.com',
-		        //     x: -20
-		        // },
+
 		        xAxis: {
 		            categories: items
 		        },

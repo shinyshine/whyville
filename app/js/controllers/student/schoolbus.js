@@ -67,7 +67,7 @@ angular.module('homeApp.student')
 			})
 		}
 	})
-	.controller('addStuToBus', function($scope, addStuToBus, getYearSessions, fetchOptions, getWeekDays, initAddToBusForm) {
+	.controller('addStuToBus', function($scope, addStuToBus, getYearSessions, getStuName, fetchOptions, getWeekDays, initAddToBusForm) {
 		fetchOptions('', function(result) {
 			$scope.options = {
 				"type": [{
@@ -91,7 +91,24 @@ angular.module('homeApp.student')
 				"weekdays": getWeekDays
 			}
 		})
+
+		//init form data, almost empty value
 		$scope.formData = initAddToBusForm;
+
+		//get student's name by his id
+		$scope.getStuName = function() {
+			var stuId = {
+				stu_id: $scope.formData.stu_id
+			}
+
+			$scope.formData.stu_name = getStuName().stu_name;
+			// getStuName(stuId, function(result) {
+			// 	console.log(result)
+			// 	$scope.formData.stu_name = result.stu_name;
+			// })
+		}
+
+
 		$scope.submitData = function() {
 			var data = $scope.formData;
 			console.log(data);
@@ -118,8 +135,7 @@ angular.module('homeApp.student')
 				})
 			}else{
 				alert('请完善信息');
-			}
-			
+			}	
 		}
 	})
 	.controller('modStuBus', function($scope) {

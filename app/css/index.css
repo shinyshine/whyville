@@ -1028,6 +1028,9 @@
 .add-course-form .input-row .input-text {
   width: 600px;
 }
+.add-course-form .input-row .dobble-input input[type=text] {
+  width: 30%;
+}
 .add-course-form .input-row .input-time {
   width: 100px;
   float: left;

@@ -163,7 +163,7 @@ angular.module('homeApp.student')
 			}
 		}
 	})
-	.controller('addStuToCourse', function($scope, $routeParams, initAddToCourseForm, fetchCourseInfo, addStuToCourse, fetchOptions) {
+	.controller('addStuToCourse', function($scope, $routeParams, initAddToCourseForm, fetchCourseInfo, addStuToCourse, fetchOptions, getStuName) {
 		fetchCourseInfo($routeParams, function(result) {
 			console.log(result);
 			$scope.courseInfo = result;
@@ -187,6 +187,19 @@ angular.module('homeApp.student')
 			$scope.options.pay_method = result.pay_method;
 			$scope.$apply();
 		})
+
+		//get student's name by his id
+		$scope.getStuName = function() {
+			var stuId = {
+				stu_id: $scope.formData.stu_id
+			}
+
+			$scope.formData.stu_name = getStuName().stu_name;
+			// getStuName(stuId, function(result) {
+			// 	console.log(result)
+			// 	$scope.formData.stu_name = result.stu_name;
+			// })
+		}
 		
 
 		$scope.submitData = function() {

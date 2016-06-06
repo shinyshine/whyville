@@ -8,7 +8,7 @@
 	<div class="form-container form-container-bg add-course-form add-stu-into-course">
 	    <div class="input-row">
             <label>学生编号</label>
-            <div class="input-text"><input type="text" name="" placeholder="请输入学生编号" ng-model="formData.stu_id"/></div>
+            <div class="input-text dobble-input"><input type="text" name="" placeholder="请输入学生编号" ng-blur="getStuName()" ng-model="formData.stu_id"/><span>{{formData.stu_name}}</span></div>
         </div>
         <div class="input-row">
             <label>学费</label>

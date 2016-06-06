@@ -1,7 +1,8 @@
 'use strict';
 angular.module('publicService', [])
 	.factory('server', function() {
-		return 'http://139.129.45.236:8002/'
+		//return 'http://139.129.45.236:8002/'
+		return 'http://120.25.229.249:8001/'
 	})
 
 	.factory('injectOperating', function($q, $timeout) {
@@ -29,7 +30,18 @@ angular.module('publicService', [])
 			"uploadPhoto": server + 'upload_img',
 			"fetchSchCourseType": server + 'get_schools_coursetype',
 			"fetchOptions": server + 'common_data',
-			"fetchCourseByStu": server + 'get_sch_by_stu'
+			"fetchCourseByStu": server + 'get_sch_by_stu',
+			"getStuName": server + '',
+		}
+	})
+
+	//get student's name by his id
+	.factory('getStuName', function(API) {
+		return function(data, callBack) {
+			//getData(API.getStuName, callBack, data);
+			return {
+				stu_name: 'luoxiaotong'
+			}
 		}
 	})
 	.factory('fetchCourseByStu', function(API) {
